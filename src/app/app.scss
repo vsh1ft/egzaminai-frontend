@@ -1,0 +1,16 @@
+@import "login/login";
+
+@import "~@angular/material/_theming";
+
+html, body {
+  background-image: linear-gradient(to right, red , yellow);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+
+$custom-typography: mat-typography-config(
+        $input: mat-typography-level(16px, 1.125, 400)
+);
+
+@include mat-core($custom-typography);

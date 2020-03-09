@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core'
+import { FormControl } from '@angular/forms'
+import { loginText } from './login.constant'
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+    selector: 'login',
+    templateUrl: './login.html'
 })
 export class LoginComponent implements OnInit {
+    loginText = loginText
 
-  constructor() { }
+    email = new FormControl('')
+    password = new FormControl('')
 
-  ngOnInit(): void {
-  }
+    constructor() {
+    }
+
+    ngOnInit(): void {
+    }
 
 }

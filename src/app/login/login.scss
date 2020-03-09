@@ -1,0 +1,45 @@
+login {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+
+  form {
+    align-self: center;
+
+    background-color: white;
+  }
+
+  mat-card {
+    mat-form-field {
+      width: 20em;
+      padding-bottom: 1em;
+    }
+
+    button {
+      width: 50%;
+    }
+
+    .mat-card-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #account-control {
+      display: flex;
+      flex-direction: column;
+
+      #sign-in {
+        width: 100%;
+        margin-bottom: 1em;
+      }
+
+      .row {
+        flex-direction: row;
+      }
+    }
+
+  }
+
+}
+
