@@ -39,6 +39,7 @@
             </div>
         </mat-card-content>
         <button type="submit"
+                [disabled]="!isSignUpEnabled"
                 id="sign-up"
                 mat-raised-button
         >{{signUpText.signUp | uppercase }}</button>

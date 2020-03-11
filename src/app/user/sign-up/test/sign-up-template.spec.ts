@@ -105,7 +105,7 @@ describe(`${SignUpComponent.name} template`, () => {
         })
     })
 
-    fdescribe(`Repeat password`, () => {
+    describe(`Repeat password`, () => {
         it('displays error when password is not set', () => {
             component.userForm.controls.email.patchValue('email@e')
             authSpy.doesExist.and.returnValue(of(false))

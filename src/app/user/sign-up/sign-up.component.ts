@@ -16,7 +16,7 @@ import { Router } from '@angular/router'
 export class SignUpComponent implements OnInit {
     signUpText = signUpText
     routePaths = routePaths
-    isSignUpDisabled = false
+    isSignUpEnabled = true
 
     userForm = this.formBuilder.group({
             email: ['', [Validators.email, Validators.required]],
@@ -36,7 +36,7 @@ export class SignUpComponent implements OnInit {
     }
 
     submit() {
-        this.isSignUpDisabled = true
+        this.isSignUpEnabled = false
 
         this.authService.doesExist(
             new Credentials(this.userForm.controls.email.value, this.userForm.controls.passwordForm.get('password').value)
@@ -46,7 +46,7 @@ export class SignUpComponent implements OnInit {
                 this.loginOnValidUser()
             )
             .subscribe(() => this.router.navigateByUrl(routePaths.home))
-            .add(() => this.isSignUpDisabled = false)
+            .add(() => this.isSignUpEnabled = true)
     }
 
     private setErrorWhenUserExists(): MonoTypeOperatorFunction<boolean> {

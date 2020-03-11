@@ -16,7 +16,7 @@ import { iif, MonoTypeOperatorFunction, OperatorFunction } from 'rxjs'
 export class LoginComponent implements OnInit {
     loginText = loginText
     routePaths = routePaths
-    isSignInDisabled = false
+    isSignInEnabled = true
 
     email = new FormControl('')
     password = new FormControl('')
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     }
 
     submit() {
-        this.isSignInDisabled = true
+        this.isSignInEnabled = false
 
         this.authService.doesExist(new Credentials(this.email.value, this.password.value))
             .pipe(
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
                 this.loginOnValidUser()
             )
             .subscribe(() => this.router.navigateByUrl(routePaths.home))
-            .add(() => this.isSignInDisabled = false)
+            .add(() => this.isSignInEnabled = true)
     }
 
     private setErrorOnInvalidUser(): MonoTypeOperatorFunction<boolean> {

@@ -7,6 +7,7 @@ import { Router } from '@angular/router'
 import { routePaths } from '../../../router/app-routing.constant'
 import { UserAuthenticationService } from '../../service/user-authentication/user-authentication.service'
 import { of } from 'rxjs'
+import { delay } from 'rxjs/operators'
 
 describe(`${LoginComponent.name}`, () => {
 
@@ -110,11 +111,11 @@ describe(`${LoginComponent.name}`, () => {
         })
 
         it('disables sign in button on submit', () => {
-            authSpy.doesExist.and.returnValue(of(false))
+            authSpy.doesExist.and.returnValue(of(false).pipe(delay(1)))
 
             component.submit()
 
-            expect(component.isSignInDisabled).toBeFalsy()
+            expect(component.isSignInEnabled).toBeFalsy()
         })
 
         it('enables sign in button after submit', () => {
@@ -122,7 +123,7 @@ describe(`${LoginComponent.name}`, () => {
 
             component.ngOnInit()
 
-            expect(routerSpy.navigateByUrl).not.toHaveBeenCalled()
+            expect(component.isSignInEnabled).toBeTruthy()
         })
     })
 

@@ -25,7 +25,7 @@
         </mat-card-content>
         <div>
             <div id="account-control">
-                <button [disabled]="isSignInDisabled"
+                <button [disabled]="!isSignInEnabled"
                         type="submit"
                         id="sign-in"
                         mat-raised-button
