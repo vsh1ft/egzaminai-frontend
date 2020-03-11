@@ -1,5 +1,4 @@
 import { async, TestBed } from '@angular/core/testing'
-import { LoginComponent } from '../login.component'
 import createSpyObj = jasmine.createSpyObj
 import { SessionService } from '../../../service/session/session.service'
 import SpyObj = jasmine.SpyObj
@@ -7,19 +6,21 @@ import { Router } from '@angular/router'
 import { routePaths } from '../../../router/app-routing.constant'
 import { UserAuthenticationService } from '../../service/user-authentication/user-authentication.service'
 import { of } from 'rxjs'
+import { SignUpComponent } from '../sign-up.component'
+import { FormBuilder } from '@angular/forms'
 
-describe(`${LoginComponent.name}`, () => {
+describe(`${SignUpComponent.name}`, () => {
 
-    let component: LoginComponent
+    let component: SignUpComponent
     let sessionSpy: SpyObj<SessionService>
     let routerSpy: SpyObj<Router>
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            providers: [LoginComponent,
+            providers: [SignUpComponent,
                 {
-                    provide: SessionService,
-                    useValue: createSpyObj(SessionService.name, ['get'])
+                    provide: FormBuilder,
+                    useValue: new FormBuilder()
                 },
                 {
                     provide: Router,
@@ -33,26 +34,8 @@ describe(`${LoginComponent.name}`, () => {
         })
         sessionSpy = TestBed.inject(SessionService) as SpyObj<SessionService>
         routerSpy = TestBed.inject(Router) as SpyObj<Router>
-        component = TestBed.inject(LoginComponent)
+        component = TestBed.inject(SignUpComponent)
     }))
-
-    describe('Initialization', () => {
-        it('reroutes to login page when session exists', () => {
-            sessionSpy.get.and.returnValue('token')
-
-            component.ngOnInit()
-
-            expect(routerSpy.navigateByUrl).toHaveBeenCalledWith(routePaths.home)
-        })
-
-        it('doesn`t reroute to login page when there is no user session', () => {
-            sessionSpy.get.and.returnValue(null)
-
-            component.ngOnInit()
-
-            expect(routerSpy.navigateByUrl).not.toHaveBeenCalled()
-        })
-    })
 
     describe('Submit', () => {
 
@@ -77,7 +60,7 @@ describe(`${LoginComponent.name}`, () => {
 
                 component.submit()
 
-                expect(component.email.hasError('invalidUser')).toBeFalsy()
+                expect(component.userForm.controls.email.hasError('emailTaken')).toBeFalsy()
             })
 
         })
@@ -96,28 +79,28 @@ describe(`${LoginComponent.name}`, () => {
 
                 component.submit()
 
-                expect(component.email.hasError('invalidUser')).toBeTruthy()
+                expect(component.userForm.controls.email.hasError('emailTaken')).toBeTruthy()
             })
         })
 
         it('doesn`t set invalidUser error when form already has errors', () => {
             authSpy.doesExist.and.returnValue(of(true))
-            component.email.setErrors({error: true})
+            component.userForm.controls.email.setErrors({error: true})
 
             component.submit()
 
-            expect(component.email.hasError('invalidUser')).toBeFalsy()
+            expect(component.userForm.controls.email.hasError('emailTaken')).toBeFalsy()
         })
 
-        it('disables sign in button on submit', () => {
+        it('disables sign up button on submit', () => {
             authSpy.doesExist.and.returnValue(of(false))
 
             component.submit()
 
-            expect(component.isSignInDisabled).toBeFalsy()
+            expect(component.isSignUpDisabled).toBeFalsy()
         })
 
-        it('enables sign in button after submit', () => {
+        it('enables sign up button after submit', () => {
             sessionSpy.get.and.returnValue(null)
 
             component.ngOnInit()

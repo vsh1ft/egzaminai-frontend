@@ -13,6 +13,7 @@ import { loginText } from '../login.constant'
 import { routePaths } from '../../../router/app-routing.constant'
 import { Location } from '@angular/common'
 import { RouterTestingModule } from '@angular/router/testing'
+import { signUpText } from '../../sign-up/sign-up.constant'
 
 describe(`${LoginComponent.name} template`, () => {
 
@@ -30,7 +31,7 @@ describe(`${LoginComponent.name} template`, () => {
                     {path: routePaths.login, component: DummyComponent},
                     {path: routePaths.forgotPassword, component: DummyComponent},
                     {path: routePaths.home, component: DummyComponent}
-                    ])
+                ])
             ],
             providers: [
                 {
@@ -40,7 +41,7 @@ describe(`${LoginComponent.name} template`, () => {
                 {provide: ActivatedRoute, useValue: createSpyObj('ActivatedRoute', [''])},
                 {
                     provide: UserAuthenticationService,
-                    useValue: createSpyObj(UserAuthenticationService.name, ['login', 'isValid'])
+                    useValue: createSpyObj(UserAuthenticationService.name, ['login', 'doesExist'])
                 }
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -55,7 +56,7 @@ describe(`${LoginComponent.name} template`, () => {
 
     it('displays error when email is not set', () => {
         component.password.patchValue('password')
-        authSpy.isValid.and.returnValue(of(false))
+        authSpy.doesExist.and.returnValue(of(false))
 
         getElement('#sign-in').click()
         fixture.detectChanges()
@@ -63,9 +64,20 @@ describe(`${LoginComponent.name} template`, () => {
         expect(getElement('mat-error').innerText).toEqual(loginText.emailRequired)
     })
 
+    it('displays error when email is invalid', () => {
+        component.email.patchValue('em')
+        component.password.patchValue('password')
+        authSpy.doesExist.and.returnValue(of(false))
+
+        getElement('#sign-in').click()
+        fixture.detectChanges()
+
+        expect(getElement('mat-error').innerText).toEqual(signUpText.emailInvalid)
+    })
+
     it('displays error when password is not set', () => {
         component.email.patchValue('email@email')
-        authSpy.isValid.and.returnValue(of(false))
+        authSpy.doesExist.and.returnValue(of(false))
 
         getElement('#sign-in').click()
         fixture.detectChanges()
@@ -75,7 +87,7 @@ describe(`${LoginComponent.name} template`, () => {
 
     it('displays error when user is not found', () => {
         component.email.patchValue('email@email')
-        authSpy.isValid.and.returnValue(of(false))
+        authSpy.doesExist.and.returnValue(of(false))
 
         getElement('#sign-in').click()
         fixture.detectChanges()
@@ -92,7 +104,7 @@ describe(`${LoginComponent.name} template`, () => {
 
         it('navigates to home page', fakeAsync(() => {
 
-            authSpy.isValid.and.returnValue(of(true))
+            authSpy.doesExist.and.returnValue(of(true))
             authSpy.login.and.returnValue(of(undefined))
 
             getElement('#sign-in').click()
@@ -103,7 +115,7 @@ describe(`${LoginComponent.name} template`, () => {
         }))
 
         it('navigates to sign up page', fakeAsync(() => {
-            authSpy.isValid.and.returnValue(of(true))
+            authSpy.doesExist.and.returnValue(of(true))
             authSpy.login.and.returnValue(of(undefined))
 
             getElement('#sign-up').click()
@@ -114,7 +126,7 @@ describe(`${LoginComponent.name} template`, () => {
         }))
 
         it('navigates to forgot password page', fakeAsync(() => {
-            authSpy.isValid.and.returnValue(of(true))
+            authSpy.doesExist.and.returnValue(of(true))
             authSpy.login.and.returnValue(of(undefined))
 
             getElement('#forgot-password').click()
@@ -123,6 +135,15 @@ describe(`${LoginComponent.name} template`, () => {
 
             expect(location.path()).toEqual('/' + routePaths.forgotPassword)
         }))
+
+        it('navigates to login page on logo click', fakeAsync(() => {
+            getElement('.logo').click()
+            fixture.detectChanges()
+            tick()
+
+            expect(location.path()).toEqual('/' + routePaths.login)
+        }))
+
     })
 
     function getElements(selector: string) {

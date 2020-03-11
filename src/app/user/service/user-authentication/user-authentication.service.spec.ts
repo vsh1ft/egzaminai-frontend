@@ -45,9 +45,9 @@ describe(`${UserAuthenticationService.name}`, () => {
 
         it('confirms that user is valid', done => {
             const creds = new Credentials('email', 'pswd')
-            httpServiceSpy.post.withArgs(`/user/is-valid`, creds).and.returnValue(of(true))
+            httpServiceSpy.post.withArgs(`/user/exist`, creds).and.returnValue(of(true))
 
-            service.isValid(creds)
+            service.doesExist(creds)
                 .subscribe((isValid) => {
                     expect(isValid).toBeTruthy()
                     done()
@@ -56,9 +56,9 @@ describe(`${UserAuthenticationService.name}`, () => {
 
         it('denies that user is valid', done => {
             const creds = new Credentials('email', 'pswd')
-            httpServiceSpy.post.withArgs(`/user/is-valid`, creds).and.returnValue(of(false))
+            httpServiceSpy.post.withArgs(`/user/exist`, creds).and.returnValue(of(false))
 
-            service.isValid(creds)
+            service.doesExist(creds)
                 .subscribe((isValid) => {
                     expect(isValid).toBeFalsy()
                     done()

@@ -1,22 +1,45 @@
-<form>
+<form [formGroup]="userForm" (submit)="userForm.valid && submit()">
     <mat-card>
-        <img class="logo" src="../../../assets/logo.jpg" routerLink="/{{routePaths.home}}">
+        <img class="logo" src="../../../assets/logo.jpg" routerLink="/{{routePaths.login}}">
         <mat-card-content>
             <mat-form-field>
                 <mat-label>{{signUpText.email}}</mat-label>
-                <input matInput [formControl]="email" type="email" required>
+                <input matInput formControlName="email" type="email" required>
+                <mat-error *ngIf="userForm.controls.email.errors?.required">
+                    {{signUpText.emailRequired}}
+                </mat-error>
+                <mat-error *ngIf="userForm.controls.email.errors?.email">
+                    {{signUpText.emailInvalid}}
+                </mat-error>
+                <mat-error *ngIf="userForm.controls.email.errors?.emailTaken">
+                    {{signUpText.emailTaken}}
+                </mat-error>
             </mat-form-field>
+            <div class="passwords" formGroupName="passwordForm">
             <mat-form-field>
                 <mat-label>{{signUpText.password}}</mat-label>
-                <input matInput [formControl]="email" type="email" required>
+                <input matInput formControlName="password" type="password" required>
+                <mat-error *ngIf="userForm.get('passwordForm')['controls'].password.errors?.required">
+                    {{signUpText.passwordRequired}}
+                </mat-error>
+                <mat-error *ngIf="userForm.get('passwordForm')['controls'].password.errors?.minlength">
+                    {{signUpText.passwordLength}}
+                </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{signUpText.repeatPassword}}</mat-label>
-                <input matInput [formControl]="email" type="email" required>
+                <input matInput formControlName="repeatPassword" type="password" required>
+                <mat-error *ngIf="userForm.get('passwordForm')['controls'].repeatPassword.errors?.required">
+                    {{signUpText.passwordRequired}}
+                </mat-error>
+                <mat-error *ngIf="userForm.get('passwordForm')['controls'].repeatPassword.errors?.passwordMatch">
+                    {{signUpText.passwordsDoNotMatch}}
+                </mat-error>
             </mat-form-field>
+            </div>
         </mat-card-content>
         <button type="submit"
-                id="sign-up-button"
+                id="sign-up"
                 mat-raised-button
         >{{signUpText.signUp | uppercase }}</button>
     </mat-card>

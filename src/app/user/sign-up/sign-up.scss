@@ -20,10 +20,13 @@ sign-up {
     outline: none;
   }
 
-  #sign-up-button {
-    width: 100%;
+  .passwords {
+    display: flex;
+    flex-direction: column;
   }
 
-
+  #sign-up {
+    width: 100%;
+  }
 
 }

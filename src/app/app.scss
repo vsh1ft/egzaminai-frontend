@@ -4,8 +4,8 @@
 
 @import "~@angular/material/_theming";
 
-html, body {
-  background-image: linear-gradient(to right, red, yellow);
+html {
+  background: linear-gradient(to right, rgb(255, 0, 0), rgba(255, 255, 0, 0.67));
   overflow-x: hidden;
   overflow-y: hidden;
 }

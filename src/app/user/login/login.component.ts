@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     submit() {
         this.isSignInDisabled = true
 
-        this.authService.isValid(new Credentials(this.email.value, this.password.value))
+        this.authService.doesExist(new Credentials(this.email.value, this.password.value))
             .pipe(
                 this.setErrorOnInvalidUser(),
                 this.loginOnValidUser()
