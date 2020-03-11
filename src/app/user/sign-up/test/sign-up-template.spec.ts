@@ -42,7 +42,6 @@ describe(`${SignUpComponent.name} template`, () => {
         authSpy = TestBed.inject(UserAuthenticationService) as SpyObj<UserAuthenticationService>
         fixture = TestBed.createComponent(SignUpComponent)
         component = fixture.componentInstance
-        component.ngOnInit()
         fixture.detectChanges()
     }))
     describe(`Validation`, () => {
@@ -103,29 +102,29 @@ describe(`${SignUpComponent.name} template`, () => {
                 expect(getElements('mat-error')[0].innerText).toEqual(signUpText.passwordLength)
             })
         })
-    })
 
-    describe(`Repeat password`, () => {
-        it('displays error when password is not set', () => {
-            component.userForm.controls.email.patchValue('email@e')
-            authSpy.doesExist.and.returnValue(of(false))
+        describe(`Repeat password`, () => {
+            it('displays error when password is not set', () => {
+                component.userForm.controls.email.patchValue('email@e')
+                authSpy.doesExist.and.returnValue(of(false))
 
-            getElement('#sign-up').click()
-            fixture.detectChanges()
+                getElement('#sign-up').click()
+                fixture.detectChanges()
 
-            expect(getElements('mat-error')[1].innerText).toEqual(signUpText.passwordRequired)
-        })
+                expect(getElements('mat-error')[1].innerText).toEqual(signUpText.passwordRequired)
+            })
 
-        it('displays error when passwords do not match', () => {
-            component.userForm.controls.email.patchValue('email@e')
-            component.userForm.controls.passwordForm.get('password').setValue('pas')
-            component.userForm.controls.passwordForm.get('repeatPassword').setValue('pasw')
-            authSpy.doesExist.and.returnValue(of(false))
+            it('displays error when passwords do not match', () => {
+                component.userForm.controls.email.patchValue('email@ea')
+                component.userForm.controls.passwordForm.get('password').setValue('pas')
+                component.userForm.controls.passwordForm.get('repeatPassword').setValue('pasw')
+                authSpy.doesExist.and.returnValue(of(false))
 
-            getElement('#sign-up').click()
-            fixture.detectChanges()
+                getElement('#sign-up').click()
+                fixture.detectChanges()
 
-            expect(getElements('mat-error')[1].innerText).toEqual(signUpText.passwordsDoNotMatch)
+                expect(getElements('mat-error')[1].innerText).toEqual(signUpText.passwordsDoNotMatch)
+            })
         })
     })
 
@@ -177,9 +176,7 @@ describe(`${SignUpComponent.name} template`, () => {
         return fixture.debugElement.nativeElement.querySelector(selector)
     }
 
-    @Component({
-        template: ''
-    })
+    @Component({template: ''})
     class DummyComponent {
     }
 

@@ -1,4 +1,7 @@
 export const forgotPasswordText = {
-    remindPassword: 'Remind password',
-    email: 'Email'
+    resetPassword: 'Reset password',
+    email: 'Email',
+    emailRequired: 'Email required',
+    emailInvalid: 'Invalid email',
+    checkEmail: 'Check your email!'
 }

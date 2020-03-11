@@ -4,7 +4,7 @@
         <mat-card-content>
             <mat-form-field>
                 <mat-label>{{signUpText.email}}</mat-label>
-                <input matInput formControlName="email" type="email" required>
+                <input matInput formControlName="email" type="email" email required>
                 <mat-error *ngIf="userForm.controls.email.errors?.required">
                     {{signUpText.emailRequired}}
                 </mat-error>

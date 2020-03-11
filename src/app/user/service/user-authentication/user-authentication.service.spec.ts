@@ -29,7 +29,7 @@ describe(`${UserAuthenticationService.name}`, () => {
         service = TestBed.inject(UserAuthenticationService)
     })
 
-    it('logins and sets session ', done => {
+    it('logins and sets session', done => {
         const creds = new Credentials('email', 'pswd')
         const token = 'token'
         httpServiceSpy.post.withArgs(`/user/authenticate`, creds).and.returnValue(of(token))
@@ -41,7 +41,7 @@ describe(`${UserAuthenticationService.name}`, () => {
             })
     })
 
-    it('creates user and sets session ', done => {
+    it('creates user and sets session', done => {
         const creds = new Credentials('email', 'pswd')
         const token = 'token'
         httpServiceSpy.post.withArgs(`/user/create`, creds).and.returnValue(of(token))
@@ -51,6 +51,16 @@ describe(`${UserAuthenticationService.name}`, () => {
                 expect(TestBed.inject(SessionService).set).toHaveBeenCalledWith(token)
                 done()
             })
+    })
+
+    it('resets password', done => {
+        const email = 'email'
+        httpServiceSpy.post.withArgs(`/user/reset-password`, email).and.returnValue(of())
+
+        service.resetPassword(email)
+        done()
+
+        expect(httpServiceSpy.post).toHaveBeenCalled()
     })
 
     describe('Validation', () => {

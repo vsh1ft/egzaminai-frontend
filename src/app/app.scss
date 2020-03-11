@@ -1,6 +1,7 @@
 @import "user/login/login";
 @import "user/sign-up/sign-up";
 @import "user/forgot-password/forgot-password";
+@import "service/snackbar/snackbar";
 
 @import "~@angular/material/_theming";
 
@@ -15,3 +16,7 @@ $custom-typography: mat-typography-config(
 );
 
 @include mat-core($custom-typography);
+
+button.mat-raised-button {
+  color: grey;
+}

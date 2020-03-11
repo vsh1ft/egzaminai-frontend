@@ -30,4 +30,8 @@ export class UserAuthenticationService {
             }))
     }
 
+    resetPassword(email: string): Observable<void> {
+        return this.httpService.post<string, void>(`/user/reset-password`, email)
+    }
+
 }

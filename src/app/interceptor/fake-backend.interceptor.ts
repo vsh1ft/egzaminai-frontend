@@ -28,6 +28,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return isValid()
                 case url.endsWith('/user/create') && method === 'POST':
                     return register()
+                case url.endsWith('/user/reset-password') && method === 'POST':
+                    return resetPassword()
                 case url.endsWith('/users') && method === 'GET':
                     return getUsers()
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
@@ -60,9 +62,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function register() {
             console.log('registers')
-            return ok(
-                'fake-jwt-token'
-            )
+            return ok('fake-jwt-token')
+        }
+
+        function resetPassword() {
+            console.log('reset password')
+            return ok()
         }
 
         function getUsers() {

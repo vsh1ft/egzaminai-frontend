@@ -13,7 +13,7 @@ import { Router } from '@angular/router'
     selector: 'sign-up',
     templateUrl: './sign-up.html'
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
     signUpText = signUpText
     routePaths = routePaths
     isSignUpEnabled = true
@@ -30,9 +30,6 @@ export class SignUpComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,
                 private authService: UserAuthenticationService,
                 private router: Router) {
-    }
-
-    ngOnInit(): void {
     }
 
     submit() {

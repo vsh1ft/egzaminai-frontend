@@ -15,6 +15,8 @@ import { AuthGuard } from './router/guard/auth.guard'
 import { SessionService } from './service/session/session.service'
 import { SignUpModule } from './user/sign-up/sign-up.module'
 import { ForgotPasswordModule } from './user/forgot-password/forgot-password.module'
+import { SnackbarService } from './service/snackbar/snackbar.service'
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
     declarations: [
@@ -28,13 +30,15 @@ import { ForgotPasswordModule } from './user/forgot-password/forgot-password.mod
         LoginModule,
         SignUpModule,
         HttpClientModule,
-        ForgotPasswordModule
+        ForgotPasswordModule,
+        MatSnackBarModule
     ],
     providers: [
         UserAuthenticationService,
         ObservableHttpService,
         SessionService,
         AuthGuard,
+        SnackbarService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,

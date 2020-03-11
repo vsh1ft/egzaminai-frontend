@@ -154,9 +154,7 @@ describe(`${LoginComponent.name} template`, () => {
         return fixture.debugElement.nativeElement.querySelector(selector)
     }
 
-    @Component({
-        template: ''
-    })
+    @Component({template: ''})
     class DummyComponent {
     }
 
