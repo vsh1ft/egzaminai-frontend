@@ -1,0 +1,29 @@
+sign-up {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+
+  form {
+    align-self: center;
+
+    background-color: white;
+  }
+
+  .mat-card-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo {
+    cursor: pointer;
+    outline: none;
+  }
+
+  #sign-up-button {
+    width: 100%;
+  }
+
+
+
+}

@@ -13,6 +13,7 @@ import { HttpErrorInterceptor } from './interceptor/http-error-interceptor'
 import { HomeComponent } from './home/home.component'
 import { AuthGuard } from './router/guard/auth.guard'
 import { SessionService } from './service/session/session.service'
+import { SignUpModule } from './sign-up/sign-up.module'
 
 @NgModule({
     declarations: [
@@ -24,7 +25,7 @@ import { SessionService } from './service/session/session.service'
         AppRoutingModule,
         BrowserAnimationsModule,
         LoginModule,
-
+        SignUpModule,
         HttpClientModule
     ],
     providers: [

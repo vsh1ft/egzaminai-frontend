@@ -1,6 +1,6 @@
-<form (ngSubmit)="submit()" >
+<form (ngSubmit)="submit()">
     <mat-card>
-        <img src="../../assets/logo.jpg" alt="image">
+        <img class="logo" src="../../assets/logo.jpg" routerLink="/{{routePaths.home}}">
         <mat-card-content>
             <mat-form-field>
                 <mat-label>{{loginText.email}}</mat-label>
@@ -25,11 +25,19 @@
         </mat-card-content>
         <div>
             <div id="account-control">
-                <button [disabled]="isSignInDisabled" type="submit" id="sign-in"
-                        mat-raised-button>{{loginText.signIn  | uppercase }}</button>
+                <button [disabled]="isSignInDisabled"
+                        type="submit"
+                        id="sign-in"
+                        mat-raised-button
+                >{{loginText.signIn| uppercase }}</button>
                 <div class="row">
-                    <button mat-raised-button>{{loginText.signUp | uppercase}}</button>
-                    <button mat-raised-button>{{loginText.forgotPassword | uppercase}}</button>
+                    <button type="button"
+                            routerLink="/{{routePaths.signUp}}"
+                            mat-raised-button
+                    >{{loginText.signUp | uppercase}}</button>
+                    <button type="button"
+                            mat-raised-button
+                    >{{loginText.forgotPassword | uppercase}}</button>
                 </div>
             </div>
         </div>

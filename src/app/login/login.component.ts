@@ -15,7 +15,7 @@ import { iif, MonoTypeOperatorFunction, OperatorFunction } from 'rxjs'
 })
 export class LoginComponent implements OnInit {
     loginText = loginText
-
+    routePaths = routePaths
     isSignInDisabled = false
 
     email = new FormControl('')

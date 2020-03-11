@@ -10,6 +10,11 @@ login {
     background-color: white;
   }
 
+  .logo {
+    cursor: pointer;
+    outline: none;
+  }
+
   mat-card {
     mat-form-field {
       width: 20em;

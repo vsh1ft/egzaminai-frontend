@@ -1,0 +1,23 @@
+<form>
+    <mat-card>
+        <img class="logo" src="../../assets/logo.jpg" routerLink="/{{routePaths.home}}">
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>{{signUpText.email}}</mat-label>
+                <input matInput [formControl]="email" type="email" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{signUpText.password}}</mat-label>
+                <input matInput [formControl]="email" type="email" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{signUpText.repeatPassword}}</mat-label>
+                <input matInput [formControl]="email" type="email" required>
+            </mat-form-field>
+        </mat-card-content>
+        <button type="submit"
+                id="sign-up-button"
+                mat-raised-button
+        >{{signUpText.signUp | uppercase }}</button>
+    </mat-card>
+</form>

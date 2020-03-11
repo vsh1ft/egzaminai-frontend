@@ -1,4 +1,5 @@
 export const routePaths = {
     home: '',
-    login: 'login'
+    login: 'login',
+    signUp: 'sign-up'
 }
