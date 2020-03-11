@@ -1,9 +1,9 @@
-import { Credentials } from '../credentials'
+import { Credentials } from '../../login/credentials'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
-import { ObservableHttpService } from '../../service/http-service/observable-http.service'
-import { SessionService } from '../../service/session/session.service'
+import { ObservableHttpService } from '../../../service/http-service/observable-http.service'
+import { SessionService } from '../../../service/session/session.service'
 
 @Injectable()
 export class UserAuthenticationService {

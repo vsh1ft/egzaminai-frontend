@@ -1,11 +1,11 @@
 import { async, TestBed } from '@angular/core/testing'
 import { LoginComponent } from '../login.component'
 import createSpyObj = jasmine.createSpyObj
-import { SessionService } from '../../service/session/session.service'
+import { SessionService } from '../../../service/session/session.service'
 import SpyObj = jasmine.SpyObj
 import { Router } from '@angular/router'
-import { routePaths } from '../../router/app-routing.constant'
-import { UserAuthenticationService } from '../user-authentication/user-authentication.service'
+import { routePaths } from '../../../router/app-routing.constant'
+import { UserAuthenticationService } from '../../service/user-authentication/user-authentication.service'
 import { of } from 'rxjs'
 
 describe(`${LoginComponent.name}`, () => {

@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing'
 import { UserAuthenticationService } from './user-authentication.service'
-import { ObservableHttpService } from '../../service/http-service/observable-http.service'
-import { SessionService } from '../../service/session/session.service'
-import { Credentials } from '../credentials'
+import { ObservableHttpService } from '../../../service/http-service/observable-http.service'
+import { SessionService } from '../../../service/session/session.service'
+import { Credentials } from '../../login/credentials'
 import { of } from 'rxjs'
 import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj

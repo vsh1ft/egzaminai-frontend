@@ -1,5 +1,6 @@
-@import "login/login";
-@import "sign-up/sign-up";
+@import "user/login/login";
+@import "user/sign-up/sign-up";
+@import "user/forgot-password/forgot-password";
 
 @import "~@angular/material/_theming";
 
@@ -8,7 +9,6 @@ html, body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-
 
 $custom-typography: mat-typography-config(
         $input: mat-typography-level(16px, 1.125, 400)

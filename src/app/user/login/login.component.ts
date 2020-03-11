@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { loginText } from './login.constant'
-import { UserAuthenticationService } from './user-authentication/user-authentication.service'
+import { UserAuthenticationService } from '../service/user-authentication/user-authentication.service'
 import { switchMap, tap } from 'rxjs/operators'
 import { Credentials } from './credentials'
 import { Router } from '@angular/router'
-import { SessionService } from '../service/session/session.service'
-import { routePaths } from '../router/app-routing.constant'
+import { SessionService } from '../../service/session/session.service'
+import { routePaths } from '../../router/app-routing.constant'
 import { iif, MonoTypeOperatorFunction, OperatorFunction } from 'rxjs'
 
 @Component({

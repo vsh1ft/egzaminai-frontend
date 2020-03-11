@@ -4,13 +4,13 @@ import createSpyObj = jasmine.createSpyObj
 import { LoginComponent } from '../login.component'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { LoginModule } from '../login.module'
-import { SessionService } from '../../service/session/session.service'
+import { SessionService } from '../../../service/session/session.service'
 import { Router } from '@angular/router'
-import { UserAuthenticationService } from '../user-authentication/user-authentication.service'
+import { UserAuthenticationService } from '../../service/user-authentication/user-authentication.service'
 import { of } from 'rxjs'
 import SpyObj = jasmine.SpyObj
 import { loginText } from '../login.constant'
-import { routePaths } from '../../router/app-routing.constant'
+import { routePaths } from '../../../router/app-routing.constant'
 
 describe(`${LoginComponent.name} template`, () => {
 
