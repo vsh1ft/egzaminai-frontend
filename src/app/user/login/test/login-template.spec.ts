@@ -1,16 +1,18 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
-import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { async, ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing'
 import createSpyObj = jasmine.createSpyObj
 import { LoginComponent } from '../login.component'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { LoginModule } from '../login.module'
 import { SessionService } from '../../../service/session/session.service'
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router, RouterModule } from '@angular/router'
 import { UserAuthenticationService } from '../../service/user-authentication/user-authentication.service'
 import { of } from 'rxjs'
 import SpyObj = jasmine.SpyObj
 import { loginText } from '../login.constant'
 import { routePaths } from '../../../router/app-routing.constant'
+import { Location } from '@angular/common'
+import { RouterTestingModule } from '@angular/router/testing'
 
 describe(`${LoginComponent.name} template`, () => {
 
@@ -22,17 +24,20 @@ describe(`${LoginComponent.name} template`, () => {
         TestBed.configureTestingModule({
             imports: [
                 LoginModule,
-                NoopAnimationsModule
+                NoopAnimationsModule,
+                RouterTestingModule.withRoutes([
+                    {path: routePaths.signUp, component: DummyComponent},
+                    {path: routePaths.login, component: DummyComponent},
+                    {path: routePaths.forgotPassword, component: DummyComponent},
+                    {path: routePaths.home, component: DummyComponent}
+                    ])
             ],
             providers: [
                 {
                     provide: SessionService,
                     useValue: createSpyObj(SessionService.name, ['get'])
                 },
-                {
-                    provide: Router,
-                    useValue: createSpyObj(Router.name, ['navigateByUrl'])
-                },
+                {provide: ActivatedRoute, useValue: createSpyObj('ActivatedRoute', [''])},
                 {
                     provide: UserAuthenticationService,
                     useValue: createSpyObj(UserAuthenticationService.name, ['login', 'isValid'])
@@ -78,14 +83,46 @@ describe(`${LoginComponent.name} template`, () => {
         expect(getElements('mat-error')[0].innerText).toEqual(loginText.invalidUser)
     })
 
-    it('navigates to home page on success', () => {
-        authSpy.isValid.and.returnValue(of(true))
-        authSpy.login.and.returnValue(of(undefined))
+    describe(`Navigation`, () => {
+        let location: Location
 
-        getElement('#sign-in').click()
-        fixture.detectChanges()
+        beforeEach(() => {
+            location = TestBed.inject(Location)
+        })
 
-        expect((TestBed.inject(Router) as SpyObj<Router>).navigateByUrl).toHaveBeenCalledWith(routePaths.home)
+        it('navigates to home page', fakeAsync(() => {
+
+            authSpy.isValid.and.returnValue(of(true))
+            authSpy.login.and.returnValue(of(undefined))
+
+            getElement('#sign-in').click()
+            fixture.detectChanges()
+            tick()
+
+            expect(location.path()).toEqual('/' + routePaths.home)
+        }))
+
+        it('navigates to sign up page', fakeAsync(() => {
+            authSpy.isValid.and.returnValue(of(true))
+            authSpy.login.and.returnValue(of(undefined))
+
+            getElement('#sign-up').click()
+            fixture.detectChanges()
+            tick()
+
+            expect(location.path()).toEqual('/' + routePaths.signUp)
+        }))
+
+        it('navigates to forgot password page', fakeAsync(() => {
+            authSpy.isValid.and.returnValue(of(true))
+            authSpy.login.and.returnValue(of(undefined))
+
+            getElement('#forgot-password').click()
+            fixture.detectChanges()
+            tick()
+
+            expect(location.path()).toEqual('/' + routePaths.forgotPassword)
+        }))
     })
 
     function getElements(selector: string) {
@@ -94,6 +131,12 @@ describe(`${LoginComponent.name} template`, () => {
 
     function getElement(selector: string): any {
         return fixture.debugElement.nativeElement.querySelector(selector)
+    }
+
+    @Component({
+        template: ''
+    })
+    class DummyComponent {
     }
 
 })
