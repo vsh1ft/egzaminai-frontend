@@ -48,8 +48,8 @@ describe(`${SignUpComponent.name} template`, () => {
     describe(`Validation`, () => {
         describe(`Email`, () => {
             it('displays error when email is not set', () => {
-                component.userForm.get('passwordForm')['controls'].password.setValue('pass')
-                component.userForm.get('passwordForm')['controls'].repeatPassword.setValue('pass')
+                component.userForm.controls.passwordForm.get('password').setValue('pass')
+                component.userForm.controls.passwordForm.get('repeatPassword').setValue('pass')
                 authSpy.doesExist.and.returnValue(of(false))
 
                 getElement('#sign-up').click()
@@ -70,8 +70,8 @@ describe(`${SignUpComponent.name} template`, () => {
 
             it('displays error when email is already taken', () => {
                 component.userForm.controls.email.patchValue('email@email')
-                component.userForm.get('passwordForm')['controls'].password.setValue('password')
-                component.userForm.get('passwordForm')['controls'].repeatPassword.setValue('password')
+                component.userForm.controls.passwordForm.get('password').setValue('password')
+                component.userForm.controls.passwordForm.get('repeatPassword').setValue('password')
                 authSpy.doesExist.and.returnValue(of(false))
 
                 getElement('#sign-up').click()
@@ -94,7 +94,7 @@ describe(`${SignUpComponent.name} template`, () => {
 
             it('displays error when password is too short', () => {
                 component.userForm.controls.email.patchValue('email@e')
-                component.userForm.get('passwordForm')['controls'].password.setValue('pas')
+                component.userForm.controls.passwordForm.get('password').setValue('pas')
                 authSpy.doesExist.and.returnValue(of(false))
 
                 getElement('#sign-up').click()
@@ -118,8 +118,8 @@ describe(`${SignUpComponent.name} template`, () => {
 
         it('displays error when passwords do not match', () => {
             component.userForm.controls.email.patchValue('email@e')
-            component.userForm.get('passwordForm')['controls'].password.setValue('pas')
-            component.userForm.get('passwordForm')['controls'].repeatPassword.setValue('pasw')
+            component.userForm.controls.passwordForm.get('password').setValue('pas')
+            component.userForm.controls.passwordForm.get('repeatPassword').setValue('pasw')
             authSpy.doesExist.and.returnValue(of(false))
 
             getElement('#sign-up').click()
@@ -149,8 +149,8 @@ describe(`${SignUpComponent.name} template`, () => {
             authSpy.doesExist.and.returnValue(of(true))
             authSpy.create.and.returnValue(of(undefined))
             component.userForm.controls.email.patchValue('email@email')
-            component.userForm.get('passwordForm')['controls'].password.setValue('password')
-            component.userForm.get('passwordForm')['controls'].repeatPassword.setValue('password')
+            component.userForm.controls.passwordForm.get('password').setValue('password')
+            component.userForm.controls.passwordForm.get('repeatPassword').setValue('password')
 
             getElement('#sign-up').click()
             fixture.detectChanges()

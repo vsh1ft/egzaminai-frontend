@@ -29,12 +29,24 @@ describe(`${UserAuthenticationService.name}`, () => {
         service = TestBed.inject(UserAuthenticationService)
     })
 
-    it('sets session', done => {
+    it('logins and sets session ', done => {
         const creds = new Credentials('email', 'pswd')
         const token = 'token'
         httpServiceSpy.post.withArgs(`/user/authenticate`, creds).and.returnValue(of(token))
 
         service.login(creds)
+            .subscribe(() => {
+                expect(TestBed.inject(SessionService).set).toHaveBeenCalledWith(token)
+                done()
+            })
+    })
+
+    it('creates user and sets session ', done => {
+        const creds = new Credentials('email', 'pswd')
+        const token = 'token'
+        httpServiceSpy.post.withArgs(`/user/create`, creds).and.returnValue(of(token))
+
+        service.create(creds)
             .subscribe(() => {
                 expect(TestBed.inject(SessionService).set).toHaveBeenCalledWith(token)
                 done()

@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SignUpComponent } from './sign-up.component';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { SignUpComponent } from './sign-up.component'
 import { MatCardModule } from '@angular/material/card'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
