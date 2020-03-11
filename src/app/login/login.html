@@ -1,19 +1,32 @@
-<form>
+<form (ngSubmit)="submit()" >
     <mat-card>
         <img src="../../assets/logo.jpg" alt="image">
         <mat-card-content>
             <mat-form-field>
                 <mat-label>{{loginText.email}}</mat-label>
-                <input matInput [formControl]="email" type="email" required>
+                <input matInput [formControl]="email" email type="email" required>
+                <mat-error *ngIf="email.errors?.required">
+                    {{loginText.emailRequired}}
+                </mat-error>
+                <mat-error *ngIf="email.errors?.email">
+                    {{loginText.invalidEmail}}
+                </mat-error>
+                <mat-error *ngIf=" email.errors?.invalidUser">
+                    {{loginText.invalidUser}}
+                </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{loginText.password}}</mat-label>
                 <input matInput [formControl]="password" type="password" required>
+                <mat-error *ngIf="password.errors?.required">
+                    {{loginText.passwordRequired}}
+                </mat-error>
             </mat-form-field>
         </mat-card-content>
         <div>
             <div id="account-control">
-                <button id="sign-in" mat-raised-button>{{loginText.signIn  | uppercase }}</button>
+                <button [disabled]="isSignInDisabled" type="submit" id="sign-in"
+                        mat-raised-button>{{loginText.signIn  | uppercase }}</button>
                 <div class="row">
                     <button mat-raised-button>{{loginText.signUp | uppercase}}</button>
                     <button mat-raised-button>{{loginText.forgotPassword | uppercase}}</button>

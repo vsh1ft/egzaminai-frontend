@@ -10,6 +10,14 @@
     "deprecation": {
       "severity": "warning"
     },
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    "curly": false,
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
@@ -22,8 +30,7 @@
     "component-selector": [
       true,
       "element",
-      "app",
-      "kebab-case"
+      ""
     ],
     "import-blacklist": [
       true,

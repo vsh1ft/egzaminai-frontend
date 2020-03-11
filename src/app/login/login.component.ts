@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { loginText } from './login.constant'
+import { UserAuthenticationService } from './user-authentication/user-authentication.service'
+import { switchMap, tap } from 'rxjs/operators'
+import { Credentials } from './credentials'
+import { Router } from '@angular/router'
+import { SessionService } from '../service/session/session.service'
+import { routePaths } from '../router/app-routing.constant'
+import { iif, MonoTypeOperatorFunction, OperatorFunction } from 'rxjs'
 
 @Component({
     selector: 'login',
@@ -9,13 +16,44 @@ import { loginText } from './login.constant'
 export class LoginComponent implements OnInit {
     loginText = loginText
 
+    isSignInDisabled = false
+
     email = new FormControl('')
     password = new FormControl('')
 
-    constructor() {
+    constructor(private authService: UserAuthenticationService,
+                private router: Router,
+                private sessionService: SessionService) {
     }
 
     ngOnInit(): void {
+        if (this.sessionService.get())
+            this.router.navigateByUrl(routePaths.home)
+    }
+
+    submit() {
+        this.isSignInDisabled = true
+
+        this.authService.isValid(new Credentials(this.email.value, this.password.value))
+            .pipe(
+                this.setErrorOnInvalidUser(),
+                this.loginOnValidUser()
+            )
+            .subscribe(() => this.router.navigateByUrl(routePaths.home))
+            .add(() => this.isSignInDisabled = false)
+    }
+
+    private setErrorOnInvalidUser(): MonoTypeOperatorFunction<boolean> {
+        return tap(isValid => {
+            if (!isValid && this.email.errors == null)
+                this.email.setErrors({invalidUser: 'true'})
+        })
+    }
+
+    private loginOnValidUser(): OperatorFunction<boolean, void> {
+        return switchMap((isValid) =>
+            iif(() => isValid, this.authService.login(new Credentials(this.email.value, this.password.value)))
+        )
     }
 
 }

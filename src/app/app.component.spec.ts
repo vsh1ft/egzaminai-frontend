@@ -3,21 +3,21 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { AppComponent } from './app.component'
 
 describe('AppComponent', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                RouterTestingModule
+            ],
+            declarations: [
+                AppComponent
+            ]
+        })
     })
-  })
 
-  it('creates the app', () => {
-    const fixture = TestBed.createComponent(AppComponent)
-    const app = fixture.componentInstance
-    expect(app).not.toBeNull()
-  })
+    it('creates the app', () => {
+        const fixture = TestBed.createComponent(AppComponent)
+        const app = fixture.componentInstance
+        expect(app).not.toBeNull()
+    })
 
 })

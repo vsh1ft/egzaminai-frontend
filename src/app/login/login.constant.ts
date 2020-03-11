@@ -3,5 +3,9 @@ export const loginText = {
     signUp: 'Sign Up',
     forgotPassword: 'Forgot Password',
     email: 'Email',
-    password: 'Password'
+    password: 'Password',
+    emailRequired: 'Email required',
+    passwordRequired: 'Password required',
+    invalidEmail: 'Invalid email',
+    invalidUser: 'Incorrect username or password'
 }
