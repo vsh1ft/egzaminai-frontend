@@ -1,11 +1,11 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
-import { async, ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing'
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing'
 import createSpyObj = jasmine.createSpyObj
 import { LoginComponent } from '../login.component'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { LoginModule } from '../login.module'
 import { SessionService } from '../../../service/session/session.service'
-import { ActivatedRoute, Router, RouterModule } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import { UserAuthenticationService } from '../../service/user-authentication/user-authentication.service'
 import { of } from 'rxjs'
 import SpyObj = jasmine.SpyObj

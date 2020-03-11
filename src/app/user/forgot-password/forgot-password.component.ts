@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { forgotPasswordText } from './forgot-password.constant'
 import { routePaths } from '../../router/app-routing.constant'

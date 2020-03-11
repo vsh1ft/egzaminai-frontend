@@ -16,7 +16,7 @@ import { SessionService } from './service/session/session.service'
 import { SignUpModule } from './user/sign-up/sign-up.module'
 import { ForgotPasswordModule } from './user/forgot-password/forgot-password.module'
 import { SnackbarService } from './service/snackbar/snackbar.service'
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
     declarations: [

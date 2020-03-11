@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 import { signUpText } from './sign-up.constant'
 import { routePaths } from '../../router/app-routing.constant'
