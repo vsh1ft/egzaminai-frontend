@@ -10,18 +10,17 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { FakeBackendInterceptor } from './interceptor/fake-backend.interceptor'
 import { ObservableHttpService } from './service/http-service/observable-http.service'
 import { HttpErrorInterceptor } from './interceptor/http-error-interceptor'
-import { HomeComponent } from './home/home.component'
 import { AuthGuard } from './router/guard/auth.guard'
 import { SessionService } from './service/session/session.service'
 import { SignUpModule } from './user/sign-up/sign-up.module'
 import { ForgotPasswordModule } from './user/forgot-password/forgot-password.module'
 import { SnackbarService } from './service/snackbar/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { HomeModule } from './home/home.module'
 
 @NgModule({
     declarations: [
-        AppComponent,
-        HomeComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -31,7 +30,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
         SignUpModule,
         HttpClientModule,
         ForgotPasswordModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        HomeModule
     ],
     providers: [
         UserAuthenticationService,

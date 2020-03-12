@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, Router} from '@angular/router'
+import { ActivatedRouteSnapshot, Router } from '@angular/router'
 import { TestBed } from '@angular/core/testing'
 import createSpyObj = jasmine.createSpyObj
 import { AuthGuard } from './auth.guard'

@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { RouterModule } from '@angular/router'
 
 @NgModule({
-  declarations: [SignUpComponent],
+    declarations: [SignUpComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -21,4 +21,5 @@ import { RouterModule } from '@angular/router'
         RouterModule
     ]
 })
-export class SignUpModule { }
+export class SignUpModule {
+}

@@ -16,26 +16,26 @@
                 </mat-error>
             </mat-form-field>
             <div class="passwords" formGroupName="passwordForm">
-            <mat-form-field>
-                <mat-label>{{signUpText.password}}</mat-label>
-                <input matInput formControlName="password" type="password" required>
-                <mat-error *ngIf="userForm.get('passwordForm')['controls'].password.errors?.required">
-                    {{signUpText.passwordRequired}}
-                </mat-error>
-                <mat-error *ngIf="userForm.get('passwordForm')['controls'].password.errors?.minlength">
-                    {{signUpText.passwordLength}}
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>{{signUpText.repeatPassword}}</mat-label>
-                <input matInput formControlName="repeatPassword" type="password" required>
-                <mat-error *ngIf="userForm.get('passwordForm')['controls'].repeatPassword.errors?.required">
-                    {{signUpText.passwordRequired}}
-                </mat-error>
-                <mat-error *ngIf="userForm.get('passwordForm')['controls'].repeatPassword.errors?.passwordMatch">
-                    {{signUpText.passwordsDoNotMatch}}
-                </mat-error>
-            </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{signUpText.password}}</mat-label>
+                    <input matInput formControlName="password" type="password" required>
+                    <mat-error *ngIf="userForm.get('passwordForm')['controls'].password.errors?.required">
+                        {{signUpText.passwordRequired}}
+                    </mat-error>
+                    <mat-error *ngIf="userForm.get('passwordForm')['controls'].password.errors?.minlength">
+                        {{signUpText.passwordLength}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{signUpText.repeatPassword}}</mat-label>
+                    <input matInput formControlName="repeatPassword" type="password" required>
+                    <mat-error *ngIf="userForm.get('passwordForm')['controls'].repeatPassword.errors?.required">
+                        {{signUpText.passwordRequired}}
+                    </mat-error>
+                    <mat-error *ngIf="userForm.get('passwordForm')['controls'].repeatPassword.errors?.passwordMatch">
+                        {{signUpText.passwordsDoNotMatch}}
+                    </mat-error>
+                </mat-form-field>
             </div>
         </mat-card-content>
         <button type="submit"
