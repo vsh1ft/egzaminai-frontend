@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ExamTabsComponent } from './exam-tabs.component'
-import { PuppExamListModule } from './pupp-exam-list/pupp-exam-list.module'
-import { MaturityExamListModule } from './maturity-exam-list/maturity-exam-list.module'
-import { PuppExamListComponent } from './pupp-exam-list/pupp-exam-list.component'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MatListModule } from '@angular/material/list'
+import { MatButtonModule } from '@angular/material/button'
 
 @NgModule({
     declarations: [ExamTabsComponent],
@@ -12,8 +12,9 @@ import { PuppExamListComponent } from './pupp-exam-list/pupp-exam-list.component
     ],
     imports: [
         CommonModule,
-        PuppExamListModule,
-        MaturityExamListModule
+        MatTabsModule,
+        MatListModule,
+        MatButtonModule
     ]
 })
 export class ExamTabsModule {

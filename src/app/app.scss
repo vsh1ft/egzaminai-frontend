@@ -3,8 +3,8 @@
 @import "user/forgot-password/forgot-password";
 @import "service/snackbar/snackbar";
 @import "exam-tabs/exam-tabs";
-@import "src/app/exam-tabs/maturity-exam-list/maturity-exam-list";
-@import "src/app/exam-tabs/pupp-exam-list/pupp-exam-list";
+@import "temp/temp.component";
+@import "home/home.component";
 
 @import "~@angular/material/_theming";
 

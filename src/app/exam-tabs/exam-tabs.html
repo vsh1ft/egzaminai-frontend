@@ -1,3 +1,34 @@
-<p>exam-tabs works!</p>
-<maturity-exam-list></maturity-exam-list>
-<pupp-exam-list></pupp-exam-list>
+<mat-tab-group>
+    <mat-tab label="Brandos egzaminai">
+        <mat-list>
+            <mat-list-item>
+                <button mat-button>{{examTabsText.exams}}</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button>{{examTabsText.examPrograms}}</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button>{{examTabsText.examDates}}</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button>{{examTabsText.courseCredits}}</button>
+            </mat-list-item>
+        </mat-list>
+    </mat-tab>
+    <mat-tab label="PUPP egzaminai">
+        <mat-list>
+            <mat-list-item>
+                <button mat-button>{{examTabsText.exams}}</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button>{{examTabsText.examPrograms}}</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button>{{examTabsText.examDates}}</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button>{{examTabsText.courseCredits}}</button>
+            </mat-list-item>
+        </mat-list>
+    </mat-tab>
+</mat-tab-group>
