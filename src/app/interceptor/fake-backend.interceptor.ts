@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { Observable, of, throwError } from 'rxjs'
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators'
+import { Exam } from '../exam-list/exam'
 
 // array in local storage for registered users
 let users = [{email: 'admin@a', password: 'admin', id: 0}]
@@ -30,8 +31,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return register()
                 case url.endsWith('/user/reset-password') && method === 'POST':
                     return resetPassword()
-                case url.endsWith('/users') && method === 'GET':
-                    return getUsers()
+                case url.endsWith('/exams') && method === 'GET':
+                    return ok(ELEMENT_DATA)
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
                     return deleteUser()
                 default:
@@ -105,5 +106,25 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             const urlParts = url.split('/')
             return parseInt(urlParts[urlParts.length - 1])
         }
+
+
     }
+
+
+
 }
+const ELEMENT_DATA: Exam[] = [
+    new Exam('Matematika', 2018, 'VBE', 'someUrl', 'answUrl'),
+    new Exam('Užsienio kalba (anglų)', 2017, 'VBE', 'someUrl', 'answUrl'),
+    new Exam('Lietuvių kalba ir literatūra', 2016, 'VBE', 'someUrl', 'answUrl'),
+    new Exam('Istorija', 2015, 'VBE', 'someUrl', 'answUrl'),
+    new Exam('Istorija', 2015, 'VBE', 'someUrl', 'answUrl'),
+    new Exam('Istorija', 2015, 'VBE', 'someUrl', 'answUrl'),
+    new Exam('Istorija', 2015, 'VBE', 'someUrl', 'answUrl'),
+    new Exam('Istorija', 2015, 'VBE', 'someUrl', 'answUrl'),
+
+    new Exam('Muzikos istorijos ir teorijos testas', 2014, 'VBE', 'someUrl', 'answUrl'),
+    new Exam('Fizika', 2013, 'VBE', 'someUrl', 'answUrl'),
+    new Exam('Fizika', 2013, 'VBE', 'someUrl', 'answUrl')
+
+]

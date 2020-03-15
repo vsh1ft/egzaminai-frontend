@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { ExamTabsModule } from '../exam-tabs/exam-tabs.module'
 import { HomeComponent } from './home.component'
-import { TempModule } from '../temp/temp.module'
+import { ExamListModule } from '../exam-list/exam-list.module'
 
 @NgModule({
     declarations: [HomeComponent],
@@ -10,7 +10,7 @@ import { TempModule } from '../temp/temp.module'
     imports: [
         CommonModule,
         ExamTabsModule,
-        TempModule
+        ExamListModule
     ]
 })
 export class HomeModule {

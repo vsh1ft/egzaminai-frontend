@@ -21,23 +21,33 @@ describe(`${ObservableHttpService.name}`, () => {
         testingController.verify()
     })
 
-    describe('Post', () => {
 
-        it('Posts data', () => {
-            const expectedBody = 'body'
-            const url = '/some/path'
+    it('posts data', () => {
+        const expectedBody = 'body'
+        const url = '/some/path'
 
-            service.post<string, string>(url, expectedBody)
-                .subscribe((response: string) =>
-                    expect(response).toEqual(expectedBody)
-                )
+        service.post<string, string>(url, expectedBody)
+            .subscribe((response: string) =>
+                expect(response).toEqual(expectedBody)
+            )
 
-            const req = testingController.expectOne(url)
-            expect(req.request.method).toEqual('POST')
-            expect(req.request.body).toEqual(expectedBody)
-            req.event(new HttpResponse({body: expectedBody}))
-        })
+        const req = testingController.expectOne(url)
+        expect(req.request.method).toEqual('POST')
+        req.event(new HttpResponse({body: expectedBody}))
+    })
 
+    it('gets data', () => {
+        const expectedResponse = 'body'
+        const url = '/some/path'
+
+        service.get<string>(url)
+            .subscribe((response: string) =>
+                expect(response).toEqual(expectedResponse)
+            )
+
+        const req = testingController.expectOne(url)
+        expect(req.request.method).toEqual('GET')
+        req.flush(expectedResponse)
     })
 
 })

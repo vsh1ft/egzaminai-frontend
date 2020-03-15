@@ -17,6 +17,7 @@ import { ForgotPasswordModule } from './user/forgot-password/forgot-password.mod
 import { SnackbarService } from './service/snackbar/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { HomeModule } from './home/home.module'
+import { ExamListService } from './exam-list/service/exam-list.service'
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { HomeModule } from './home/home.module'
         SessionService,
         AuthGuard,
         SnackbarService,
+        ExamListService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,

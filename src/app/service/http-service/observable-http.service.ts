@@ -16,4 +16,10 @@ export class ObservableHttpService {
             }))
     }
 
+    get<O>(path: string): Observable<O> {
+        return this.http.get(path)
+            .pipe(map((token) => {
+                return token as O
+            }))
+    }
 }
