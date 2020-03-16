@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs'
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators'
 import { Exam } from '../home/dashboard/maturity-exam/exam-list/exam'
 import { ExamProgram } from '../home/dashboard/maturity-exam/exam-programs/exam-program'
+import { ExamDate } from '../home/dashboard/maturity-exam/exam-dates/exam-date'
 
 // array in local storage for registered users
 let users = [{email: 'admin@a', password: 'admin', id: 0}]
@@ -36,6 +37,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return ok(EXAMS)
                 case url.endsWith('/programs') && method === 'GET':
                     return ok(PROGRAMS)
+                case url.endsWith('/dates') && method === 'GET':
+                    return ok(DATES)
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
                     return deleteUser()
                 default:
@@ -131,11 +134,20 @@ const EXAMS: Exam[] = [
     new Exam('Fizika', 2013, 'VBE', 'someUrl', 'answUrl')
 ]
 const PROGRAMS: ExamProgram[] = [
-    new ExamProgram('pavadinimas', 'Matematika', 'VBE', 'url'),
-    new ExamProgram('pavadinimas', 'Fizika', 'VBE', 'url'),
-    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas', 'VBE', 'url'),
-    new ExamProgram('pavadinimas', 'Lietuvių kalba ir literatūra', 'VBE', 'url'),
-    new ExamProgram('pavadinimas', 'Fizika', 'VBE', 'url'),
-    new ExamProgram('pavadinimas', 'Matematika', 'VBE', 'url'),
-    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas', 'VBE', 'url'),
+    new ExamProgram('pavadinimas', 'Matematika',  'url'),
+    new ExamProgram('pavadinimas', 'Fizika',  'url'),
+    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas',  'url'),
+    new ExamProgram('pavadinimas', 'Lietuvių kalba ir literatūra',  'url'),
+    new ExamProgram('pavadinimas', 'Fizika',  'url'),
+    new ExamProgram('pavadinimas', 'Matematika', 'url'),
+    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas',  'url'),
+]
+const DATES: ExamDate[] = [
+    new ExamDate('pavadinimas', 'VBE',  '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'VBE',  '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'VBE',  '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'MBE',  '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'MBE',  '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'VBE',  '2017-06-01T08:30'),
 ]

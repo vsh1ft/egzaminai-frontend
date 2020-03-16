@@ -29,7 +29,7 @@ describe(`${ExamProgramComponent.name} template`, () => {
             ],
             declarations: [ExamProgramComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
-        }).compileComponents()
+        })
         const musicProgram = new ExamProgram('name1', 'Muzikos istorijos ir teorijos testas', 'url')
         const physicsProgram = new ExamProgram('name2', 'Fizika', 'url');
         (TestBed.inject(ExamProgramService) as SpyObj<ExamProgramService>).getPrograms.and.returnValue(of([musicProgram, physicsProgram]))

@@ -25,7 +25,7 @@ describe(`${HomeComponent.name}`, () => {
                     useValue: createSpyObj(ComponentRegistryService.name, ['get'])
                 }
             ]
-        }).compileComponents()
+        })
 
         componentFactorySpy = TestBed.inject(ComponentFactoryResolver) as SpyObj<ComponentFactoryResolver>
         componentRegistrySpy = TestBed.inject(ComponentRegistryService) as SpyObj<ComponentRegistryService>

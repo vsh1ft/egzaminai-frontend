@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component'
 import { ExamListModule } from './dashboard/maturity-exam/exam-list/exam-list.module'
 import { ViewContainerWrapper } from './view-container-wrapper.directive'
 import { ExamProgramModule } from './dashboard/maturity-exam/exam-programs/exam-program.module'
+import { ExamDateModule } from './dashboard/maturity-exam/exam-dates/exam-date.module'
 
 @NgModule({
     declarations: [HomeComponent, ViewContainerWrapper],
@@ -13,7 +14,8 @@ import { ExamProgramModule } from './dashboard/maturity-exam/exam-programs/exam-
         CommonModule,
         ExamTabsModule,
         ExamListModule,
-        ExamProgramModule
+        ExamProgramModule,
+        ExamDateModule
     ]
 })
 export class HomeModule {

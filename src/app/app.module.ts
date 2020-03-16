@@ -20,6 +20,7 @@ import { HomeModule } from './home/home.module'
 import { ExamListService } from './home/dashboard/maturity-exam/exam-list/service/exam-list.service'
 import { ComponentRegistryService } from './service/registry/component-registry.service'
 import { ExamProgramService } from './home/dashboard/maturity-exam/exam-programs/service/exam-program.service'
+import { ExamDateService } from './home/dashboard/maturity-exam/exam-dates/service/exam-date.service'
 
 @NgModule({
     declarations: [
@@ -45,6 +46,7 @@ import { ExamProgramService } from './home/dashboard/maturity-exam/exam-programs
         ExamListService,
         ComponentRegistryService,
         ExamProgramService,
+        ExamDateService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,

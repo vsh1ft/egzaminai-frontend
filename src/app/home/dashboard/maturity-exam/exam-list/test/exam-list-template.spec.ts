@@ -30,7 +30,7 @@ describe(`${ExamListComponent.name} template`, () => {
             ],
             declarations: [ExamListComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
-        }).compileComponents()
+        })
         const musicExam = new Exam('Muzikos istorijos ir teorijos testas', 2013, 'MBE', 'someUrl', 'answUrl')
         const physicsExam = new Exam('Fizika', 2014, 'VBE', 'someUrl', 'answUrl');
         (TestBed.inject(ExamListService) as SpyObj<ExamListService>).getExams.and.returnValue(of([musicExam, physicsExam]))
