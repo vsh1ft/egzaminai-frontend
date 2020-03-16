@@ -18,14 +18,14 @@ export class HomeComponent implements OnInit {
 
 
     ngOnInit(): void {
-        let factory = this.resolver.resolveComponentFactory(ExamListComponent)
+        const factory = this.resolver.resolveComponentFactory(ExamListComponent)
         this.wrapper.viewContainerRef.createComponent(factory)
     }
 
 
     swapComponent(componentName: string) {
         this.wrapper.viewContainerRef.clear()
-        let factory = this.resolver.resolveComponentFactory(this.registryService.get(componentName))
+        const factory = this.resolver.resolveComponentFactory(this.registryService.get(componentName))
         this.wrapper.viewContainerRef.createComponent(factory)
     }
 

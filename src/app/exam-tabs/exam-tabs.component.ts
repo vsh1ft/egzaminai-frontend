@@ -8,7 +8,7 @@ import { examTabsText } from './exam.constant'
 export class ExamTabsComponent {
     examTabsText = examTabsText
 
-    @Output() componentName = new EventEmitter<string>();
+    @Output() componentName = new EventEmitter<string>()
 
     emitNameChangeEvent(name: string) {
         this.componentName.emit(name)
