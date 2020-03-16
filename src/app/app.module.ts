@@ -21,6 +21,7 @@ import { ExamListService } from './home/dashboard/maturity-exam/exam-list/servic
 import { ComponentRegistryService } from './service/registry/component-registry.service'
 import { ExamProgramService } from './home/dashboard/maturity-exam/exam-programs/service/exam-program.service'
 import { ExamDateService } from './home/dashboard/maturity-exam/exam-dates/service/exam-date.service'
+import { CourseCreditService } from './home/dashboard/maturity-exam/course-credit/service/course-credit.service'
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { ExamDateService } from './home/dashboard/maturity-exam/exam-dates/servi
         ComponentRegistryService,
         ExamProgramService,
         ExamDateService,
+        CourseCreditService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,

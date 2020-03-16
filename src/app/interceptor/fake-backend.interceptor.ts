@@ -5,6 +5,7 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators'
 import { Exam } from '../home/dashboard/maturity-exam/exam-list/exam'
 import { ExamProgram } from '../home/dashboard/maturity-exam/exam-programs/exam-program'
 import { ExamDate } from '../home/dashboard/maturity-exam/exam-dates/exam-date'
+import { CourseCredit } from '../home/dashboard/maturity-exam/course-credit/course-credit'
 
 // array in local storage for registered users
 let users = [{email: 'admin@a', password: 'admin', id: 0}]
@@ -39,6 +40,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return ok(PROGRAMS)
                 case url.endsWith('/dates') && method === 'GET':
                     return ok(DATES)
+                case url.endsWith('/credits') && method === 'GET':
+                    return ok(CREDITS)
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
                     return deleteUser()
                 default:
@@ -150,4 +153,13 @@ const DATES: ExamDate[] = [
     new ExamDate('pavadinimas', 'MBE',  '2017-06-01T08:30'),
     new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
     new ExamDate('pavadinimas', 'VBE',  '2017-06-01T08:30'),
+]
+const CREDITS: CourseCredit[] = [
+    new CourseCredit('pavadinimas', 2013,  'courseUrl'),
+    new CourseCredit('pavadinimas', 2013,  'courseUrl'),
+    new CourseCredit('pavadinimas', 2014,  'courseUrl'),
+    new CourseCredit('pavadinimas', 2015,  'courseUrl'),
+    new CourseCredit('pavadinimas', 2016,  'courseUrl'),
+    new CourseCredit('pavadinimas', 2017, 'courseUrl'),
+    new CourseCredit('pavadinimas', 2018,  'courseUrl'),
 ]

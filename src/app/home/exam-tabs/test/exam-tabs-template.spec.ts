@@ -85,12 +85,6 @@ describe(`${ExamTabsComponent.name} template`, () => {
 
                 expect(component.componentName.emit).toHaveBeenCalledWith('puppExamDates')
             })
-
-            it('sends puppCourseCredits event', () => {
-                getElement('#pupp-course-credits-button').click()
-
-                expect(component.componentName.emit).toHaveBeenCalledWith('puppCourseCredits')
-            })
         })
     })
 

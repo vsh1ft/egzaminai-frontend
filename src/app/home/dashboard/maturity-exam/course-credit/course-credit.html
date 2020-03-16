@@ -1,0 +1,75 @@
+<div class="example-container ">
+    <mat-table matSort matSortDisableClear [dataSource]="credits">
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>{{creditText.name}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <mat-form-field floatLabel="never">
+                    <input matInput [(ngModel)]="exam.name">
+                </mat-form-field>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                    <mat-form-field floatLabel="never">
+                        <mat-label>{{creditText.name}}</mat-label>
+                        <input matInput placeholder="{{creditText.name}}" required>
+                    </mat-form-field>
+            </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="year">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{creditText.year}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <mat-form-field>
+                    <mat-select [(ngModel)]="exam.year">
+                        <mat-option [value]="year"
+                                    *ngFor="let year of years">{{year}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                <mat-form-field floatLabel='never'>
+                    <mat-label>{{creditText.year}}</mat-label>
+                    <mat-select >
+                        <mat-option [value]="year"
+                                    *ngFor="let year of years">{{year}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="creditUrl">
+            <mat-header-cell *matHeaderCellDef>{{creditText.creditUrl}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <mat-form-field floatLabel='never'>
+                    <input matInput [(ngModel)]="exam.creditUrl" required>
+                </mat-form-field>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                <mat-form-field floatLabel='never'>
+                    <input matInput placeholder="{{creditText.creditUrl}}" required>
+                </mat-form-field>
+            </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef>{{creditText.delete}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <button mat-icon-button>
+                    <mat-icon id="delete-icon">delete</mat-icon>
+                </button>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                <button mat-icon-button>
+                    <mat-icon id="add-icon">add</mat-icon>
+                </button>
+            </mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="displayedColumns;  sticky: true"></mat-footer-row>
+    </mat-table>
+
+</div>
