@@ -7,6 +7,7 @@ import { ExamProgram } from '../home/dashboard/maturity-exam/exam-programs/exam-
 import { ExamDate } from '../home/dashboard/maturity-exam/exam-dates/exam-date'
 import { CourseCredit } from '../home/dashboard/maturity-exam/course-credit/course-credit'
 import { PuppExam } from '../home/dashboard/pupp-exam/exam/pupp-exam'
+import { PuppProgram } from '../home/dashboard/pupp-exam/pupp-program/pupp-program'
 
 // array in local storage for registered users
 let users = [{email: 'admin@a', password: 'admin', id: 0}]
@@ -45,6 +46,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return ok(CREDITS)
                 case url.endsWith('/pupp-exams') && method === 'GET':
                     return ok(PUPP_EXAMS)
+                case url.endsWith('/pupp-programs') && method === 'GET':
+                    return ok(PUPP_PROGRAMS)
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
                     return deleteUser()
                 default:
@@ -123,8 +126,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
 
-
 }
+
 const EXAMS: Exam[] = [
     new Exam('Matematika', 2018, 'VBE', 'someUrl', 'answUrl'),
     new Exam('Užsienio kalba (anglų)', 2017, 'VBE', 'someUrl', 'answUrl'),
@@ -140,38 +143,47 @@ const EXAMS: Exam[] = [
     new Exam('Fizika', 2013, 'VBE', 'someUrl', 'answUrl')
 ]
 const PROGRAMS: ExamProgram[] = [
-    new ExamProgram('pavadinimas', 'Matematika',  'url'),
-    new ExamProgram('pavadinimas', 'Fizika',  'url'),
-    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas',  'url'),
-    new ExamProgram('pavadinimas', 'Lietuvių kalba ir literatūra',  'url'),
-    new ExamProgram('pavadinimas', 'Fizika',  'url'),
     new ExamProgram('pavadinimas', 'Matematika', 'url'),
-    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas',  'url'),
+    new ExamProgram('pavadinimas', 'Fizika', 'url'),
+    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas', 'url'),
+    new ExamProgram('pavadinimas', 'Lietuvių kalba ir literatūra', 'url'),
+    new ExamProgram('pavadinimas', 'Fizika', 'url'),
+    new ExamProgram('pavadinimas', 'Matematika', 'url'),
+    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas', 'url')
 ]
 const DATES: ExamDate[] = [
-    new ExamDate('pavadinimas', 'VBE',  '2017-06-01T08:30'),
-    new ExamDate('pavadinimas', 'VBE',  '2017-06-01T08:30'),
-    new ExamDate('pavadinimas', 'VBE',  '2017-06-01T08:30'),
-    new ExamDate('pavadinimas', 'MBE',  '2017-06-01T08:30'),
-    new ExamDate('pavadinimas', 'MBE',  '2017-06-01T08:30'),
     new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
-    new ExamDate('pavadinimas', 'VBE',  '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'MBE', '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'MBE', '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
+    new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30')
 ]
 const CREDITS: CourseCredit[] = [
-    new CourseCredit('pavadinimas', 2013,  'courseUrl'),
-    new CourseCredit('pavadinimas', 2013,  'courseUrl'),
-    new CourseCredit('pavadinimas', 2014,  'courseUrl'),
-    new CourseCredit('pavadinimas', 2015,  'courseUrl'),
-    new CourseCredit('pavadinimas', 2016,  'courseUrl'),
+    new CourseCredit('pavadinimas', 2013, 'courseUrl'),
+    new CourseCredit('pavadinimas', 2013, 'courseUrl'),
+    new CourseCredit('pavadinimas', 2014, 'courseUrl'),
+    new CourseCredit('pavadinimas', 2015, 'courseUrl'),
+    new CourseCredit('pavadinimas', 2016, 'courseUrl'),
     new CourseCredit('pavadinimas', 2017, 'courseUrl'),
-    new CourseCredit('pavadinimas', 2018,  'courseUrl'),
+    new CourseCredit('pavadinimas', 2018, 'courseUrl')
 ]
 const PUPP_EXAMS: PuppExam[] = [
-    new PuppExam('pavadinimas', 2013,  'courseUrl'),
-    new PuppExam('pavadinimas', 2013,  'courseUrl'),
-    new PuppExam('pavadinimas', 2014,  'courseUrl'),
-    new PuppExam('pavadinimas', 2015,  'courseUrl'),
-    new PuppExam('pavadinimas', 2016,  'courseUrl'),
+    new PuppExam('pavadinimas', 2013, 'courseUrl'),
+    new PuppExam('pavadinimas', 2013, 'courseUrl'),
+    new PuppExam('pavadinimas', 2014, 'courseUrl'),
+    new PuppExam('pavadinimas', 2015, 'courseUrl'),
+    new PuppExam('pavadinimas', 2016, 'courseUrl'),
     new PuppExam('pavadinimas', 2017, 'courseUrl'),
-    new PuppExam('pavadinimas', 2018,  'courseUrl'),
+    new PuppExam('pavadinimas', 2018, 'courseUrl')
+]
+const PUPP_PROGRAMS: PuppProgram[] = [
+    new PuppProgram('pavadinimas', 'courseUrl'),
+    new PuppProgram('pavadinimas', 'courseUrl'),
+    new PuppProgram('pavadinimas', 'courseUrl'),
+    new PuppProgram('pavadinimas', 'courseUrl'),
+    new PuppProgram('pavadinimas', 'courseUrl'),
+    new PuppProgram('pavadinimas', 'courseUrl'),
+    new PuppProgram('pavadinimas', 'courseUrl')
 ]

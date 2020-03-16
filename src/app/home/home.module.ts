@@ -8,6 +8,7 @@ import { ExamProgramModule } from './dashboard/maturity-exam/exam-programs/exam-
 import { ExamDateModule } from './dashboard/maturity-exam/exam-dates/exam-date.module'
 import { CourseCreditModule } from './dashboard/maturity-exam/course-credit/course-credit.module'
 import { PuppExamModule } from './dashboard/pupp-exam/exam/pupp-exam.module'
+import { PuppProgramModule } from './dashboard/pupp-exam/pupp-program/pupp-program.module'
 
 @NgModule({
     declarations: [HomeComponent, ViewContainerWrapper],
@@ -19,7 +20,8 @@ import { PuppExamModule } from './dashboard/pupp-exam/exam/pupp-exam.module'
         ExamProgramModule,
         ExamDateModule,
         CourseCreditModule,
-        PuppExamModule
+        PuppExamModule,
+        PuppProgramModule
     ]
 })
 export class HomeModule {

@@ -23,6 +23,7 @@ import { ExamProgramService } from './home/dashboard/maturity-exam/exam-programs
 import { ExamDateService } from './home/dashboard/maturity-exam/exam-dates/service/exam-date.service'
 import { CourseCreditService } from './home/dashboard/maturity-exam/course-credit/service/course-credit.service'
 import { PuppExamService } from './home/dashboard/pupp-exam/exam/service/pupp-exam.service'
+import { PuppProgramService } from './home/dashboard/pupp-exam/pupp-program/service/pupp-program.service'
 
 @NgModule({
     declarations: [
@@ -51,6 +52,7 @@ import { PuppExamService } from './home/dashboard/pupp-exam/exam/service/pupp-ex
         ExamDateService,
         CourseCreditService,
         PuppExamService,
+        PuppProgramService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,

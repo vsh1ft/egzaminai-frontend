@@ -1,0 +1,38 @@
+pupp-program {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  margin-right: 1em;
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    mat-table {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mat-select-value {
+      text-align: center;
+      justify-content:center;
+    }
+
+    .mat-cell, .mat-header-cell, .mat-footer-cell {
+      text-align: center;
+      justify-content:center;
+    }
+
+    .mat-footer-row {
+      height: 6em;
+      background: antiquewhite;
+    }
+
+    #delete-icon, #add-icon {
+      cursor: pointer;
+    }
+  }
+
+}
