@@ -6,6 +6,11 @@ exam-tabs {
       width: 100%;
       text-align: left;
     }
+
+    .mat-tab-body-content {
+      overflow: visible;
+    }
   }
+
 
 }

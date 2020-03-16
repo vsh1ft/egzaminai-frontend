@@ -3,10 +3,14 @@
 @import "user/forgot-password/forgot-password";
 @import "service/snackbar/snackbar";
 @import "home/exam-tabs/exam-tabs";
+
 @import "home/dashboard/maturity-exam/exam-list/exam-list";
 @import "home/dashboard/maturity-exam/exam-programs/exam-program";
 @import "home/dashboard/maturity-exam/exam-dates/exam-date";
 @import "home/dashboard/maturity-exam/course-credit/course-credit";
+
+@import "home/dashboard/pupp-exam/exam/pupp-exam";
+
 @import "home/home.component";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 

@@ -6,7 +6,7 @@ import { CourseCredit } from './course-credit'
 import { CourseCreditService } from './service/course-credit.service'
 
 @Component({
-    selector: 'exam-program',
+    selector: 'course-credit',
     templateUrl: './course-credit.html'
 })
 export class CourseCreditComponent implements OnInit {
