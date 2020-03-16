@@ -8,6 +8,7 @@ import { ExamDate } from '../home/dashboard/maturity-exam/exam-dates/exam-date'
 import { CourseCredit } from '../home/dashboard/maturity-exam/course-credit/course-credit'
 import { PuppExam } from '../home/dashboard/pupp-exam/exam/pupp-exam'
 import { PuppProgram } from '../home/dashboard/pupp-exam/pupp-program/pupp-program'
+import { PuppDate } from '../home/dashboard/pupp-exam/pupp-date/pupp-date'
 
 // array in local storage for registered users
 let users = [{email: 'admin@a', password: 'admin', id: 0}]
@@ -48,6 +49,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return ok(PUPP_EXAMS)
                 case url.endsWith('/pupp-programs') && method === 'GET':
                     return ok(PUPP_PROGRAMS)
+                case url.endsWith('/pupp-dates') && method === 'GET':
+                    return ok(PUPP_DATES)
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
                     return deleteUser()
                 default:
@@ -186,4 +189,13 @@ const PUPP_PROGRAMS: PuppProgram[] = [
     new PuppProgram('pavadinimas', 'courseUrl'),
     new PuppProgram('pavadinimas', 'courseUrl'),
     new PuppProgram('pavadinimas', 'courseUrl')
+]
+const PUPP_DATES: PuppDate[] = [
+    new PuppDate('pavadinimas', '2017-06-01T08:30'),
+    new PuppDate('pavadinimas', '2017-06-01T08:30'),
+    new PuppDate('pavadinimas', '2017-06-01T08:30'),
+    new PuppDate('pavadinimas', '2017-06-01T08:30'),
+    new PuppDate('pavadinimas', '2017-06-01T08:30'),
+    new PuppDate('pavadinimas', '2017-06-01T08:30'),
+    new PuppDate('pavadinimas', '2017-06-01T08:30')
 ]

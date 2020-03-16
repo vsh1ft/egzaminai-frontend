@@ -1,0 +1,53 @@
+<div class="example-container ">
+    <mat-table matSort matSortDisableClear [dataSource]="dates">
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef >{{puppDatesText.name}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <mat-form-field floatLabel="never">
+                    <input matInput [(ngModel)]="exam.name">
+                </mat-form-field>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                    <mat-form-field floatLabel="never">
+                        <mat-label>{{puppDatesText.name}}</mat-label>
+                        <input matInput placeholder="{{puppDatesText.name}}" required>
+                    </mat-form-field>
+            </mat-footer-cell>
+        </ng-container>
+
+        <ng-container  matColumnDef="dateTime">
+            <mat-header-cell *matHeaderCellDef >{{puppDatesText.date}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <mat-form-field id="date-time-field" floatLabel="never">
+                    <input matInput type="datetime-local" [(ngModel)]="exam.dateTime">
+                </mat-form-field>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                <mat-form-field floatLabel="never">
+                    <mat-label>{{puppDatesText.date}}</mat-label>
+                    <input matInput type="datetime-local" placeholder="{{puppDatesText.date}}" required>
+                </mat-form-field>
+            </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef>{{puppDatesText.delete}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <button mat-icon-button>
+                    <mat-icon id="delete-icon">delete</mat-icon>
+                </button>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                <button mat-icon-button>
+                    <mat-icon id="add-icon">add</mat-icon>
+                </button>
+            </mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="displayedColumns;  sticky: true"></mat-footer-row>
+    </mat-table>
+
+</div>
