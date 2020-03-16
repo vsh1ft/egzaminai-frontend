@@ -3,6 +3,7 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs'
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators'
 import { Exam } from '../home/dashboard/maturity-exam/exam-list/exam'
+import { ExamProgram } from '../home/dashboard/maturity-exam/exam-programs/exam-program'
 
 // array in local storage for registered users
 let users = [{email: 'admin@a', password: 'admin', id: 0}]
@@ -32,7 +33,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 case url.endsWith('/user/reset-password') && method === 'POST':
                     return resetPassword()
                 case url.endsWith('/exams') && method === 'GET':
-                    return ok(ELEMENT_DATA)
+                    return ok(EXAMS)
+                case url.endsWith('/programs') && method === 'GET':
+                    return ok(PROGRAMS)
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
                     return deleteUser()
                 default:
@@ -113,7 +116,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
 
 }
-const ELEMENT_DATA: Exam[] = [
+const EXAMS: Exam[] = [
     new Exam('Matematika', 2018, 'VBE', 'someUrl', 'answUrl'),
     new Exam('Užsienio kalba (anglų)', 2017, 'VBE', 'someUrl', 'answUrl'),
     new Exam('Lietuvių kalba ir literatūra', 2016, 'VBE', 'someUrl', 'answUrl'),
@@ -126,5 +129,13 @@ const ELEMENT_DATA: Exam[] = [
     new Exam('Muzikos istorijos ir teorijos testas', 2014, 'VBE', 'someUrl', 'answUrl'),
     new Exam('Fizika', 2013, 'VBE', 'someUrl', 'answUrl'),
     new Exam('Fizika', 2013, 'VBE', 'someUrl', 'answUrl')
-
+]
+const PROGRAMS: ExamProgram[] = [
+    new ExamProgram('pavadinimas', 'Matematika', 'VBE', 'url'),
+    new ExamProgram('pavadinimas', 'Fizika', 'VBE', 'url'),
+    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas', 'VBE', 'url'),
+    new ExamProgram('pavadinimas', 'Lietuvių kalba ir literatūra', 'VBE', 'url'),
+    new ExamProgram('pavadinimas', 'Fizika', 'VBE', 'url'),
+    new ExamProgram('pavadinimas', 'Matematika', 'VBE', 'url'),
+    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas', 'VBE', 'url'),
 ]

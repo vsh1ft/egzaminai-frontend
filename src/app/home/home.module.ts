@@ -4,6 +4,7 @@ import { ExamTabsModule } from './exam-tabs/exam-tabs.module'
 import { HomeComponent } from './home.component'
 import { ExamListModule } from './dashboard/maturity-exam/exam-list/exam-list.module'
 import { ViewContainerWrapper } from './view-container-wrapper.directive'
+import { ExamProgramModule } from './dashboard/maturity-exam/exam-programs/exam-program.module'
 
 @NgModule({
     declarations: [HomeComponent, ViewContainerWrapper],
@@ -11,7 +12,8 @@ import { ViewContainerWrapper } from './view-container-wrapper.directive'
     imports: [
         CommonModule,
         ExamTabsModule,
-        ExamListModule
+        ExamListModule,
+        ExamProgramModule
     ]
 })
 export class HomeModule {

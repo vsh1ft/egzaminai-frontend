@@ -1,0 +1,75 @@
+<div class="example-container ">
+    <mat-table matSort matSortDisableClear [dataSource]="programs">
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef >{{examListText.name}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <mat-form-field floatLabel="never">
+                    <input matInput [(ngModel)]="exam.name">
+                </mat-form-field>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                    <mat-form-field floatLabel="never">
+                        <mat-label>{{examListText.name}}</mat-label>
+                        <input matInput  placeholder="{{examListText.name}}" required>
+                    </mat-form-field>
+            </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="subject">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.subject}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <mat-form-field>
+                    <mat-select [(ngModel)]="exam.subject">
+                        <mat-option [value]="ex"
+                                    *ngFor="let ex of examNames">{{ex}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                <mat-form-field floatLabel='never'>
+                    <mat-label>{{examListText.subject}}</mat-label>
+                    <mat-select >
+                        <mat-option [value]="ex"
+                                    *ngFor="let ex of examNames">{{ex}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="programUrl">
+            <mat-header-cell *matHeaderCellDef>{{examListText.programUrl}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <mat-form-field floatLabel='never'>
+                    <input matInput [(ngModel)]="exam.programUrl" required>
+                </mat-form-field>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                <mat-form-field floatLabel='never'>
+                    <input matInput placeholder="{{examListText.programUrl}}" required>
+                </mat-form-field>
+            </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef>{{examListText.delete}}</mat-header-cell>
+            <mat-cell *matCellDef="let exam">
+                <button mat-icon-button>
+                    <mat-icon id="delete-icon">delete</mat-icon>
+                </button>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                <button mat-icon-button>
+                    <mat-icon id="add-icon">add</mat-icon>
+                </button>
+            </mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="displayedColumns;  sticky: true"></mat-footer-row>
+    </mat-table>
+
+</div>

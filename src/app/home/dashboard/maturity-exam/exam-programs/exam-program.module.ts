@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { ExamListComponent } from './exam-list.component'
+import { ExamProgramComponent } from './exam-program.component'
 import { MatTableModule } from '@angular/material/table'
 import { CdkColumnDef } from '@angular/cdk/table'
 import { MatIconModule } from '@angular/material/icon'
@@ -11,13 +11,12 @@ import { MatSortModule } from '@angular/material/sort'
 import { FormsModule } from '@angular/forms'
 import { MatSelectModule } from '@angular/material/select'
 import { ComponentRegistryService } from '../../../../service/registry/component-registry.service'
-import { ExamProgramComponent } from '../exam-programs/exam-program.component'
 
 
 @NgModule({
-    declarations: [ExamListComponent],
+    declarations: [ExamProgramComponent],
     exports: [
-        ExamListComponent
+        ExamProgramComponent
     ],
     imports: [
         CommonModule,
@@ -35,8 +34,8 @@ import { ExamProgramComponent } from '../exam-programs/exam-program.component'
         ComponentRegistryService
     ]
 })
-export class ExamListModule {
+export class ExamProgramModule {
     constructor(private componentRegistryService: ComponentRegistryService) {
-        this.componentRegistryService.set('examList', ExamListComponent)
+        this.componentRegistryService.set('examPrograms', ExamProgramComponent)
     }
 }

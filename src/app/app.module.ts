@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { HomeModule } from './home/home.module'
 import { ExamListService } from './home/dashboard/maturity-exam/exam-list/service/exam-list.service'
 import { ComponentRegistryService } from './service/registry/component-registry.service'
+import { ExamProgramService } from './home/dashboard/maturity-exam/exam-programs/service/exam-program.service'
 
 @NgModule({
     declarations: [
@@ -43,6 +44,7 @@ import { ComponentRegistryService } from './service/registry/component-registry.
         SnackbarService,
         ExamListService,
         ComponentRegistryService,
+        ExamProgramService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,
