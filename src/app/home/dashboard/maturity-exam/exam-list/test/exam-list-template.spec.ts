@@ -9,7 +9,7 @@ import { ExamListService } from '../service/exam-list.service'
 import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
 import { of } from 'rxjs'
-import { ComponentRegistryService } from '../../service/registry/component-registry.service'
+import { ComponentRegistryService } from '../../../../../service/registry/component-registry.service'
 
 describe(`${ExamListComponent.name} template`, () => {
 

@@ -7,7 +7,7 @@ import SpyObj = jasmine.SpyObj
 import { HomeComponent } from '../home.component'
 import { HomeModule } from '../home.module'
 import { ComponentRegistryService } from '../../service/registry/component-registry.service'
-import { ExamListService } from '../../exam-list/service/exam-list.service'
+import { ExamListService } from '../dashboard/maturity-exam/exam-list/service/exam-list.service'
 import { of } from 'rxjs'
 
 describe(`${HomeComponent.name} template`, () => {

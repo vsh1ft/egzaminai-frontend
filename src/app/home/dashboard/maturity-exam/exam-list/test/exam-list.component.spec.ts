@@ -6,7 +6,7 @@ import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
 import { Exam } from '../exam'
 import { of } from 'rxjs'
-import { ComponentRegistryService } from '../../service/registry/component-registry.service'
+import { ComponentRegistryService } from '../../../../../service/registry/component-registry.service'
 
 
 describe(`${ExamListComponent.name}`, () => {

@@ -1,6 +1,6 @@
 import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core'
 import { ComponentRegistryService } from '../service/registry/component-registry.service'
-import { ExamListComponent } from '../exam-list/exam-list.component'
+import { ExamListComponent } from './dashboard/maturity-exam/exam-list/exam-list.component'
 import { ViewContainerWrapper } from './view-container-wrapper.directive'
 
 @Component({

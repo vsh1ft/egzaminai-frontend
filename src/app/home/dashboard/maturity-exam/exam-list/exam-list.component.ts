@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table'
 import { MatSort } from '@angular/material/sort'
 import { Exam } from './exam'
 import { ExamListService } from './service/exam-list.service'
-import { ComponentRegistryService } from '../service/registry/component-registry.service'
+import { ComponentRegistryService } from '../../../../service/registry/component-registry.service'
 
 @Component({
     selector: 'exam-list',

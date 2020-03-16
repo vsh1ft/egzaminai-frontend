@@ -5,7 +5,7 @@ import SpyObj = jasmine.SpyObj
 import { HomeComponent } from '../home.component'
 import { ComponentFactoryResolver } from '@angular/core'
 import { ComponentRegistryService } from '../../service/registry/component-registry.service'
-import { ExamListComponent } from '../../exam-list/exam-list.component'
+import { ExamListComponent } from '../dashboard/maturity-exam/exam-list/exam-list.component'
 import { ViewContainerWrapper } from '../view-container-wrapper.directive'
 
 describe(`${HomeComponent.name}`, () => {
