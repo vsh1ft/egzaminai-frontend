@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table'
 import { MatSort } from '@angular/material/sort'
 import { Exam } from './exam'
 import { ExamListService } from './service/exam-list.service'
+import { ComponentRegistryService } from '../service/registry/component-registry.service'
 
 @Component({
     selector: 'exam-list',
@@ -23,10 +24,13 @@ export class ExamListComponent implements OnInit {
 
     @ViewChild(MatSort, {static: true}) sort: MatSort
 
-    constructor(private examListService: ExamListService) {
+    constructor(private examListService: ExamListService,
+                private componentRegistryService: ComponentRegistryService) {
     }
 
     ngOnInit(): void {
+        this.componentRegistryService.set('examList', ExamListComponent)
+
         this.examListService.getExams().subscribe(exams => {
             this.exams = new MatTableDataSource(exams)
             this.exams.sort = this.sort

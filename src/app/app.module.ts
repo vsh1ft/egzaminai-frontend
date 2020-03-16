@@ -18,6 +18,7 @@ import { SnackbarService } from './service/snackbar/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { HomeModule } from './home/home.module'
 import { ExamListService } from './exam-list/service/exam-list.service'
+import { ComponentRegistryService } from './service/registry/component-registry.service'
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { ExamListService } from './exam-list/service/exam-list.service'
         AuthGuard,
         SnackbarService,
         ExamListService,
+        ComponentRegistryService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,

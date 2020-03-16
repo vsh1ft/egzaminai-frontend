@@ -17,7 +17,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         return of(null)
             .pipe(mergeMap(handleRoute))
             .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
-            .pipe(delay(1000))
+            .pipe(delay(10))
             .pipe(dematerialize())
 
         function handleRoute() {

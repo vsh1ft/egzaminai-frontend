@@ -6,6 +6,7 @@ import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
 import { Exam } from '../exam'
 import { of } from 'rxjs'
+import { ComponentRegistryService } from '../../service/registry/component-registry.service'
 
 
 describe(`${ExamListComponent.name}`, () => {
@@ -17,9 +18,13 @@ describe(`${ExamListComponent.name}`, () => {
                 {
                     provide: ExamListService,
                     useValue: createSpyObj(ExamListService.name, ['getExams'])
+                },
+                {
+                    provide: ComponentRegistryService,
+                    useValue: createSpyObj(ComponentRegistryService.name, ['set'])
                 }
             ]
-        }).compileComponents()
+        })
 
         serviceSpy = TestBed.inject(ExamListService) as SpyObj<ExamListService>
         serviceSpy.getExams.and.returnValue(of([new Exam('Fizika', 2014, 'VBE', 'someUrl', 'answUrl')]))
@@ -33,6 +38,12 @@ describe(`${ExamListComponent.name}`, () => {
             expect(component.exams).toBeDefined()
         })
 
+        it('registers component', () => {
+            component.ngOnInit()
+
+            expect((TestBed.inject(ComponentRegistryService) as SpyObj<ComponentRegistryService>).set)
+                .toHaveBeenCalledWith('examList', ExamListComponent)
+        })
     })
 
 })

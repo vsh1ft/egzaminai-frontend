@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, EventEmitter, Output } from '@angular/core'
 import { examTabsText } from './exam.constant'
 
 @Component({
@@ -7,4 +7,11 @@ import { examTabsText } from './exam.constant'
 })
 export class ExamTabsComponent {
     examTabsText = examTabsText
+
+    @Output() componentName = new EventEmitter<string>();
+
+    emitNameChangeEvent(name: string) {
+        this.componentName.emit(name)
+    }
+
 }

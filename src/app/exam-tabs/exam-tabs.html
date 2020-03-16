@@ -2,32 +2,40 @@
     <mat-tab label="Brandos egzaminai">
         <mat-list>
             <mat-list-item>
-                <button mat-button>{{examTabsText.exams}}</button>
+                <button id="exam-list-button" (click)="emitNameChangeEvent('examList')"
+                        mat-button>{{examTabsText.exams}}</button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button>{{examTabsText.examPrograms}}</button>
+                <button id="exam-programs-button" (click)="emitNameChangeEvent('examPrograms')"
+                        mat-button>{{examTabsText.examPrograms}}</button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button>{{examTabsText.examDates}}</button>
+                <button id="exam-dates-button" (click)="emitNameChangeEvent('examDates')"
+                        mat-button>{{examTabsText.examDates}}</button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button>{{examTabsText.courseCredits}}</button>
+                <button id="course-credits-button" (click)="emitNameChangeEvent('courseCredits')"
+                        mat-button>{{examTabsText.courseCredits}}</button>
             </mat-list-item>
         </mat-list>
     </mat-tab>
     <mat-tab label="PUPP egzaminai">
         <mat-list>
             <mat-list-item>
-                <button mat-button>{{examTabsText.exams}}</button>
+                <button id="pupp-exam-list-button" (click)="emitNameChangeEvent('puppExamList')"
+                        mat-button>{{examTabsText.exams}}</button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button>{{examTabsText.examPrograms}}</button>
+                <button id="pupp-exam-programs-button" (click)="emitNameChangeEvent('puppExamPrograms')"
+                        mat-button>{{examTabsText.examPrograms}}</button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button>{{examTabsText.examDates}}</button>
+                <button id="pupp-exam-dates-button" (click)="emitNameChangeEvent('puppExamDates')"
+                        mat-button>{{examTabsText.examDates}}</button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button>{{examTabsText.courseCredits}}</button>
+                <button id="pupp-course-credits-button" (click)="emitNameChangeEvent('puppCourseCredits')"
+                        mat-button>{{examTabsText.courseCredits}}</button>
             </mat-list-item>
         </mat-list>
     </mat-tab>

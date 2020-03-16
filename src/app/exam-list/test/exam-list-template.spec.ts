@@ -9,6 +9,7 @@ import { ExamListService } from '../service/exam-list.service'
 import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
 import { of } from 'rxjs'
+import { ComponentRegistryService } from '../../service/registry/component-registry.service'
 
 describe(`${ExamListComponent.name} template`, () => {
 
@@ -26,6 +27,10 @@ describe(`${ExamListComponent.name} template`, () => {
                 {
                     provide: ExamListService,
                     useValue: createSpyObj(ExamListService.name, ['getExams'])
+                },
+                {
+                    provide: ComponentRegistryService,
+                    useValue: createSpyObj(ComponentRegistryService.name, ['set'])
                 }
             ],
             declarations: [ExamListComponent],
