@@ -35,9 +35,7 @@ export class SignUpComponent {
     submit() {
         this.isSignUpEnabled = false
 
-        this.authService.doesExist(
-            new Credentials(this.userForm.controls.email.value, this.userForm.controls.passwordForm.get('password').value)
-        )
+        this.authService.doesExist(this.userForm.controls.email.value)
             .pipe(
                 this.setErrorWhenUserExists(),
                 this.loginOnValidUser()
@@ -47,15 +45,15 @@ export class SignUpComponent {
     }
 
     private setErrorWhenUserExists(): MonoTypeOperatorFunction<boolean> {
-        return tap(isValid => {
-            if (!isValid)
+        return tap(doesExist => {
+            if (doesExist)
                 this.userForm.controls.email.setErrors({emailTaken: 'true'})
         })
     }
 
     private loginOnValidUser(): OperatorFunction<boolean, void> {
-        return switchMap((isValid) =>
-            iif(() => isValid, this.authService.create(
+        return switchMap((doesExist) =>
+            iif(() => !doesExist, this.authService.create(
                 new Credentials(this.userForm.controls.email.value, this.userForm.controls.passwordForm.get('password').value))
             )
         )

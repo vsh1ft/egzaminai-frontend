@@ -18,7 +18,6 @@ let users = [{email: 'admin@a', password: 'admin', id: 0}]
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const {url, method, headers, body} = request
-
         // wrap in delayed observable to simulate server api call
         return of(null)
             .pipe(mergeMap(handleRoute))
@@ -29,7 +28,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         function handleRoute() {
             console.log(url)
             switch (true) {
-                case url.endsWith('/user/authenticate') && method === 'POST':
+                case url.endsWith('/user/login') && method === 'POST':
                     return authenticate()
                 case url.endsWith('/user/exist') && method === 'POST':
                     return isValid()

@@ -25,6 +25,7 @@ import { CourseCreditService } from './home/dashboard/maturity-exam/course-credi
 import { PuppExamService } from './home/dashboard/pupp-exam/exam/service/pupp-exam.service'
 import { PuppProgramService } from './home/dashboard/pupp-exam/pupp-program/service/pupp-program.service'
 import { PuppDateService } from './home/dashboard/pupp-exam/pupp-date/service/pupp-date.service'
+import { JwtInterceptor } from './interceptor/jwt/jwt-interceptor'
 
 @NgModule({
     declarations: [
@@ -55,6 +56,11 @@ import { PuppDateService } from './home/dashboard/pupp-exam/pupp-date/service/pu
         PuppExamService,
         PuppProgramService,
         PuppDateService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpErrorInterceptor,

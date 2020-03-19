@@ -11,13 +11,13 @@ export class UserAuthenticationService {
                 private sessionService: SessionService) {
     }
 
-    doesExist(credentials: Credentials): Observable<boolean> {
-        return this.httpService.post<Credentials, boolean>(`/user/exist`, credentials)
+    doesExist(email: string): Observable<boolean> {
+        return this.httpService.get<boolean>(`/user/exist/` + email)
             .pipe(map(valid => valid))
     }
 
     login(credentials: Credentials): Observable<void> {
-        return this.httpService.post<Credentials, string>(`/user/authenticate`, credentials)
+        return this.httpService.post<Credentials, string>(`/user/login`, credentials)
             .pipe(map((token) => {
                 this.sessionService.set(token)
             }))

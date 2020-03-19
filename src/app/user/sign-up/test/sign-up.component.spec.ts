@@ -47,7 +47,7 @@ describe(`${SignUpComponent.name}`, () => {
 
         describe('Success', () => {
             it('navigates to home page', () => {
-                authSpy.doesExist.and.returnValue(of(true))
+                authSpy.doesExist.and.returnValue(of(false))
                 authSpy.create.and.returnValue(of(undefined))
 
                 component.submit()
@@ -56,7 +56,7 @@ describe(`${SignUpComponent.name}`, () => {
             })
 
             it('doesn`t set validation error after success', () => {
-                authSpy.doesExist.and.returnValue(of(true))
+                authSpy.doesExist.and.returnValue(of(false))
 
                 component.submit()
 
@@ -75,21 +75,12 @@ describe(`${SignUpComponent.name}`, () => {
             })
 
             it('sets validation error', () => {
-                authSpy.doesExist.and.returnValue(of(false))
+                authSpy.doesExist.and.returnValue(of(true))
 
                 component.submit()
 
                 expect(component.userForm.controls.email.hasError('emailTaken')).toBeTruthy()
             })
-        })
-
-        it('doesn`t set invalidUser error when form already has errors', () => {
-            authSpy.doesExist.and.returnValue(of(true))
-            component.userForm.controls.email.setErrors({error: true})
-
-            component.submit()
-
-            expect(component.userForm.controls.email.hasError('emailTaken')).toBeFalsy()
         })
 
         it('disables sign up button on submit', () => {

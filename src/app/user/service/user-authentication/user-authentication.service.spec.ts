@@ -17,7 +17,7 @@ describe(`${UserAuthenticationService.name}`, () => {
             providers: [UserAuthenticationService,
                 {
                     provide: ObservableHttpService,
-                    useValue: createSpyObj(ObservableHttpService.name, ['post'])
+                    useValue: createSpyObj(ObservableHttpService.name, ['post', 'get'])
                 },
                 {
                     provide: SessionService,
@@ -32,7 +32,7 @@ describe(`${UserAuthenticationService.name}`, () => {
     it('logins and sets session', done => {
         const creds = new Credentials('email', 'pswd')
         const token = 'token'
-        httpServiceSpy.post.withArgs(`/user/authenticate`, creds).and.returnValue(of(token))
+        httpServiceSpy.post.withArgs(`/user/login`, creds).and.returnValue(of(token))
 
         service.login(creds)
             .subscribe(() => {
@@ -66,10 +66,9 @@ describe(`${UserAuthenticationService.name}`, () => {
     describe('Validation', () => {
 
         it('confirms that user is valid', done => {
-            const creds = new Credentials('email', 'pswd')
-            httpServiceSpy.post.withArgs(`/user/exist`, creds).and.returnValue(of(true))
+            httpServiceSpy.get.withArgs(`/user/exist/email`).and.returnValue(of(true))
 
-            service.doesExist(creds)
+            service.doesExist('email')
                 .subscribe((isValid) => {
                     expect(isValid).toBeTruthy()
                     done()
@@ -77,10 +76,9 @@ describe(`${UserAuthenticationService.name}`, () => {
         })
 
         it('denies that user is valid', done => {
-            const creds = new Credentials('email', 'pswd')
-            httpServiceSpy.post.withArgs(`/user/exist`, creds).and.returnValue(of(false))
+            httpServiceSpy.get.withArgs(`/user/exist/email`).and.returnValue(of(false))
 
-            service.doesExist(creds)
+            service.doesExist('email')
                 .subscribe((isValid) => {
                     expect(isValid).toBeFalsy()
                     done()

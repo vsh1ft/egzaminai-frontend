@@ -71,7 +71,7 @@ describe(`${SignUpComponent.name} template`, () => {
                 component.userForm.controls.email.patchValue('email@email')
                 component.userForm.controls.passwordForm.get('password').setValue('password')
                 component.userForm.controls.passwordForm.get('repeatPassword').setValue('password')
-                authSpy.doesExist.and.returnValue(of(false))
+                authSpy.doesExist.and.returnValue(of(true))
 
                 getElement('#sign-up').click()
                 fixture.detectChanges()
@@ -145,7 +145,7 @@ describe(`${SignUpComponent.name} template`, () => {
         })
 
         it('navigates to home page', fakeAsync(() => {
-            authSpy.doesExist.and.returnValue(of(true))
+            authSpy.doesExist.and.returnValue(of(false))
             authSpy.create.and.returnValue(of(undefined))
             component.userForm.controls.email.patchValue('email@email')
             component.userForm.controls.passwordForm.get('password').setValue('password')
