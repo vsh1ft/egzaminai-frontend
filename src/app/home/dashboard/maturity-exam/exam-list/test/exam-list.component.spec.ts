@@ -4,7 +4,7 @@ import { ExamListComponent } from '../exam-list.component'
 import { ExamListService } from '../service/exam-list.service'
 import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
-import { Exam } from '../exam'
+import { Exam } from '../type/exam'
 import { of } from 'rxjs'
 
 describe(`${ExamListComponent.name}`, () => {
@@ -29,7 +29,7 @@ describe(`${ExamListComponent.name}`, () => {
         it('retrieves exams', () => {
             component.ngOnInit()
 
-            expect(component.exams).toBeDefined()
+            expect(component.maturityExams).toBeDefined()
         })
 
     })

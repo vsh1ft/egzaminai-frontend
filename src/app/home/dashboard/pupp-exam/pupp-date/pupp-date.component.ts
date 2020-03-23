@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table'
 import { MatSort } from '@angular/material/sort'
 import { PuppDate } from './pupp-date'
 import { PuppDateService } from './service/pupp-date.service'
+import { PuppExamName } from '../pupp-exam-name'
 
 @Component({
     selector: 'pupp-date',
@@ -13,7 +14,10 @@ export class PuppDateComponent implements OnInit {
     puppDatesText = puppDatesText
     displayedColumns = ['name', 'dateTime', 'delete']
     dates: MatTableDataSource<PuppDate>
-    emptyExam = new PuppDate('', '')
+    emptyExam = new PuppDate(PuppExamName.FOREIGN_LANGUAGE_VERBAL, '')
+
+    examNames = Object.keys(PuppExamName)
+    examNamesEnum = PuppExamName
 
     @ViewChild(MatSort, {static: true}) sort: MatSort
 

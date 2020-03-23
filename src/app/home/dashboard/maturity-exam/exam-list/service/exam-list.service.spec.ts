@@ -4,7 +4,7 @@ import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
 import { ExamListService } from './exam-list.service'
 import { ObservableHttpService } from '../../../../../service/http-service/observable-http.service'
-import { Exam } from '../exam'
+import { Exam } from '../type/exam'
 
 describe(`${ExamListService.name}`, () => {
 

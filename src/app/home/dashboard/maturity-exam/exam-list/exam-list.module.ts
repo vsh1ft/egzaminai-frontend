@@ -11,7 +11,6 @@ import { MatSortModule } from '@angular/material/sort'
 import { FormsModule } from '@angular/forms'
 import { MatSelectModule } from '@angular/material/select'
 import { ComponentRegistryService } from '../../../../service/registry/component-registry.service'
-import { ExamProgramComponent } from '../exam-programs/exam-program.component'
 
 
 @NgModule({

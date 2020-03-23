@@ -3,9 +3,9 @@
 
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef >{{examListText.name}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let program">
                 <mat-form-field floatLabel="never">
-                    <input matInput [(ngModel)]="exam.name">
+                    <input matInput [(ngModel)]="program.name">
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
@@ -18,11 +18,11 @@
 
         <ng-container matColumnDef="subject">
             <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.subject}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let program; index as i">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="exam.subject">
-                        <mat-option [value]="ex"
-                                    *ngFor="let ex of examNames">{{ex}}
+                    <mat-select [(ngModel)]="programs.data[i].subject">
+                        <mat-option [value]="subject"
+                                    *ngFor="let subject of subjectNames">{{subjectTypeEnum[subject]}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -31,8 +31,8 @@
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.subject}}</mat-label>
                     <mat-select >
-                        <mat-option [value]="ex"
-                                    *ngFor="let ex of examNames">{{ex}}
+                        <mat-option [value]="subject"
+                                    *ngFor="let subject of subjectNames">{{subjectTypeEnum[subject]}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -41,9 +41,9 @@
 
         <ng-container matColumnDef="programUrl">
             <mat-header-cell *matHeaderCellDef>{{examListText.programUrl}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let program">
                 <mat-form-field floatLabel='never'>
-                    <input matInput [(ngModel)]="exam.programUrl" required>
+                    <input matInput [(ngModel)]="program.programUrl" required>
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
@@ -55,7 +55,7 @@
 
         <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef>{{examListText.delete}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let program">
                 <button mat-icon-button>
                     <mat-icon id="delete-icon">delete</mat-icon>
                 </button>

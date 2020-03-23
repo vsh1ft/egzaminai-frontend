@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { Observable, of, throwError } from 'rxjs'
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators'
-import { Exam } from '../home/dashboard/maturity-exam/exam-list/exam'
+import { Exam } from '../home/dashboard/maturity-exam/exam-list/type/exam'
 import { ExamProgram } from '../home/dashboard/maturity-exam/exam-programs/exam-program'
 import { ExamDate } from '../home/dashboard/maturity-exam/exam-dates/exam-date'
 import { CourseCredit } from '../home/dashboard/maturity-exam/course-credit/course-credit'
@@ -19,6 +19,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const {url, method, headers, body} = request
         // wrap in delayed observable to simulate server api call
+        return next.handle(request)
         return of(null)
             .pipe(mergeMap(handleRoute))
             .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
@@ -131,7 +132,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 }
 
 const EXAMS: Exam[] = [
-    new Exam('Matematika', 2018, 'VBE', 'someUrl', 'answUrl'),
+/*    new Exam('Matematika', 2018, 'VBE', 'someUrl', 'answUrl'),
     new Exam('Užsienio kalba (anglų)', 2017, 'VBE', 'someUrl', 'answUrl'),
     new Exam('Lietuvių kalba ir literatūra', 2016, 'VBE', 'someUrl', 'answUrl'),
     new Exam('Istorija', 2015, 'VBE', 'someUrl', 'answUrl'),
@@ -142,25 +143,25 @@ const EXAMS: Exam[] = [
 
     new Exam('Muzikos istorijos ir teorijos testas', 2014, 'VBE', 'someUrl', 'answUrl'),
     new Exam('Fizika', 2013, 'VBE', 'someUrl', 'answUrl'),
-    new Exam('Fizika', 2013, 'VBE', 'someUrl', 'answUrl')
+    new Exam('Fizika', 2013, 'VBE', 'someUrl', 'answUrl')*/
 ]
 const PROGRAMS: ExamProgram[] = [
-    new ExamProgram('pavadinimas', 'Matematika', 'url'),
+   /* new ExamProgram('pavadinimas', 'Matematika', 'url'),
     new ExamProgram('pavadinimas', 'Fizika', 'url'),
     new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas', 'url'),
     new ExamProgram('pavadinimas', 'Lietuvių kalba ir literatūra', 'url'),
     new ExamProgram('pavadinimas', 'Fizika', 'url'),
     new ExamProgram('pavadinimas', 'Matematika', 'url'),
-    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas', 'url')
+    new ExamProgram('pavadinimas', 'Muzikos istorijos ir teorijos testas', 'url')*/
 ]
 const DATES: ExamDate[] = [
-    new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
+  /*  new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
     new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
     new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
     new ExamDate('pavadinimas', 'MBE', '2017-06-01T08:30'),
     new ExamDate('pavadinimas', 'MBE', '2017-06-01T08:30'),
     new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30'),
-    new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30')
+    new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30')*/
 ]
 const CREDITS: CourseCredit[] = [
     new CourseCredit('pavadinimas', 2013, 'courseUrl'),
@@ -172,13 +173,13 @@ const CREDITS: CourseCredit[] = [
     new CourseCredit('pavadinimas', 2018, 'courseUrl')
 ]
 const PUPP_EXAMS: PuppExam[] = [
-    new PuppExam('pavadinimas', 2013, 'courseUrl'),
+   /* new PuppExam('pavadinimas', 2013, 'courseUrl'),
     new PuppExam('pavadinimas', 2013, 'courseUrl'),
     new PuppExam('pavadinimas', 2014, 'courseUrl'),
     new PuppExam('pavadinimas', 2015, 'courseUrl'),
     new PuppExam('pavadinimas', 2016, 'courseUrl'),
     new PuppExam('pavadinimas', 2017, 'courseUrl'),
-    new PuppExam('pavadinimas', 2018, 'courseUrl')
+    new PuppExam('pavadinimas', 2018, 'courseUrl')*/
 ]
 const PUPP_PROGRAMS: PuppProgram[] = [
     new PuppProgram('pavadinimas', 'courseUrl'),
@@ -190,11 +191,11 @@ const PUPP_PROGRAMS: PuppProgram[] = [
     new PuppProgram('pavadinimas', 'courseUrl')
 ]
 const PUPP_DATES: PuppDate[] = [
+  /*  new PuppDate('pavadinimas', '2017-06-01T08:30'),
     new PuppDate('pavadinimas', '2017-06-01T08:30'),
     new PuppDate('pavadinimas', '2017-06-01T08:30'),
     new PuppDate('pavadinimas', '2017-06-01T08:30'),
     new PuppDate('pavadinimas', '2017-06-01T08:30'),
     new PuppDate('pavadinimas', '2017-06-01T08:30'),
-    new PuppDate('pavadinimas', '2017-06-01T08:30'),
-    new PuppDate('pavadinimas', '2017-06-01T08:30')
+    new PuppDate('pavadinimas', '2017-06-01T08:30')*/
 ]

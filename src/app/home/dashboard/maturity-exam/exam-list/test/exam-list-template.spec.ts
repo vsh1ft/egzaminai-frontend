@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { ExamListComponent } from '../exam-list.component'
 import { ExamListModule } from '../exam-list.module'
-import { Exam } from '../exam'
+import { Exam } from '../type/exam'
 import { ExamListService } from '../service/exam-list.service'
 import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj

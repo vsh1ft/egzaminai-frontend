@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table'
 import { MatSort } from '@angular/material/sort'
 import { ExamDate } from './exam-date'
 import { ExamDateService } from './service/exam-date.service'
+import { MaturityExam } from '../maturity-exam'
+import { ExamType } from './exam-type'
 
 @Component({
     selector: 'exam-date',
@@ -13,8 +15,12 @@ export class ExamDateComponent implements OnInit {
     examListText = examProgramsText
     displayedColumns = ['name', 'type', 'dateTime', 'delete']
     dates: MatTableDataSource<ExamDate>
-    emptyExam = new ExamDate('', '', '')
-    types = ['VBE', 'MBE']
+    emptyExam = new ExamDate(MaturityExam.CHEMISTRY, ExamType.NATIONAL_LEVEL, '')
+
+    typeNames = Object.keys(ExamType)
+    examNames = Object.keys(MaturityExam)
+    maturityExamEnum = MaturityExam
+    examTypeEnum = ExamType
 
     @ViewChild(MatSort, {static: true}) sort: MatSort
 

@@ -1,13 +1,13 @@
 <div class="example-container ">
-    <mat-table matSort matSortDisableClear [dataSource]="exams">
+    <mat-table matSort matSortDisableClear [dataSource]="maturityExams">
 
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.name}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let exam; index as i">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="exam.name">
-                        <mat-option [value]="ex"
-                                    *ngFor="let ex of examNames">{{ex}}
+                    <mat-select [(ngModel)]="maturityExams.data[i].name">
+                        <mat-option [value]="name"
+                                    *ngFor="let name of examNames">{{maturityExamEnum[name]}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -16,8 +16,8 @@
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.name}}</mat-label>
                     <mat-select >
-                        <mat-option [value]="ex"
-                                    *ngFor="let ex of examNames">{{ex}}
+                        <mat-option [value]="key"
+                                    *ngFor="let key of examNames">{{maturityExamEnum[key]}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -49,11 +49,11 @@
 
         <ng-container matColumnDef="type">
             <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.type}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let exam; index as i">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="exam.type">
+                    <mat-select [(ngModel)]="maturityExams.data[i].type">
                         <mat-option [value]="type"
-                                    *ngFor="let type of types">{{type}}
+                                    *ngFor="let type of typeNames">{{examTypeEnum[type]}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -63,7 +63,7 @@
                     <mat-label>{{examListText.type}}</mat-label>
                     <mat-select >
                         <mat-option [value]="type"
-                                    *ngFor="let type of types">{{type}}
+                                    *ngFor="let type of typeNames">{{examTypeEnum[type]}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>

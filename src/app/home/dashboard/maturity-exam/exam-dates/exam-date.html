@@ -3,9 +3,13 @@
 
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef >{{examListText.name}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let date; index as i">
                 <mat-form-field floatLabel="never">
-                    <input matInput [(ngModel)]="exam.name">
+                    <mat-select [(ngModel)]="dates.data[i].name">
+                        <mat-option [value]="name"
+                                    *ngFor="let name of examNames">{{maturityExamEnum[name]}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
@@ -18,11 +22,11 @@
 
         <ng-container matColumnDef="type">
             <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.type}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let date; index as i">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="exam.type">
+                    <mat-select [(ngModel)]="dates.data[i].type">
                         <mat-option [value]="type"
-                                    *ngFor="let type of types">{{type}}
+                                    *ngFor="let type of typeNames">{{examTypeEnum[type]}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -32,7 +36,7 @@
                     <mat-label>{{examListText.type}}</mat-label>
                     <mat-select >
                         <mat-option [value]="type"
-                                    *ngFor="let type of types">{{type}}
+                                    *ngFor="let type of typeNames">{{examTypeEnum[type]}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -41,9 +45,9 @@
 
         <ng-container  matColumnDef="dateTime">
             <mat-header-cell *matHeaderCellDef >{{examListText.date}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let date">
                 <mat-form-field id="date-time-field" floatLabel="never">
-                    <input matInput type="datetime-local" [(ngModel)]="exam.dateTime">
+                    <input matInput type="datetime-local" [(ngModel)]="date.dateTime">
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
@@ -56,7 +60,7 @@
 
         <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef>{{examListText.delete}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let date">
                 <button mat-icon-button>
                     <mat-icon id="delete-icon">delete</mat-icon>
                 </button>

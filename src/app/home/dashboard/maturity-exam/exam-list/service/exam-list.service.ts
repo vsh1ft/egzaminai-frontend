@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { ObservableHttpService } from '../../../../../service/http-service/observable-http.service'
-import { Exam } from '../exam'
+import { Exam } from '../type/exam'
 
 @Injectable()
 export class ExamListService {

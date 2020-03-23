@@ -3,15 +3,21 @@
 
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>{{examsText.name}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
-                <mat-form-field floatLabel="never">
-                    <input matInput [(ngModel)]="exam.name">
-                </mat-form-field>
+            <mat-cell *matCellDef="let exam; index as i">
+                <mat-select [(ngModel)]="exams.data[i].name">
+                    <mat-option [value]="name"
+                                *ngFor="let name of examNames">{{examNamesEnum[name]}}
+                    </mat-option>
+                </mat-select>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                     <mat-form-field floatLabel="never">
                         <mat-label>{{examsText.name}}</mat-label>
-                        <input matInput placeholder="{{examsText.name}}" required>
+                        <mat-select [(ngModel)]="emptyExam.name">
+                            <mat-option [value]="name"
+                                        *ngFor="let name of examNames">{{examNamesEnum[name]}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
             </mat-footer-cell>
         </ng-container>
