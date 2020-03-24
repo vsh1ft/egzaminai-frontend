@@ -2,10 +2,12 @@ import { async, TestBed } from '@angular/core/testing'
 
 import { ExamListComponent } from '../exam-list.component'
 import { ExamListService } from '../service/exam-list.service'
-import createSpyObj = jasmine.createSpyObj
-import SpyObj = jasmine.SpyObj
 import { Exam } from '../type/exam'
 import { of } from 'rxjs'
+import { MaturityExam } from '../../maturity-exam'
+import { ExamType } from '../../exam-dates/exam-type'
+import createSpyObj = jasmine.createSpyObj
+import SpyObj = jasmine.SpyObj
 
 describe(`${ExamListComponent.name}`, () => {
     let component: ExamListComponent
@@ -21,7 +23,7 @@ describe(`${ExamListComponent.name}`, () => {
         })
 
         serviceSpy = TestBed.inject(ExamListService) as SpyObj<ExamListService>
-        serviceSpy.getExams.and.returnValue(of([new Exam('Fizika', 2014, 'VBE', 'someUrl', 'answUrl')]))
+        serviceSpy.getExams.and.returnValue(of([new Exam(MaturityExam.PHYSICS, 2014, ExamType.SCHOOL_LEVEL, 'someUrl', 'answUrl')]))
         component = TestBed.inject(ExamListComponent)
     }))
 

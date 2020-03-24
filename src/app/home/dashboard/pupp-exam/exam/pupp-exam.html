@@ -23,7 +23,7 @@
         </ng-container>
 
         <ng-container matColumnDef="year">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{examsText.year}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{examsText.year}}</mat-header-cell>
             <mat-cell *matCellDef="let exam">
                 <mat-form-field>
                     <mat-select [(ngModel)]="exam.year">

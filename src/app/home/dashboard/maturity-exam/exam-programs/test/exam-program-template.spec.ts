@@ -1,14 +1,25 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing'
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { ExamProgramComponent } from '../exam-program.component'
 import { ExamProgramModule } from '../exam-program.module'
 import { ExamProgram } from '../exam-program'
 import { ExamProgramService } from '../service/exam-program.service'
+import { of } from 'rxjs'
+import { Subject } from '../subject'
 import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
-import { of } from 'rxjs'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { CommonModule } from '@angular/common'
+import { MatTableModule } from '@angular/material/table'
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
+import { MatButtonModule } from '@angular/material/button'
+import { MatSortModule } from '@angular/material/sort'
+import { By } from '@angular/platform-browser'
 
 describe(`${ExamProgramComponent.name} template`, () => {
 
@@ -18,7 +29,15 @@ describe(`${ExamProgramComponent.name} template`, () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [
-                ExamProgramModule,
+                CommonModule,
+                MatTableModule,
+                MatIconModule,
+                MatFormFieldModule,
+                MatInputModule,
+                MatButtonModule,
+                MatSortModule,
+                FormsModule,
+                MatSelectModule,
                 NoopAnimationsModule
             ],
             providers: [
@@ -27,28 +46,15 @@ describe(`${ExamProgramComponent.name} template`, () => {
                     useValue: createSpyObj(ExamProgramService.name, ['getPrograms'])
                 }
             ],
-            declarations: [ExamProgramComponent],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA]
+            declarations: [ExamProgramComponent]
         })
-        const musicProgram = new ExamProgram('name1', 'Muzikos istorijos ir teorijos testas', 'url')
-        const physicsProgram = new ExamProgram('name2', 'Fizika', 'url');
+        const musicProgram = new ExamProgram('name1', Subject.ART, 'url')
+        const physicsProgram = new ExamProgram('name2', Subject.HISTORY, 'url');
         (TestBed.inject(ExamProgramService) as SpyObj<ExamProgramService>).getPrograms.and.returnValue(of([musicProgram, physicsProgram]))
 
         fixture = TestBed.createComponent(ExamProgramComponent)
         component = fixture.componentInstance
-        fixture.detectChanges()
+        component.ngOnInit()
     })
-
-    it('Sorts by subject', async () => {
-        getElements('.mat-sort-header-arrow')[0].click()
-        fixture.detectChanges()
-
-        const templateContent = fixture.nativeElement.textContent
-        expect(templateContent.indexOf('Fizika')).toBeLessThan(templateContent.indexOf('Muzikos istorijos ir teorijos testas'))
-    })
-
-    function getElements(selector: string) {
-        return fixture.debugElement.nativeElement.querySelectorAll(selector)
-    }
 
 })

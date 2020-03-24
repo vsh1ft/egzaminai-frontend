@@ -2,10 +2,12 @@ import { async, TestBed } from '@angular/core/testing'
 
 import { ExamDateComponent } from '../exam-date.component'
 import { ExamDateService } from '../service/exam-date.service'
-import createSpyObj = jasmine.createSpyObj
-import SpyObj = jasmine.SpyObj
 import { ExamDate } from '../exam-date'
 import { of } from 'rxjs'
+import { MaturityExam } from '../../maturity-exam'
+import { ExamType } from '../exam-type'
+import createSpyObj = jasmine.createSpyObj
+import SpyObj = jasmine.SpyObj
 
 describe(`${ExamDateComponent.name}`, () => {
     let component: ExamDateComponent
@@ -21,7 +23,7 @@ describe(`${ExamDateComponent.name}`, () => {
         })
 
         serviceSpy = TestBed.inject(ExamDateService) as SpyObj<ExamDateService>
-        serviceSpy.getDates.and.returnValue(of([new ExamDate('name', 'VBE', 'date')]))
+        serviceSpy.getDates.and.returnValue(of([new ExamDate(MaturityExam.ENGLISH_LANGUAGE, ExamType.SCHOOL_LEVEL, 'date')]))
         component = TestBed.inject(ExamDateComponent)
     }))
 

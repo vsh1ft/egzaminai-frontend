@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing'
 import { of } from 'rxjs'
-import createSpyObj = jasmine.createSpyObj
-import SpyObj = jasmine.SpyObj
 import { ExamProgramService } from './exam-program.service'
 import { ObservableHttpService } from '../../../../../service/http-service/observable-http.service'
 import { ExamProgram } from '../exam-program'
+import { Subject } from '../subject'
+import createSpyObj = jasmine.createSpyObj
+import SpyObj = jasmine.SpyObj
 
 describe(`${ExamProgramService.name}`, () => {
 
@@ -25,7 +26,7 @@ describe(`${ExamProgramService.name}`, () => {
     })
 
     it('retrieves programs', done => {
-        const expectedResponse = [new ExamProgram('name', 'subject', 'url')]
+        const expectedResponse = [new ExamProgram('name', Subject.HISTORY, 'url')]
         httpServiceSpy.get.withArgs(`/programs`).and.returnValue(of(expectedResponse))
 
         service.getPrograms()

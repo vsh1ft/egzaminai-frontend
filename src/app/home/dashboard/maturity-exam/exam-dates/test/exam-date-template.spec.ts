@@ -6,9 +6,11 @@ import { ExamDateComponent } from '../exam-date.component'
 import { ExamDateModule } from '../exam-date.module'
 import { ExamDate } from '../exam-date'
 import { ExamDateService } from '../service/exam-date.service'
+import { of } from 'rxjs'
+import { MaturityExam } from '../../maturity-exam'
+import { ExamType } from '../exam-type'
 import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
-import { of } from 'rxjs'
 
 describe(`${ExamDateComponent.name} template`, () => {
 
@@ -30,25 +32,13 @@ describe(`${ExamDateComponent.name} template`, () => {
             declarations: [ExamDateComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
         })
-        const musicProgram = new ExamDate('name1', 'VBE', 'date')
-        const physicsProgram = new ExamDate('name2', 'MBE', 'date');
+        const musicProgram = new ExamDate(MaturityExam.LITHUANIAN_LANGUAGE, ExamType.NATIONAL_LEVEL, 'date')
+        const physicsProgram = new ExamDate(MaturityExam.LITHUANIAN_LANGUAGE, ExamType.NATIONAL_LEVEL, 'date');
         (TestBed.inject(ExamDateService) as SpyObj<ExamDateService>).getDates.and.returnValue(of([musicProgram, physicsProgram]))
 
         fixture = TestBed.createComponent(ExamDateComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })
-
-    it('Sorts by subject', async () => {
-        getElements('.mat-sort-header-arrow')[0].click()
-        fixture.detectChanges()
-
-        const templateContent = fixture.nativeElement.textContent
-        expect(templateContent.indexOf('MBE')).toBeLessThan(templateContent.indexOf('VBE'))
-    })
-
-    function getElements(selector: string) {
-        return fixture.debugElement.nativeElement.querySelectorAll(selector)
-    }
 
 })

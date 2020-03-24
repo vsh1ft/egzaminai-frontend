@@ -32,6 +32,7 @@ export class ExamListComponent implements OnInit {
         this.examListService.getExams().subscribe(exams => {
             this.maturityExams = new MatTableDataSource(exams)
             this.maturityExams.sort = this.sort
+            console.log(this.maturityExams)
         })
     }
 

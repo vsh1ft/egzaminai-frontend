@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing'
 import { of } from 'rxjs'
-import createSpyObj = jasmine.createSpyObj
-import SpyObj = jasmine.SpyObj
 import { ExamListService } from './exam-list.service'
 import { ObservableHttpService } from '../../../../../service/http-service/observable-http.service'
 import { Exam } from '../type/exam'
+import { MaturityExam } from '../../maturity-exam'
+import { ExamType } from '../../exam-dates/exam-type'
+import createSpyObj = jasmine.createSpyObj
+import SpyObj = jasmine.SpyObj
 
 describe(`${ExamListService.name}`, () => {
 
@@ -25,7 +27,7 @@ describe(`${ExamListService.name}`, () => {
     })
 
     it('retrieves exams', done => {
-        const expectedResponse = [new Exam('name', 2015, 'VBE', '', ' ')]
+        const expectedResponse = [new Exam(MaturityExam.PHYSICS, 2015, ExamType.SCHOOL_LEVEL, '', ' ')]
         httpServiceSpy.get.withArgs(`/exams`).and.returnValue(of(expectedResponse))
 
         service.getExams()

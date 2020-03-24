@@ -2,10 +2,11 @@ import { async, TestBed } from '@angular/core/testing'
 
 import { PuppExamComponent } from '../pupp-exam.component'
 import { PuppExamService } from '../service/pupp-exam.service'
-import createSpyObj = jasmine.createSpyObj
-import SpyObj = jasmine.SpyObj
 import { PuppExam } from '../pupp-exam'
 import { of } from 'rxjs'
+import { PuppExamName } from '../../pupp-exam-name'
+import createSpyObj = jasmine.createSpyObj
+import SpyObj = jasmine.SpyObj
 
 describe(`${PuppExamComponent.name}`, () => {
     let component: PuppExamComponent
@@ -21,7 +22,7 @@ describe(`${PuppExamComponent.name}`, () => {
         })
 
         serviceSpy = TestBed.inject(PuppExamService) as SpyObj<PuppExamService>
-        serviceSpy.getExams.and.returnValue(of([new PuppExam('name', 2012, 'url')]))
+        serviceSpy.getExams.and.returnValue(of([new PuppExam(PuppExamName.MATH, 2012, 'url')]))
         component = TestBed.inject(PuppExamComponent)
     }))
 

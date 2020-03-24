@@ -39,16 +39,4 @@ describe(`${CourseCreditComponent.name} template`, () => {
         fixture.detectChanges()
     })
 
-    it('Sorts by year', async () => {
-        getElements('.mat-sort-header-arrow')[0].click()
-        fixture.detectChanges()
-
-        const templateContent = fixture.nativeElement.textContent
-        expect(templateContent.indexOf('2013')).toBeLessThan(templateContent.indexOf('2014'))
-    })
-
-    function getElements(selector: string) {
-        return fixture.debugElement.nativeElement.querySelectorAll(selector)
-    }
-
 })

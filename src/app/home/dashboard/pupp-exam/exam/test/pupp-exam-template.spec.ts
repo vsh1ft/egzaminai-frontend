@@ -6,9 +6,10 @@ import { PuppExamComponent } from '../pupp-exam.component'
 import { PuppExamModule } from '../pupp-exam.module'
 import { PuppExam } from '../pupp-exam'
 import { PuppExamService } from '../service/pupp-exam.service'
+import { of } from 'rxjs'
+import { PuppExamName } from '../../pupp-exam-name'
 import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
-import { of } from 'rxjs'
 
 describe(`${PuppExamComponent.name} template`, () => {
 
@@ -30,25 +31,13 @@ describe(`${PuppExamComponent.name} template`, () => {
             declarations: [PuppExamComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
         })
-        const musicProgram = new PuppExam('name1', 2013, 'url')
-        const physicsProgram = new PuppExam('name2', 2014, 'url');
+        const musicProgram = new PuppExam(PuppExamName.LITHUANIAN_LANGUAGE_WRITING_I, 2013, 'url')
+        const physicsProgram = new PuppExam(PuppExamName.LITHUANIAN_LANGUAGE_WRITING_II, 2014, 'url');
         (TestBed.inject(PuppExamService) as SpyObj<PuppExamService>).getExams.and.returnValue(of([musicProgram, physicsProgram]))
 
         fixture = TestBed.createComponent(PuppExamComponent)
         component = fixture.componentInstance
         fixture.detectChanges()
     })
-
-    it('Sorts by year', async () => {
-        getElements('.mat-sort-header-arrow')[0].click()
-        fixture.detectChanges()
-
-        const templateContent = fixture.nativeElement.textContent
-        expect(templateContent.indexOf('2013')).toBeLessThan(templateContent.indexOf('2014'))
-    })
-
-    function getElements(selector: string) {
-        return fixture.debugElement.nativeElement.querySelectorAll(selector)
-    }
 
 })

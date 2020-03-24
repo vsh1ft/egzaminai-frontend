@@ -17,7 +17,7 @@
         </ng-container>
 
         <ng-container matColumnDef="subject">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.subject}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{examListText.subject}}</mat-header-cell>
             <mat-cell *matCellDef="let program; index as i">
                 <mat-form-field>
                     <mat-select [(ngModel)]="programs.data[i].subject">

@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing'
 import { of } from 'rxjs'
-import createSpyObj = jasmine.createSpyObj
-import SpyObj = jasmine.SpyObj
 import { PuppDateService } from './pupp-date.service'
 import { ObservableHttpService } from '../../../../../service/http-service/observable-http.service'
 import { PuppDate } from '../pupp-date'
+import { PuppExamName } from '../../pupp-exam-name'
+import createSpyObj = jasmine.createSpyObj
+import SpyObj = jasmine.SpyObj
 
 describe(`${PuppDateService.name}`, () => {
 
@@ -25,7 +26,7 @@ describe(`${PuppDateService.name}`, () => {
     })
 
     it('retrieves exam dates', done => {
-        const expectedResponse = [new PuppDate('name', 'date')]
+        const expectedResponse = [new PuppDate(PuppExamName.MATH, 'date')]
         httpServiceSpy.get.withArgs(`/pupp-dates`).and.returnValue(of(expectedResponse))
 
         service.getDates()

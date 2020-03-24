@@ -2,7 +2,7 @@
     <mat-table matSort matSortDisableClear [dataSource]="maturityExams">
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.name}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{examListText.name}}</mat-header-cell>
             <mat-cell *matCellDef="let exam; index as i">
                 <mat-form-field>
                     <mat-select [(ngModel)]="maturityExams.data[i].name">
@@ -25,7 +25,7 @@
         </ng-container>
 
         <ng-container matColumnDef="year">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.year}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{examListText.year}}</mat-header-cell>
             <mat-cell *matCellDef="let exam">
                 <mat-form-field>
                     <mat-select [(ngModel)]="exam.year">
@@ -48,7 +48,7 @@
         </ng-container>
 
         <ng-container matColumnDef="type">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.type}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{examListText.type}}</mat-header-cell>
             <mat-cell *matCellDef="let exam; index as i">
                 <mat-form-field>
                     <mat-select [(ngModel)]="maturityExams.data[i].type">

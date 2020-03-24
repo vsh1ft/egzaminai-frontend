@@ -21,7 +21,7 @@
         </ng-container>
 
         <ng-container matColumnDef="type">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>{{examListText.type}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{examListText.type}}</mat-header-cell>
             <mat-cell *matCellDef="let date; index as i">
                 <mat-form-field>
                     <mat-select [(ngModel)]="dates.data[i].type">
