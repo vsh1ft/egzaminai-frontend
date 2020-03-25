@@ -3,24 +3,24 @@
 
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>{{creditText.name}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let credit">
                 <mat-form-field floatLabel="never">
-                    <input matInput [(ngModel)]="exam.name">
+                    <input class="credit-name" (input)="updateCredit(credit)" matInput [(ngModel)]="credit.name">
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                     <mat-form-field floatLabel="never">
                         <mat-label>{{creditText.name}}</mat-label>
-                        <input matInput placeholder="{{creditText.name}}" required>
+                        <input matInput [(ngModel)]="newCredit.name" placeholder="{{creditText.name}}" required>
                     </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
         <ng-container matColumnDef="year">
             <mat-header-cell *matHeaderCellDef>{{creditText.year}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let credit">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="exam.year">
+                    <mat-select (selectionChange)="updateCredit(credit)" [(ngModel)]="credit.year">
                         <mat-option [value]="year"
                                     *ngFor="let year of years">{{year}}
                         </mat-option>
@@ -30,7 +30,7 @@
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{creditText.year}}</mat-label>
-                    <mat-select >
+                    <mat-select [(ngModel)]="newCredit.year">
                         <mat-option [value]="year"
                                     *ngFor="let year of years">{{year}}
                         </mat-option>
@@ -41,27 +41,27 @@
 
         <ng-container matColumnDef="creditUrl">
             <mat-header-cell *matHeaderCellDef>{{creditText.creditUrl}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let credit">
                 <mat-form-field floatLabel='never'>
-                    <input matInput [(ngModel)]="exam.creditUrl" required>
+                    <input matInput (input)="updateCredit(credit)" class="credit-url" [(ngModel)]="credit.creditUrl" required>
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
-                    <input matInput placeholder="{{creditText.creditUrl}}" required>
+                    <input matInput [(ngModel)]="newCredit.creditUrl" placeholder="{{creditText.creditUrl}}" required>
                 </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
         <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef>{{creditText.delete}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
-                <button mat-icon-button>
+            <mat-cell *matCellDef="let credit">
+                <button (click)="delete(credit)" mat-icon-button>
                     <mat-icon id="delete-icon">delete</mat-icon>
                 </button>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <button mat-icon-button>
+                <button (click)="saveNewCredit(); addRow()" mat-icon-button>
                     <mat-icon id="add-icon">add</mat-icon>
                 </button>
             </mat-footer-cell>
