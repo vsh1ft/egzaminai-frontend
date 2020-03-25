@@ -17,7 +17,7 @@ export class CrudService {
     }
 
     update<I>(path: string, data: I) {
-        this.httpService.put<I, void>(`/exams`, data)
+        this.httpService.put<I, void>(path, data)
             .subscribe()
     }
 

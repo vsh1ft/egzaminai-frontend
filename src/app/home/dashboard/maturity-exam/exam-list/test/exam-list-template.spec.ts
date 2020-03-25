@@ -30,7 +30,7 @@ describe(`${ExamListComponent.name} template`, () => {
             providers: [
                 {
                     provide: CrudService,
-                    useValue: createSpyObj(CrudService.name, ['retrieveAll', 'create', 'update'])
+                    useValue: createSpyObj(CrudService.name, ['retrieveAll', 'create', 'update', 'delete'])
                 }
             ],
             declarations: [ExamListComponent],
@@ -55,8 +55,16 @@ describe(`${ExamListComponent.name} template`, () => {
 
     it('adds new exam row', () => {
         getElement('#add-icon').click()
+        fixture.detectChanges()
 
         expect(getElements('mat-row').length).toEqual(3)
+    })
+
+    it('removes exam row', () => {
+        getElement('#delete-icon').click()
+        fixture.detectChanges()
+
+        expect(getElements('mat-row').length).toEqual(1)
     })
 
     it('updates exam name', () => {

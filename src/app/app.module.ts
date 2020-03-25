@@ -18,7 +18,6 @@ import { SnackbarService } from './service/snackbar/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { HomeModule } from './home/home.module'
 import { ComponentRegistryService } from './service/registry/component-registry.service'
-import { ExamProgramService } from './home/dashboard/maturity-exam/exam-programs/service/exam-program.service'
 import { ExamDateService } from './home/dashboard/maturity-exam/exam-dates/service/exam-date.service'
 import { CourseCreditService } from './home/dashboard/maturity-exam/course-credit/service/course-credit.service'
 import { PuppExamService } from './home/dashboard/pupp-exam/exam/service/pupp-exam.service'
@@ -50,7 +49,6 @@ import { CrudService } from './service/crud/crud.service'
         SnackbarService,
         CrudService,
         ComponentRegistryService,
-        ExamProgramService,
         ExamDateService,
         CourseCreditService,
         PuppExamService,

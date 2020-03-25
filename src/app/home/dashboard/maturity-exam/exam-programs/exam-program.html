@@ -2,17 +2,17 @@
     <mat-table matSort matSortDisableClear [dataSource]="programs">
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef >{{examListText.name}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{examListText.name}}</mat-header-cell>
             <mat-cell *matCellDef="let program">
                 <mat-form-field floatLabel="never">
-                    <input matInput [(ngModel)]="program.name">
+                    <input matInput class="program-name" (input)="updateProgram(program)" [(ngModel)]="program.name">
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                    <mat-form-field floatLabel="never">
-                        <mat-label>{{examListText.name}}</mat-label>
-                        <input matInput  placeholder="{{examListText.name}}" required>
-                    </mat-form-field>
+                <mat-form-field floatLabel="never">
+                    <mat-label>{{examListText.name}}</mat-label>
+                    <input matInput [(ngModel)]="newProgram.name" placeholder="{{examListText.name}}" required>
+                </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
@@ -20,7 +20,7 @@
             <mat-header-cell *matHeaderCellDef>{{examListText.subject}}</mat-header-cell>
             <mat-cell *matCellDef="let program; index as i">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="programs.data[i].subject">
+                    <mat-select (selectionChange)="updateProgram(program)" [(ngModel)]="programs.data[i].subject">
                         <mat-option [value]="subject"
                                     *ngFor="let subject of subjectNames">{{subjectTypeEnum[subject]}}
                         </mat-option>
@@ -30,7 +30,7 @@
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.subject}}</mat-label>
-                    <mat-select >
+                    <mat-select [(ngModel)]="newProgram.subject">
                         <mat-option [value]="subject"
                                     *ngFor="let subject of subjectNames">{{subjectTypeEnum[subject]}}
                         </mat-option>
@@ -43,12 +43,13 @@
             <mat-header-cell *matHeaderCellDef>{{examListText.programUrl}}</mat-header-cell>
             <mat-cell *matCellDef="let program">
                 <mat-form-field floatLabel='never'>
-                    <input matInput [(ngModel)]="program.programUrl" required>
+                    <input matInput class="program-url" (input)="updateProgram(program)" [(ngModel)]="program.programUrl" required>
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
-                    <input matInput placeholder="{{examListText.programUrl}}" required>
+                    <input matInput [(ngModel)]="newProgram.programUrl" placeholder="{{examListText.programUrl}}"
+                           required>
                 </mat-form-field>
             </mat-footer-cell>
         </ng-container>
@@ -57,11 +58,11 @@
             <mat-header-cell *matHeaderCellDef>{{examListText.delete}}</mat-header-cell>
             <mat-cell *matCellDef="let program">
                 <button mat-icon-button>
-                    <mat-icon id="delete-icon">delete</mat-icon>
+                    <mat-icon (click)="delete(program)" id="delete-icon">delete</mat-icon>
                 </button>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <button mat-icon-button>
+                <button (click)="saveNewProgram(); addRow()" mat-icon-button>
                     <mat-icon id="add-icon">add</mat-icon>
                 </button>
             </mat-footer-cell>
