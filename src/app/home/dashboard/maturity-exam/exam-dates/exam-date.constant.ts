@@ -1,4 +1,4 @@
-export const examProgramsText = {
+export const examDatesText = {
     name: 'Pavadinimas',
     type: 'Tipas',
     date: 'Egzamino data',

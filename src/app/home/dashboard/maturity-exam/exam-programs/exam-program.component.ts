@@ -5,7 +5,6 @@ import { MatSort } from '@angular/material/sort'
 import { ExamProgram } from './exam-program'
 import cloneDeep from 'lodash/cloneDeep'
 import { Subject } from './subject'
-import { Exam } from '../exam-list/type/exam'
 import { CrudService } from '../../../../service/crud/crud.service'
 
 @Component({

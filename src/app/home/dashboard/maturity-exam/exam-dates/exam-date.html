@@ -2,10 +2,10 @@
     <mat-table matSort matSortDisableClear [dataSource]="dates">
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef >{{examListText.name}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef >{{examDatesText.name}}</mat-header-cell>
             <mat-cell *matCellDef="let date; index as i">
                 <mat-form-field floatLabel="never">
-                    <mat-select [(ngModel)]="dates.data[i].name">
+                    <mat-select (selectionChange)="updateDate(date)" [(ngModel)]="dates.data[i].name">
                         <mat-option [value]="name"
                                     *ngFor="let name of examNames">{{maturityExamEnum[name]}}
                         </mat-option>
@@ -14,17 +14,21 @@
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                     <mat-form-field floatLabel="never">
-                        <mat-label>{{examListText.name}}</mat-label>
-                        <input matInput  placeholder="{{examListText.name}}" required>
+                        <mat-label>{{examDatesText.name}}</mat-label>
+                        <mat-select [(ngModel)]="newDate.name">
+                            <mat-option [value]="name"
+                                        *ngFor="let name of examNames">{{maturityExamEnum[name]}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
         <ng-container matColumnDef="type">
-            <mat-header-cell *matHeaderCellDef>{{examListText.type}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{examDatesText.type}}</mat-header-cell>
             <mat-cell *matCellDef="let date; index as i">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="dates.data[i].type">
+                    <mat-select (selectionChange)="updateDate(date)" [(ngModel)]="dates.data[i].type">
                         <mat-option [value]="type"
                                     *ngFor="let type of typeNames">{{examTypeEnum[type]}}
                         </mat-option>
@@ -33,8 +37,8 @@
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
-                    <mat-label>{{examListText.type}}</mat-label>
-                    <mat-select >
+                    <mat-label>{{examDatesText.type}}</mat-label>
+                    <mat-select [(ngModel)]="newDate.type">
                         <mat-option [value]="type"
                                     *ngFor="let type of typeNames">{{examTypeEnum[type]}}
                         </mat-option>
@@ -44,29 +48,29 @@
         </ng-container>
 
         <ng-container  matColumnDef="dateTime">
-            <mat-header-cell *matHeaderCellDef >{{examListText.date}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef >{{examDatesText.date}}</mat-header-cell>
             <mat-cell *matCellDef="let date">
                 <mat-form-field id="date-time-field" floatLabel="never">
-                    <input matInput type="datetime-local" [(ngModel)]="date.dateTime">
+                    <input matInput class="date-time" (input)="updateDate(date)" type="datetime-local" [(ngModel)]="date.dateTime">
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel="never">
-                    <mat-label>{{examListText.date}}</mat-label>
-                    <input matInput type="datetime-local" placeholder="{{examListText.date}}" required>
+                    <mat-label>{{examDatesText.date}}</mat-label>
+                    <input matInput [(ngModel)]="newDate.dateTime" type="datetime-local" placeholder="{{examDatesText.date}}" required>
                 </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
         <ng-container matColumnDef="delete">
-            <mat-header-cell *matHeaderCellDef>{{examListText.delete}}</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>{{examDatesText.delete}}</mat-header-cell>
             <mat-cell *matCellDef="let date">
-                <button mat-icon-button>
+                <button (click)="delete(date)" mat-icon-button>
                     <mat-icon id="delete-icon">delete</mat-icon>
                 </button>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <button mat-icon-button>
+                <button (click)="saveNewDate(); addRow()" mat-icon-button>
                     <mat-icon id="add-icon">add</mat-icon>
                 </button>
             </mat-footer-cell>
