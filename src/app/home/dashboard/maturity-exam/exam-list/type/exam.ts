@@ -3,6 +3,7 @@ import { ExamType } from '../../exam-dates/exam-type'
 
 export class Exam {
     constructor(
+        public id: string,
         public name: MaturityExam,
         public year: number,
         public type: ExamType,

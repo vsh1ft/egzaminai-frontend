@@ -17,7 +17,6 @@ import { ForgotPasswordModule } from './user/forgot-password/forgot-password.mod
 import { SnackbarService } from './service/snackbar/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { HomeModule } from './home/home.module'
-import { ExamListService } from './home/dashboard/maturity-exam/exam-list/service/exam-list.service'
 import { ComponentRegistryService } from './service/registry/component-registry.service'
 import { ExamProgramService } from './home/dashboard/maturity-exam/exam-programs/service/exam-program.service'
 import { ExamDateService } from './home/dashboard/maturity-exam/exam-dates/service/exam-date.service'
@@ -26,6 +25,7 @@ import { PuppExamService } from './home/dashboard/pupp-exam/exam/service/pupp-ex
 import { PuppProgramService } from './home/dashboard/pupp-exam/pupp-program/service/pupp-program.service'
 import { PuppDateService } from './home/dashboard/pupp-exam/pupp-date/service/pupp-date.service'
 import { JwtInterceptor } from './interceptor/jwt/jwt-interceptor'
+import { CrudService } from './service/crud/crud.service'
 
 @NgModule({
     declarations: [
@@ -48,7 +48,7 @@ import { JwtInterceptor } from './interceptor/jwt/jwt-interceptor'
         SessionService,
         AuthGuard,
         SnackbarService,
-        ExamListService,
+        CrudService,
         ComponentRegistryService,
         ExamProgramService,
         ExamDateService,

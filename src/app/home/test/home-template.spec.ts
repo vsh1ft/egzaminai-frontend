@@ -7,8 +7,8 @@ import SpyObj = jasmine.SpyObj
 import { HomeComponent } from '../home.component'
 import { HomeModule } from '../home.module'
 import { ComponentRegistryService } from '../../service/registry/component-registry.service'
-import { ExamListService } from '../dashboard/maturity-exam/exam-list/service/exam-list.service'
 import { of } from 'rxjs'
+import { CrudService } from '../../service/crud/crud.service'
 
 describe(`${HomeComponent.name} template`, () => {
 
@@ -22,10 +22,10 @@ describe(`${HomeComponent.name} template`, () => {
                 HomeModule,
                 NoopAnimationsModule
             ],
-            providers: [HomeComponent, ComponentRegistryService, ExamListService,
+            providers: [HomeComponent, ComponentRegistryService, CrudService,
                 {
-                    provide: ExamListService,
-                    useValue: createSpyObj(ExamListService.name, ['getExams'])
+                    provide: CrudService,
+                    useValue: createSpyObj(CrudService.name, ['retrieveAll'])
                 },
                 {
                     provide: ComponentRegistryService,
@@ -36,7 +36,7 @@ describe(`${HomeComponent.name} template`, () => {
         })
         componentRegistrySpy = TestBed.inject(ComponentRegistryService) as SpyObj<ComponentRegistryService>
         component = TestBed.inject(HomeComponent);
-        (TestBed.inject(ExamListService) as SpyObj<ExamListService>).getExams.and.returnValue(of(undefined))
+        (TestBed.inject(CrudService) as SpyObj<CrudService>).retrieveAll.and.returnValue(of(undefined))
         fixture = TestBed.createComponent(HomeComponent)
         component = fixture.componentInstance
         component.ngOnInit()

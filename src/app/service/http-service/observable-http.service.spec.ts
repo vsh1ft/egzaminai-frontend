@@ -37,6 +37,20 @@ describe(`${ObservableHttpService.name}`, () => {
         req.event(new HttpResponse({body: expectedBody}))
     })
 
+    it('puts data', () => {
+        const expectedBody = 'body'
+        const url = '/some/path'
+
+        service.put<string, string>(url, expectedBody)
+            .subscribe((response: string) =>
+                expect(response).toEqual(expectedBody)
+            )
+
+        const req = testingController.expectOne(environment.backendUrl + url)
+        expect(req.request.method).toEqual('PUT')
+        req.event(new HttpResponse({body: expectedBody}))
+    })
+
     it('gets data', () => {
         const expectedResponse = 'body'
         const url = '/some/path'
@@ -48,6 +62,20 @@ describe(`${ObservableHttpService.name}`, () => {
 
         const req = testingController.expectOne(environment.backendUrl + url)
         expect(req.request.method).toEqual('GET')
+        req.flush(expectedResponse)
+    })
+
+    it('delets data', () => {
+        const expectedResponse = 'body'
+        const url = '/some/path'
+
+        service.delete<string>(url)
+            .subscribe((response: string) =>
+                expect(response).toEqual(expectedResponse)
+            )
+
+        const req = testingController.expectOne(environment.backendUrl + url)
+        expect(req.request.method).toEqual('DELETE')
         req.flush(expectedResponse)
     })
 

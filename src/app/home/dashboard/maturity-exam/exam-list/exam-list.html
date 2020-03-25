@@ -5,7 +5,7 @@
             <mat-header-cell *matHeaderCellDef>{{examListText.name}}</mat-header-cell>
             <mat-cell *matCellDef="let exam; index as i">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="maturityExams.data[i].name">
+                    <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="maturityExams.data[i].name">
                         <mat-option [value]="name"
                                     *ngFor="let name of examNames">{{maturityExamEnum[name]}}
                         </mat-option>
@@ -15,7 +15,7 @@
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.name}}</mat-label>
-                    <mat-select >
+                    <mat-select [(ngModel)]="newExam.name">
                         <mat-option [value]="key"
                                     *ngFor="let key of examNames">{{maturityExamEnum[key]}}
                         </mat-option>
@@ -28,7 +28,7 @@
             <mat-header-cell *matHeaderCellDef>{{examListText.year}}</mat-header-cell>
             <mat-cell *matCellDef="let exam">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="exam.year">
+                    <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="exam.year">
                         <mat-option [value]="year"
                                     *ngFor="let year of years">{{year}}
                         </mat-option>
@@ -38,7 +38,7 @@
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.year}}</mat-label>
-                    <mat-select >
+                    <mat-select [(ngModel)]="newExam.year">
                         <mat-option [value]="year"
                                     *ngFor="let year of years">{{year}}
                         </mat-option>
@@ -51,7 +51,7 @@
             <mat-header-cell *matHeaderCellDef>{{examListText.type}}</mat-header-cell>
             <mat-cell *matCellDef="let exam; index as i">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="maturityExams.data[i].type">
+                    <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="maturityExams.data[i].type">
                         <mat-option [value]="type"
                                     *ngFor="let type of typeNames">{{examTypeEnum[type]}}
                         </mat-option>
@@ -61,7 +61,7 @@
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.type}}</mat-label>
-                    <mat-select >
+                    <mat-select [(ngModel)]="newExam.type">
                         <mat-option [value]="type"
                                     *ngFor="let type of typeNames">{{examTypeEnum[type]}}
                         </mat-option>
@@ -74,12 +74,12 @@
             <mat-header-cell *matHeaderCellDef>{{examListText.examUrl}}</mat-header-cell>
             <mat-cell *matCellDef="let exam">
                 <mat-form-field floatLabel='never'>
-                    <input matInput [(ngModel)]="exam.examUrl" required>
+                    <input matInput class="exam-url" (input)="updateExam(exam)" [(ngModel)]="exam.examUrl" required>
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
-                    <input matInput placeholder="{{examListText.examUrl}}" required>
+                    <input [(ngModel)]="newExam.examUrl" matInput placeholder="{{examListText.examUrl}}" required>
                 </mat-form-field>
             </mat-footer-cell>
         </ng-container>
@@ -88,12 +88,12 @@
             <mat-header-cell *matHeaderCellDef>{{examListText.answerUrl}}</mat-header-cell>
             <mat-cell *matCellDef="let exam">
                 <mat-form-field floatLabel='never'>
-                    <input matInput [(ngModel)]="exam.answerUrl" required>
+                    <input matInput class="answer-url" (input)="updateExam(exam)" [(ngModel)]="exam.answerUrl" required>
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
-                    <input matInput placeholder="{{examListText.answerUrl}}" required>
+                    <input [(ngModel)]="newExam.answerUrl" matInput placeholder="{{examListText.answerUrl}}" required>
                 </mat-form-field>
             </mat-footer-cell>
         </ng-container>
@@ -101,12 +101,12 @@
         <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef>{{examListText.delete}}</mat-header-cell>
             <mat-cell *matCellDef="let exam">
-                <button mat-icon-button>
+                <button (click)="delete(exam)" mat-icon-button>
                     <mat-icon id="delete-icon">delete</mat-icon>
                 </button>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <button mat-icon-button>
+                <button mat-icon-button (click)="saveNewExam(); addRow()">
                     <mat-icon id="add-icon">add</mat-icon>
                 </button>
             </mat-footer-cell>
