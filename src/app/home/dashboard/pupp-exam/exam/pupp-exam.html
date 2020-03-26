@@ -4,21 +4,23 @@
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>{{examsText.name}}</mat-header-cell>
             <mat-cell *matCellDef="let exam; index as i">
-                <mat-select [(ngModel)]="exams.data[i].name">
-                    <mat-option [value]="name"
-                                *ngFor="let name of examNames">{{examNamesEnum[name]}}
-                    </mat-option>
-                </mat-select>
+                <mat-form-field>
+                    <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="exams.data[i].name">
+                        <mat-option [value]="name"
+                                    *ngFor="let name of examNames">{{examNamesEnum[name]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                    <mat-form-field floatLabel="never">
-                        <mat-label>{{examsText.name}}</mat-label>
-                        <mat-select [(ngModel)]="emptyExam.name">
-                            <mat-option [value]="name"
-                                        *ngFor="let name of examNames">{{examNamesEnum[name]}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field floatLabel="never">
+                    <mat-label>{{examsText.name}}</mat-label>
+                    <mat-select [(ngModel)]="newExam.name">
+                        <mat-option [value]="name"
+                                    *ngFor="let name of examNames">{{examNamesEnum[name]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
@@ -26,7 +28,7 @@
             <mat-header-cell *matHeaderCellDef>{{examsText.year}}</mat-header-cell>
             <mat-cell *matCellDef="let exam">
                 <mat-form-field>
-                    <mat-select [(ngModel)]="exam.year">
+                    <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="exam.year">
                         <mat-option [value]="year"
                                     *ngFor="let year of years">{{year}}
                         </mat-option>
@@ -36,7 +38,7 @@
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examsText.year}}</mat-label>
-                    <mat-select >
+                    <mat-select [(ngModel)]="newExam.year">
                         <mat-option [value]="year"
                                     *ngFor="let year of years">{{year}}
                         </mat-option>
@@ -49,12 +51,12 @@
             <mat-header-cell *matHeaderCellDef>{{examsText.examUrl}}</mat-header-cell>
             <mat-cell *matCellDef="let exam">
                 <mat-form-field floatLabel='never'>
-                    <input matInput [(ngModel)]="exam.examUrl" required>
+                    <input matInput class="exam-url" (input)="updateExam(exam)" [(ngModel)]="exam.examUrl" required>
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
-                    <input matInput placeholder="{{examsText.examUrl}}" required>
+                    <input matInput [(ngModel)]="newExam.examUrl" placeholder="{{examsText.examUrl}}" required>
                 </mat-form-field>
             </mat-footer-cell>
         </ng-container>
@@ -62,12 +64,12 @@
         <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef>{{examsText.delete}}</mat-header-cell>
             <mat-cell *matCellDef="let exam">
-                <button mat-icon-button>
+                <button (click)="delete(exam)" mat-icon-button>
                     <mat-icon id="delete-icon">delete</mat-icon>
                 </button>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <button mat-icon-button>
+                <button (click)="saveNewExam(); addRow()" mat-icon-button>
                     <mat-icon id="add-icon">add</mat-icon>
                 </button>
             </mat-footer-cell>

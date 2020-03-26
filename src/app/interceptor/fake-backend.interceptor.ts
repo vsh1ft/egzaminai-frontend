@@ -164,13 +164,13 @@ const DATES: ExamDate[] = [
     new ExamDate('pavadinimas', 'VBE', '2017-06-01T08:30')*/
 ]
 const CREDITS: CourseCredit[] = [
-    new CourseCredit('pavadinimas', 2013, 'courseUrl'),
+    /*new CourseCredit('pavadinimas', 2013, 'courseUrl'),
     new CourseCredit('pavadinimas', 2013, 'courseUrl'),
     new CourseCredit('pavadinimas', 2014, 'courseUrl'),
     new CourseCredit('pavadinimas', 2015, 'courseUrl'),
     new CourseCredit('pavadinimas', 2016, 'courseUrl'),
     new CourseCredit('pavadinimas', 2017, 'courseUrl'),
-    new CourseCredit('pavadinimas', 2018, 'courseUrl')
+    new CourseCredit('pavadinimas', 2018, 'courseUrl')*/
 ]
 const PUPP_EXAMS: PuppExam[] = [
    /* new PuppExam('pavadinimas', 2013, 'courseUrl'),
