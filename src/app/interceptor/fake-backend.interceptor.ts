@@ -128,7 +128,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     }
 
-
 }
 
 const EXAMS: Exam[] = [
@@ -182,13 +181,13 @@ const PUPP_EXAMS: PuppExam[] = [
     new PuppExam('pavadinimas', 2018, 'courseUrl')*/
 ]
 const PUPP_PROGRAMS: PuppProgram[] = [
+   /* new PuppProgram('pavadinimas', 'courseUrl'),
     new PuppProgram('pavadinimas', 'courseUrl'),
     new PuppProgram('pavadinimas', 'courseUrl'),
     new PuppProgram('pavadinimas', 'courseUrl'),
     new PuppProgram('pavadinimas', 'courseUrl'),
     new PuppProgram('pavadinimas', 'courseUrl'),
-    new PuppProgram('pavadinimas', 'courseUrl'),
-    new PuppProgram('pavadinimas', 'courseUrl')
+    new PuppProgram('pavadinimas', 'courseUrl')*/
 ]
 const PUPP_DATES: PuppDate[] = [
   /*  new PuppDate('pavadinimas', '2017-06-01T08:30'),

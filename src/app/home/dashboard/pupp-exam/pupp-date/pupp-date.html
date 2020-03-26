@@ -2,10 +2,10 @@
     <mat-table matSort matSortDisableClear [dataSource]="dates">
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef >{{puppDatesText.name}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam; index as i">
+            <mat-header-cell *matHeaderCellDef>{{puppDatesText.name}}</mat-header-cell>
+            <mat-cell *matCellDef="let date; index as i">
                 <mat-form-field floatLabel="never">
-                    <mat-select [(ngModel)]="dates.data[i].name">
+                    <mat-select (selectionChange)="updateDate(date)" [(ngModel)]="dates.data[i].name">
                         <mat-option [value]="name"
                                     *ngFor="let name of examNames">{{examNamesEnum[name]}}
                         </mat-option>
@@ -13,41 +13,43 @@
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                    <mat-form-field floatLabel="never">
-                        <mat-label>{{puppDatesText.name}}</mat-label>
-                        <mat-select [(ngModel)]="emptyExam.name">
-                            <mat-option [value]="name"
-                                        *ngFor="let name of examNames">{{examNamesEnum[name]}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field floatLabel="never">
+                    <mat-label>{{puppDatesText.name}}</mat-label>
+                    <mat-select [(ngModel)]="newDate.name">
+                        <mat-option [value]="name"
+                                    *ngFor="let name of examNames">{{examNamesEnum[name]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
-        <ng-container  matColumnDef="dateTime">
-            <mat-header-cell *matHeaderCellDef >{{puppDatesText.date}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+        <ng-container matColumnDef="dateTime">
+            <mat-header-cell *matHeaderCellDef>{{puppDatesText.date}}</mat-header-cell>
+            <mat-cell *matCellDef="let date">
                 <mat-form-field id="date-time-field" floatLabel="never">
-                    <input matInput type="datetime-local" [(ngModel)]="exam.dateTime">
+                    <input matInput class="date-time" (input)="updateDate(date)" type="datetime-local"
+                           [(ngModel)]="date.dateTime">
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel="never">
                     <mat-label>{{puppDatesText.date}}</mat-label>
-                    <input matInput type="datetime-local" placeholder="{{puppDatesText.date}}" required>
+                    <input matInput [(ngModel)]="newDate.dateTime" type="datetime-local"
+                           placeholder="{{puppDatesText.date}}" required>
                 </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
         <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef>{{puppDatesText.delete}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
-                <button mat-icon-button>
+            <mat-cell *matCellDef="let date">
+                <button (click)="delete(date)" mat-icon-button>
                     <mat-icon id="delete-icon">delete</mat-icon>
                 </button>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <button mat-icon-button>
+                <button (click)="saveNewDate(); addRow()" mat-icon-button>
                     <mat-icon id="add-icon">add</mat-icon>
                 </button>
             </mat-footer-cell>
