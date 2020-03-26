@@ -36,7 +36,7 @@ describe(`${PuppExamComponent.name} template`, () => {
         })
         serviceSpy = TestBed.inject(CrudService) as SpyObj<CrudService>
         const musicProgram = new PuppExam('id1', PuppExamName.LITHUANIAN_LANGUAGE_WRITING_I, 2013, 'url')
-        const physicsProgram = new PuppExam('id2', PuppExamName.LITHUANIAN_LANGUAGE_WRITING_II, 2014, 'url');
+        const physicsProgram = new PuppExam('id2', PuppExamName.LITHUANIAN_LANGUAGE_WRITING_II, 2014, 'url')
         serviceSpy.retrieveAll.and.returnValue(of([musicProgram, physicsProgram]))
 
         fixture = TestBed.createComponent(PuppExamComponent)

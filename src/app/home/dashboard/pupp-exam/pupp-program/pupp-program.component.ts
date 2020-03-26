@@ -3,7 +3,8 @@ import { puppProgramsText } from './pupp-program.constant'
 import { MatTableDataSource } from '@angular/material/table'
 import { MatSort } from '@angular/material/sort'
 import { PuppProgram } from './pupp-program'
-import { PuppProgramService } from './service/pupp-program.service'
+import cloneDeep from 'lodash/cloneDeep'
+import { CrudService } from '../../../../service/crud/crud.service'
 
 @Component({
     selector: 'pupp-program',
@@ -13,18 +14,40 @@ export class PuppProgramComponent implements OnInit {
     programsText = puppProgramsText
     displayedColumns = ['name', 'programUrl', 'delete']
     programs: MatTableDataSource<PuppProgram>
-    emptyExam = new PuppProgram('', '')
+    newProgram = new PuppProgram('', '', '')
 
     @ViewChild(MatSort, {static: true}) sort: MatSort
 
-    constructor(private examProgramService: PuppProgramService) {
+    private path = '/pupp-programs'
+
+    constructor(private service: CrudService) {
     }
 
     ngOnInit(): void {
-        this.examProgramService.getPrograms().subscribe(programs => {
+        this.service.retrieveAll<PuppProgram>(this.path).subscribe(programs => {
             this.programs = new MatTableDataSource(programs)
             this.programs.sort = this.sort
         })
+    }
+
+    addRow() {
+        this.programs.data.push(cloneDeep(this.newProgram))
+        this.programs.data = this.programs.data.slice()
+
+        this.newProgram.programUrl = ''
+    }
+
+    updateProgram(program: PuppProgram) {
+        this.service.update(this.path, program)
+    }
+
+    saveNewProgram() {
+        this.service.create(this.path, this.newProgram)
+    }
+
+    delete(program: PuppProgram) {
+        this.service.delete(this.path, program.id)
+        this.programs.data = this.programs.data.filter(i => i !== program)
     }
 
 }

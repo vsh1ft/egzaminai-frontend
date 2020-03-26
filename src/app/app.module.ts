@@ -18,7 +18,6 @@ import { SnackbarService } from './service/snackbar/snackbar.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { HomeModule } from './home/home.module'
 import { ComponentRegistryService } from './service/registry/component-registry.service'
-import { PuppProgramService } from './home/dashboard/pupp-exam/pupp-program/service/pupp-program.service'
 import { JwtInterceptor } from './interceptor/jwt/jwt-interceptor'
 import { CrudService } from './service/crud/crud.service'
 
@@ -45,7 +44,6 @@ import { CrudService } from './service/crud/crud.service'
         SnackbarService,
         CrudService,
         ComponentRegistryService,
-        PuppProgramService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: JwtInterceptor,

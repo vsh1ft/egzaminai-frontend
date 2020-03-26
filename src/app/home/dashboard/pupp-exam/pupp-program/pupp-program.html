@@ -3,42 +3,42 @@
 
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef >{{programsText.name}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let program">
                 <mat-form-field floatLabel="never">
-                    <input matInput [(ngModel)]="exam.name">
+                    <input matInput (input)="updateProgram(program)" class="program-name" [(ngModel)]="program.name">
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                     <mat-form-field floatLabel="never">
                         <mat-label>{{programsText.name}}</mat-label>
-                        <input matInput placeholder="{{programsText.name}}" required>
+                        <input matInput [(ngModel)]="newProgram.name" placeholder="{{programsText.name}}" required>
                     </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
         <ng-container matColumnDef="programUrl">
             <mat-header-cell *matHeaderCellDef>{{programsText.programUrl}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-cell *matCellDef="let program">
                 <mat-form-field floatLabel='never'>
-                    <input matInput [(ngModel)]="exam.programUrl" required>
+                    <input matInput (input)="updateProgram(program)" class="program-url" [(ngModel)]="program.programUrl" required>
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
-                    <input matInput placeholder="{{programsText.programUrl}}" required>
+                    <input matInput [(ngModel)]="newProgram.programUrl" placeholder="{{programsText.programUrl}}" required>
                 </mat-form-field>
             </mat-footer-cell>
         </ng-container>
 
         <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef>{{programsText.delete}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
-                <button mat-icon-button>
+            <mat-cell *matCellDef="let program">
+                <button (click)="delete(program)" mat-icon-button>
                     <mat-icon id="delete-icon">delete</mat-icon>
                 </button>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <button mat-icon-button>
+                <button (click)="saveNewProgram(); addRow()" mat-icon-button>
                     <mat-icon id="add-icon">add</mat-icon>
                 </button>
             </mat-footer-cell>

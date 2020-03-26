@@ -34,7 +34,7 @@ describe(`${CourseCreditComponent.name} template`, () => {
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
         })
         const musicProgram = new CourseCredit('id1', 'name1', 2013, 'url')
-        const physicsProgram = new CourseCredit('id2', 'name2', 2014, 'url');
+        const physicsProgram = new CourseCredit('id2', 'name2', 2014, 'url')
         serviceSpy = TestBed.inject(CrudService) as SpyObj<CrudService>
         serviceSpy.retrieveAll.and.returnValue(of([musicProgram, physicsProgram]))
 

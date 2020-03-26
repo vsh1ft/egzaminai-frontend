@@ -36,7 +36,7 @@ describe(`${ExamDateComponent.name} template`, () => {
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
         })
         const musicProgram = new ExamDate('id', MaturityExam.LITHUANIAN_LANGUAGE, ExamType.NATIONAL_LEVEL, 'date')
-        const physicsProgram = new ExamDate('id2', MaturityExam.LITHUANIAN_LANGUAGE, ExamType.NATIONAL_LEVEL, 'date');
+        const physicsProgram = new ExamDate('id2', MaturityExam.LITHUANIAN_LANGUAGE, ExamType.NATIONAL_LEVEL, 'date')
         serviceSpy = TestBed.inject(CrudService) as SpyObj<CrudService>
         serviceSpy.retrieveAll.and.returnValue(of([musicProgram, physicsProgram]))
 
