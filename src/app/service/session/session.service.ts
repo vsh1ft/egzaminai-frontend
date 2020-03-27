@@ -11,4 +11,8 @@ export class SessionService {
         sessionStorage.setItem('token', token)
     }
 
+    clear() {
+        sessionStorage.clear()
+    }
+
 }

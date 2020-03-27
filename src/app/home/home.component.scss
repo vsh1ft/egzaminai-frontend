@@ -1,8 +1,15 @@
 home {
   display: flex;
-  height: 100%;
-  width: 100%;
-  exam-tabs{
-    margin-right: 1em;
+  flex-direction: column;
+
+  .row {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    exam-tabs {
+      margin-right: 1em;
+    }
   }
+
 }

@@ -21,4 +21,13 @@ describe(`${SessionService.name}`, () => {
         expect(sessionStorage.setItem).toHaveBeenCalledWith('token', expectedToken)
     })
 
+    it('clears session token', () => {
+        const service = new SessionService()
+        sessionStorage.clear = createSpy()
+
+        service.clear()
+
+        expect(sessionStorage.clear).toHaveBeenCalled()
+    })
+
 })

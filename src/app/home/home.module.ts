@@ -10,6 +10,9 @@ import { CourseCreditModule } from './dashboard/maturity-exam/course-credit/cour
 import { PuppExamModule } from './dashboard/pupp-exam/exam/pupp-exam.module'
 import { PuppProgramModule } from './dashboard/pupp-exam/pupp-program/pupp-program.module'
 import { PuppDateModule } from './dashboard/pupp-exam/pupp-date/pupp-date.module'
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+import { LogoutModule } from '../user/logout/logout.module'
 
 @NgModule({
     declarations: [HomeComponent, ViewContainerWrapper],
@@ -23,7 +26,10 @@ import { PuppDateModule } from './dashboard/pupp-exam/pupp-date/pupp-date.module
         CourseCreditModule,
         PuppExamModule,
         PuppProgramModule,
-        PuppDateModule
+        PuppDateModule,
+        MatIconModule,
+        MatButtonModule,
+        LogoutModule
     ]
 })
 export class HomeModule {

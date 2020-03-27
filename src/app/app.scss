@@ -1,4 +1,5 @@
 @import "user/login/login";
+@import "user/logout/logout";
 @import "user/sign-up/sign-up";
 @import "user/forgot-password/forgot-password";
 @import "service/snackbar/snackbar";
@@ -25,7 +26,6 @@ html {
 
 html, body {
   height: 100%;
-  width: 100%;
 }
 
 $custom-typography: mat-typography-config(

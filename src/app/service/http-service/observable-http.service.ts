@@ -16,7 +16,7 @@ export class ObservableHttpService {
     constructor(private http: HttpClient) {
     }
 
-    post<I, O>(path: string, data: I): Observable<O> {
+    post<I, O>(path: string, data?: I): Observable<O> {
         return this.http.post(environment.backendUrl + path, data, this.httpOptions)
             .pipe(map((token) => {
                 return token as O

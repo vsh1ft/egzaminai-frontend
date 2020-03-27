@@ -8,6 +8,11 @@ import { HomeComponent } from '../home.component'
 import { HomeModule } from '../home.module'
 import { ComponentRegistryService } from '../../service/registry/component-registry.service'
 import { of } from 'rxjs'
+import { Router } from '@angular/router'
+import { LogoutComponent } from '../../user/logout/logout.component'
+import { RouterTestingModule } from '@angular/router/testing'
+import { ObservableHttpService } from '../../service/http-service/observable-http.service'
+import { SessionService } from '../../service/session/session.service'
 import { CrudService } from '../../service/crud/crud.service'
 
 describe(`${HomeComponent.name} template`, () => {
@@ -20,9 +25,11 @@ describe(`${HomeComponent.name} template`, () => {
         await TestBed.configureTestingModule({
             imports: [
                 HomeModule,
-                NoopAnimationsModule
+                NoopAnimationsModule, RouterTestingModule
             ],
-            providers: [HomeComponent, ComponentRegistryService, CrudService,
+            providers: [HomeComponent, ComponentRegistryService,
+                {provide: ObservableHttpService, useValue: null},
+                {provide: SessionService, useValue: null},
                 {
                     provide: CrudService,
                     useValue: createSpyObj(CrudService.name, ['retrieveAll'])
@@ -45,7 +52,9 @@ describe(`${HomeComponent.name} template`, () => {
 
     it('initializes component', async () => {
         expect(getElement('exam-list')).toBeDefined()
+        expect(getElement('logout')).toBeDefined()
     })
+
 
     it('swaps component', async () => {
         componentRegistrySpy.get.withArgs('someComponent').and.returnValue(DummyComponent)
@@ -62,4 +71,5 @@ describe(`${HomeComponent.name} template`, () => {
     @Component({selector: 'dummy', template: 'exam-template'})
     class DummyComponent {
     }
+
 })
