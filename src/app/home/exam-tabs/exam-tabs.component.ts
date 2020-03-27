@@ -7,11 +7,17 @@ import { examTabsText } from './exam.constant'
 })
 export class ExamTabsComponent {
     examTabsText = examTabsText
+    selectedListItem = 'examList'
 
     @Output() componentName = new EventEmitter<string>()
 
-    emitNameChangeEvent(name: string) {
+    selectItem(name: string) {
         this.componentName.emit(name)
+        this.selectedListItem = name
+    }
+
+    isSelected(name: string): boolean {
+        return this.selectedListItem === name
     }
 
 }

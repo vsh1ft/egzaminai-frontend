@@ -42,10 +42,24 @@ describe(`${ExamTabsComponent.name} template`, () => {
                 expect(component.componentName.emit).toHaveBeenCalledWith('examList')
             }))
 
+            it('selects exam list button', fakeAsync(() => {
+                getElement('#exam-list-button').click()
+                fixture.detectChanges()
+
+                expect(getElement('#exam-list-button').classList).toContain('selected')
+            }))
+
             it('sends examPrograms event', fakeAsync(() => {
                 getElement('#exam-programs-button').click()
 
                 expect(component.componentName.emit).toHaveBeenCalledWith('examPrograms')
+            }))
+
+            it('selects examPrograms button', fakeAsync(() => {
+                getElement('#exam-programs-button').click()
+                fixture.detectChanges()
+
+                expect(getElement('#exam-programs-button').classList).toContain('selected')
             }))
 
             it('sends examDates event', fakeAsync(() => {
@@ -54,10 +68,24 @@ describe(`${ExamTabsComponent.name} template`, () => {
                 expect(component.componentName.emit).toHaveBeenCalledWith('examDates')
             }))
 
+            it('selects examDates button', fakeAsync(() => {
+                getElement('#exam-dates-button').click()
+                fixture.detectChanges()
+
+                expect(getElement('#exam-dates-button').classList).toContain('selected')
+            }))
+
             it('sends courseCredits event', fakeAsync(() => {
                 getElement('#course-credits-button').click()
 
                 expect(component.componentName.emit).toHaveBeenCalledWith('courseCredits')
+            }))
+
+            it('selects courseCredits button', fakeAsync(() => {
+                getElement('#course-credits-button').click()
+                fixture.detectChanges()
+
+                expect(getElement('#course-credits-button').classList).toContain('selected')
             }))
         })
 
@@ -74,17 +102,39 @@ describe(`${ExamTabsComponent.name} template`, () => {
                 expect(component.componentName.emit).toHaveBeenCalledWith('puppExamList')
             })
 
+            it('selects puppExamList button', fakeAsync(() => {
+                getElement('#pupp-exam-list-button').click()
+                fixture.detectChanges()
+
+                expect(getElement('#pupp-exam-list-button').classList).toContain('selected')
+            }))
+
             it('sends puppExamPrograms event', () => {
                 getElement('#pupp-exam-programs-button').click()
 
                 expect(component.componentName.emit).toHaveBeenCalledWith('puppExamPrograms')
             })
 
+            it('selects puppExamPrograms button', fakeAsync(() => {
+                getElement('#pupp-exam-programs-button').click()
+                fixture.detectChanges()
+
+                expect(getElement('#pupp-exam-programs-button').classList).toContain('selected')
+            }))
+
+
             it('sends puppExamDates event', () => {
                 getElement('#pupp-exam-dates-button').click()
 
                 expect(component.componentName.emit).toHaveBeenCalledWith('puppExamDates')
             })
+
+            it('selects puppExamDates button', fakeAsync(() => {
+                getElement('#pupp-exam-dates-button').click()
+                fixture.detectChanges()
+
+                expect(getElement('#pupp-exam-dates-button').classList).toContain('selected')
+            }))
         })
     })
 

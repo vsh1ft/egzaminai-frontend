@@ -15,9 +15,23 @@ describe(`${ExamTabsComponent.name}`, () => {
     it('emits name change event', () => {
         spyOn(component.componentName, 'emit')
 
-        component.emitNameChangeEvent('name')
+        component.selectItem('name')
 
         expect(component.componentName.emit).toHaveBeenCalledWith('name')
+    })
+
+    it('sets active list item name', () => {
+        component.selectItem('name')
+
+        expect(component.selectedListItem).toEqual('name')
+    })
+
+    it('confirms currently selected item', () => {
+        expect(component.isSelected('examList')).toBeTruthy()
+    })
+
+    it('denies thar item is selected', () => {
+        expect(component.isSelected('item')).toBeFalsy()
     })
 
 })

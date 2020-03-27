@@ -15,7 +15,7 @@
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.name}}</mat-label>
-                    <mat-select [(ngModel)]="newExam.name">
+                    <mat-select required [(ngModel)]="newExam.name">
                         <mat-option [value]="key"
                                     *ngFor="let key of examNames">{{maturityExamEnum[key]}}
                         </mat-option>
@@ -38,7 +38,7 @@
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.year}}</mat-label>
-                    <mat-select [(ngModel)]="newExam.year">
+                    <mat-select required [(ngModel)]="newExam.year">
                         <mat-option [value]="year"
                                     *ngFor="let year of years">{{year}}
                         </mat-option>
@@ -61,7 +61,7 @@
             <mat-footer-cell *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.type}}</mat-label>
-                    <mat-select [(ngModel)]="newExam.type">
+                    <mat-select required [(ngModel)]="newExam.type">
                         <mat-option [value]="type"
                                     *ngFor="let type of typeNames">{{examTypeEnum[type]}}
                         </mat-option>
