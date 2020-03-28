@@ -4,6 +4,7 @@ import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { ObservableHttpService } from '../../../service/http-service/observable-http.service'
 import { SessionService } from '../../../service/session/session.service'
+import { ChangePasswordForm } from '../../change-password/change-password-form'
 
 @Injectable()
 export class UserAuthenticationService {
@@ -32,6 +33,11 @@ export class UserAuthenticationService {
 
     resetPassword(email: string): Observable<void> {
         return this.httpService.post<string, void>(`/user/reset-password`, email)
+    }
+
+    changePassword(form: ChangePasswordForm): Observable<void> {
+        return this.httpService.post<ChangePasswordForm, void>(`/user/change-password`, form)
+
     }
 
 }

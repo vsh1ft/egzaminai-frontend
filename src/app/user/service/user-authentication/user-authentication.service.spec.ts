@@ -6,6 +6,7 @@ import { Credentials } from '../../login/credentials'
 import { of } from 'rxjs'
 import createSpyObj = jasmine.createSpyObj
 import SpyObj = jasmine.SpyObj
+import { ChangePasswordForm } from '../../change-password/change-password-form'
 
 describe(`${UserAuthenticationService.name}`, () => {
 
@@ -58,6 +59,16 @@ describe(`${UserAuthenticationService.name}`, () => {
         httpServiceSpy.post.withArgs(`/user/reset-password`, email).and.returnValue(of())
 
         service.resetPassword(email)
+        done()
+
+        expect(httpServiceSpy.post).toHaveBeenCalled()
+    })
+
+    it('changes password', done => {
+        const form = new ChangePasswordForm('token', 'pass')
+        httpServiceSpy.post.withArgs(`/user/change-password`, form).and.returnValue(of())
+
+        service.changePassword(form)
         done()
 
         expect(httpServiceSpy.post).toHaveBeenCalled()

@@ -6,12 +6,14 @@ import { HomeComponent } from '../home/home.component'
 import { AuthGuard } from './guard/auth.guard'
 import { SignUpComponent } from '../user/sign-up/sign-up.component'
 import { ForgotPasswordComponent } from '../user/forgot-password/forgot-password.component'
+import { ChangePasswordComponent } from '../user/change-password/change-password.component'
 
 const routes: Routes = [
     {path: '', component: HomeComponent, canActivate: [AuthGuard]},
     {path: routePaths.login, component: LoginComponent},
     {path: routePaths.signUp, component: SignUpComponent},
-    {path: routePaths.forgotPassword, component: ForgotPasswordComponent}
+    {path: routePaths.forgotPassword, component: ForgotPasswordComponent},
+    {path: routePaths.changePassword, component: ChangePasswordComponent}
 ]
 
 @NgModule({

@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
                 this.setErrorOnInvalidUser(),
                 this.loginOnValidUser()
             )
-            .subscribe(() => this.router.navigateByUrl(routePaths.home))
+            .subscribe(() => this.router.navigateByUrl(routePaths.home),
+                () => this.email.setErrors({invalidUser: 'true'}))
             .add(() => this.isSignInEnabled = true)
     }
 

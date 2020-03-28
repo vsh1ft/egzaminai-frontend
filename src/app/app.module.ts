@@ -20,6 +20,7 @@ import { HomeModule } from './home/home.module'
 import { ComponentRegistryService } from './service/registry/component-registry.service'
 import { JwtInterceptor } from './interceptor/jwt/jwt-interceptor'
 import { CrudService } from './service/crud/crud.service'
+import { ChangePasswordModule } from './user/change-password/change-password.module'
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import { CrudService } from './service/crud/crud.service'
         HttpClientModule,
         ForgotPasswordModule,
         MatSnackBarModule,
-        HomeModule
+        HomeModule,
+        ChangePasswordModule
     ],
     providers: [
         UserAuthenticationService,

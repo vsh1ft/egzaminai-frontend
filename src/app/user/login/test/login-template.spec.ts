@@ -7,7 +7,7 @@ import { LoginModule } from '../login.module'
 import { SessionService } from '../../../service/session/session.service'
 import { ActivatedRoute } from '@angular/router'
 import { UserAuthenticationService } from '../../service/user-authentication/user-authentication.service'
-import { of } from 'rxjs'
+import { of, throwError } from 'rxjs'
 import SpyObj = jasmine.SpyObj
 import { loginText } from '../login.constant'
 import { routePaths } from '../../../router/app-routing.constant'
@@ -88,6 +88,17 @@ describe(`${LoginComponent.name} template`, () => {
     it('displays error when user is not found', () => {
         component.email.patchValue('email@email')
         authSpy.doesExist.and.returnValue(of(false))
+
+        getElement('#sign-in').click()
+        fixture.detectChanges()
+
+        expect(getElements('mat-error')[0].innerText).toEqual(loginText.invalidUser)
+    })
+
+    it('displays error when password is incorrect', () => {
+        component.email.patchValue('email@email')
+        authSpy.doesExist.and.returnValue(of(true))
+        authSpy.login.and.returnValue(throwError('err'))
 
         getElement('#sign-in').click()
         fixture.detectChanges()

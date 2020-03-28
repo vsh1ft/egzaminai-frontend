@@ -6,7 +6,7 @@ import SpyObj = jasmine.SpyObj
 import { Router } from '@angular/router'
 import { routePaths } from '../../../router/app-routing.constant'
 import { UserAuthenticationService } from '../../service/user-authentication/user-authentication.service'
-import { of } from 'rxjs'
+import { of, throwError } from 'rxjs'
 import { delay } from 'rxjs/operators'
 
 describe(`${LoginComponent.name}`, () => {
@@ -94,6 +94,15 @@ describe(`${LoginComponent.name}`, () => {
 
             it('sets validation error', () => {
                 authSpy.doesExist.and.returnValue(of(false))
+
+                component.submit()
+
+                expect(component.email.hasError('invalidUser')).toBeTruthy()
+            })
+
+            it('sets validation error on wrong password', () => {
+                authSpy.doesExist.and.returnValue(of(true))
+                authSpy.login.and.returnValue(throwError('err'))
 
                 component.submit()
 
