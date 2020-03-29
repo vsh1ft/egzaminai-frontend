@@ -13,6 +13,8 @@ import { PuppDateModule } from './dashboard/pupp-exam/pupp-date/pupp-date.module
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { LogoutModule } from '../user/logout/logout.module'
+import { ExtendedModule, FlexModule } from '@angular/flex-layout'
+import { ExamMenuModule } from '../exam-menu/exam-menu.module'
 
 @NgModule({
     declarations: [HomeComponent, ViewContainerWrapper],
@@ -29,7 +31,10 @@ import { LogoutModule } from '../user/logout/logout.module'
         PuppDateModule,
         MatIconModule,
         MatButtonModule,
-        LogoutModule
+        LogoutModule,
+        ExtendedModule,
+        ExamMenuModule,
+        FlexModule
     ]
 })
 export class HomeModule {

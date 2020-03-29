@@ -1,0 +1,45 @@
+<button mat-raised-button color="primary" [matMenuTriggerFor]="maturityMenu">Brandos egzaminai</button>
+<mat-menu #maturityMenu="matMenu">
+    <mat-list>
+        <mat-list-item>
+            <button id="exam-list-button"  [ngClass]="{'selected': isSelected('examList')}"
+                    (click)="selectItem('examList')"
+                    mat-button>{{examTabsText.exams}}</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button id="exam-programs-button" [ngClass]="{'selected': isSelected('examPrograms')}"
+                    (click)="selectItem('examPrograms')"
+                    mat-button>{{examTabsText.examPrograms}}</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button id="exam-dates-button" [ngClass]="{'selected': isSelected('examDates')}"
+                    (click)="selectItem('examDates')"
+                    mat-button>{{examTabsText.examDates}}</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button id="course-credits-button" [ngClass]="{'selected': isSelected('courseCredits')}"
+                    (click)="selectItem('courseCredits')"
+                    mat-button>{{examTabsText.courseCredits}}</button>
+        </mat-list-item>
+    </mat-list>
+</mat-menu>
+<button mat-raised-button color="primary"  [matMenuTriggerFor]="puppMenu">Mokykliniai egzaminai</button>
+<mat-menu #puppMenu="matMenu">
+    <mat-list>
+        <mat-list-item>
+            <button id="pupp-exam-list-button" [ngClass]="{'selected': isSelected('puppExamList')}"
+                    (click)="selectItem('puppExamList')"
+                    mat-button>{{examTabsText.exams}}</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button id="pupp-exam-programs-button" [ngClass]="{'selected': isSelected('puppExamPrograms')}"
+                    (click)="selectItem('puppExamPrograms')"
+                    mat-button>{{examTabsText.examPrograms}}</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button id="pupp-exam-dates-button" [ngClass]="{'selected': isSelected('puppExamDates')}"
+                    (click)="selectItem('puppExamDates')"
+                    mat-button>{{examTabsText.examDates}}</button>
+        </mat-list-item>
+    </mat-list>
+</mat-menu>
