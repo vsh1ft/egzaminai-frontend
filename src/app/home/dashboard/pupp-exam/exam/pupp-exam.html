@@ -4,7 +4,7 @@
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>{{examsText.name}}</mat-header-cell>
             <mat-cell *matCellDef="let exam; index as i">
-                <mat-form-field>
+                <mat-form-field class="input-field-length" >
                     <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="exams.data[i].name">
                         <mat-option [value]="name"
                                     *ngFor="let name of examNames">{{examNamesEnum[name]}}
@@ -13,7 +13,7 @@
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <mat-form-field floatLabel="never">
+                <mat-form-field class="input-field-length" floatLabel="never">
                     <mat-label>{{examsText.name}}</mat-label>
                     <mat-select [(ngModel)]="newExam.name">
                         <mat-option [value]="name"

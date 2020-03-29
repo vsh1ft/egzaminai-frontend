@@ -4,7 +4,7 @@
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>{{puppDatesText.name}}</mat-header-cell>
             <mat-cell *matCellDef="let date; index as i">
-                <mat-form-field floatLabel="never">
+                <mat-form-field class="input-field-length" floatLabel="never">
                     <mat-select (selectionChange)="updateDate(date)" [(ngModel)]="dates.data[i].name">
                         <mat-option [value]="name"
                                     *ngFor="let name of examNames">{{examNamesEnum[name]}}
@@ -13,7 +13,7 @@
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <mat-form-field floatLabel="never">
+                <mat-form-field class="input-field-length" floatLabel="never">
                     <mat-label>{{puppDatesText.name}}</mat-label>
                     <mat-select [(ngModel)]="newDate.name">
                         <mat-option [value]="name"
@@ -33,7 +33,7 @@
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <mat-form-field floatLabel="never">
+                <mat-form-field class="input-field-length" floatLabel="never">
                     <mat-label>{{puppDatesText.date}}</mat-label>
                     <input matInput [(ngModel)]="newDate.dateTime" type="datetime-local"
                            placeholder="{{puppDatesText.date}}" required>
