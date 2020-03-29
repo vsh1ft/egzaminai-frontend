@@ -3,7 +3,7 @@
 
         <ng-container matColumnDef="name">
             <mat-header-cell fxFlex="18%" *matHeaderCellDef>{{examListText.name}}</mat-header-cell>
-            <mat-cell fxFlex="18%" *matCellDef="let exam; index as i">
+            <mat-cell fxFlex="18" *matCellDef="let exam; index as i">
                 <mat-form-field>
                     <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="maturityExams.data[i].name">
                         <mat-option [value]="name"

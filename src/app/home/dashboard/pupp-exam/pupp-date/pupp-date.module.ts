@@ -11,6 +11,7 @@ import { MatSortModule } from '@angular/material/sort'
 import { FormsModule } from '@angular/forms'
 import { MatSelectModule } from '@angular/material/select'
 import { ComponentRegistryService } from '../../../../service/registry/component-registry.service'
+import { FlexModule } from '@angular/flex-layout'
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ComponentRegistryService } from '../../../../service/registry/component
         MatButtonModule,
         MatSortModule,
         FormsModule,
-        MatSelectModule
+        MatSelectModule,
+        FlexModule
     ],
     providers: [
         CdkColumnDef,

@@ -1,5 +1,5 @@
-<div class="example-container ">
-    <mat-table matSort matSortDisableClear [dataSource]="dates">
+<div class="table-wrapper ">
+    <mat-table flex matSort matSortDisableClear [dataSource]="dates">
 
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>{{puppDatesText.name}}</mat-header-cell>
@@ -26,8 +26,8 @@
 
         <ng-container matColumnDef="dateTime">
             <mat-header-cell *matHeaderCellDef>{{puppDatesText.date}}</mat-header-cell>
-            <mat-cell *matCellDef="let date">
-                <mat-form-field id="date-time-field" floatLabel="never">
+            <mat-cell  *matCellDef="let date">
+                <mat-form-field  id="date-time-field" floatLabel="never">
                     <input matInput class="date-time" (input)="updateDate(date)" type="datetime-local"
                            [(ngModel)]="date.dateTime">
                 </mat-form-field>

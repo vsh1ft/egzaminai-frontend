@@ -55,7 +55,7 @@
                 </mat-form-field>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef>
-                <mat-form-field floatLabel="never">
+                <mat-form-field class="long-input" floatLabel="never">
                     <mat-label>{{examDatesText.date}}</mat-label>
                     <input matInput [(ngModel)]="newDate.dateTime" type="datetime-local" placeholder="{{examDatesText.date}}" required>
                 </mat-form-field>
