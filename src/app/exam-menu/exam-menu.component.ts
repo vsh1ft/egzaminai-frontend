@@ -6,7 +6,7 @@ import { examMenuText } from './exam-menu.constant'
     templateUrl: './exam-menu.html'
 })
 export class ExamMenuComponent {
-    examTabsText = examMenuText
+    examMenuTabs = examMenuText
     selectedListItem = 'examList'
 
     @Output() componentName = new EventEmitter<string>()
