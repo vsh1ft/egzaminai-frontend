@@ -1,12 +1,12 @@
 <div flex fxLayoutGap="0.2em" fxLayout="column">
-    <div fxLayout="row"  fxLayoutAlign="space-between">
+    <div   fxLayoutAlign="space-between">
         <exam-menu fxFlex fxLayoutGap="0.2em" fxLayout="row" fxShow="false" fxHide.lt-md="false"
                    (componentName)="swapComponent($event)"></exam-menu>
         <logout fxFlex ></logout>
     </div>
     <div fxLayout="row" fxLayoutGap="1em">
         <exam-tabs fxShow="true" fxHide.lt-md="true" (componentName)="swapComponent($event)"></exam-tabs>
-        <ng-template viewContainerRef></ng-template>
+        <ng-template  viewContainerRef></ng-template>
     </div>
 
 </div>

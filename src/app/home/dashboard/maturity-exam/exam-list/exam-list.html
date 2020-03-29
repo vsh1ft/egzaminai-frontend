@@ -1,9 +1,9 @@
-<div class="example-container ">
-    <mat-table matSort matSortDisableClear [dataSource]="maturityExams">
+<div class="table-wrapper">
+    <mat-table flex matSort matSortDisableClear [dataSource]="maturityExams">
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>{{examListText.name}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam; index as i">
+            <mat-header-cell fxFlex="18%" *matHeaderCellDef>{{examListText.name}}</mat-header-cell>
+            <mat-cell fxFlex="18%" *matCellDef="let exam; index as i">
                 <mat-form-field>
                     <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="maturityExams.data[i].name">
                         <mat-option [value]="name"
@@ -12,7 +12,7 @@
                     </mat-select>
                 </mat-form-field>
             </mat-cell>
-            <mat-footer-cell *matFooterCellDef>
+            <mat-footer-cell fxFlex="18%" *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.name}}</mat-label>
                     <mat-select required [(ngModel)]="newExam.name">
@@ -25,8 +25,8 @@
         </ng-container>
 
         <ng-container matColumnDef="year">
-            <mat-header-cell *matHeaderCellDef>{{examListText.year}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-header-cell fxFlex="18%" *matHeaderCellDef>{{examListText.year}}</mat-header-cell>
+            <mat-cell fxFlex="18%" *matCellDef="let exam">
                 <mat-form-field>
                     <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="exam.year">
                         <mat-option [value]="year"
@@ -35,7 +35,7 @@
                     </mat-select>
                 </mat-form-field>
             </mat-cell>
-            <mat-footer-cell *matFooterCellDef>
+            <mat-footer-cell fxFlex="18%" *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.year}}</mat-label>
                     <mat-select required [(ngModel)]="newExam.year">
@@ -48,8 +48,8 @@
         </ng-container>
 
         <ng-container matColumnDef="type">
-            <mat-header-cell *matHeaderCellDef>{{examListText.type}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam; index as i">
+            <mat-header-cell fxFlex="18%" *matHeaderCellDef>{{examListText.type}}</mat-header-cell>
+            <mat-cell fxFlex="18%" *matCellDef="let exam; index as i">
                 <mat-form-field>
                     <mat-select (selectionChange)="updateExam(exam)" [(ngModel)]="maturityExams.data[i].type">
                         <mat-option [value]="type"
@@ -58,7 +58,7 @@
                     </mat-select>
                 </mat-form-field>
             </mat-cell>
-            <mat-footer-cell *matFooterCellDef>
+            <mat-footer-cell fxFlex="18%" *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <mat-label>{{examListText.type}}</mat-label>
                     <mat-select required [(ngModel)]="newExam.type">
@@ -71,13 +71,13 @@
         </ng-container>
 
         <ng-container matColumnDef="examUrl">
-            <mat-header-cell *matHeaderCellDef>{{examListText.examUrl}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-header-cell fxFlex="18%" *matHeaderCellDef>{{examListText.examUrl}}</mat-header-cell>
+            <mat-cell fxFlex="18%" *matCellDef="let exam">
                 <mat-form-field floatLabel='never'>
                     <input matInput class="exam-url" (input)="updateExam(exam)" [(ngModel)]="exam.examUrl" required>
                 </mat-form-field>
             </mat-cell>
-            <mat-footer-cell *matFooterCellDef>
+            <mat-footer-cell fxFlex="18%" *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <input [(ngModel)]="newExam.examUrl" matInput placeholder="{{examListText.examUrl}}" required>
                 </mat-form-field>
@@ -85,13 +85,13 @@
         </ng-container>
 
         <ng-container matColumnDef="answerUrl">
-            <mat-header-cell *matHeaderCellDef>{{examListText.answerUrl}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-header-cell fxFlex="18%" *matHeaderCellDef>{{examListText.answerUrl}}</mat-header-cell>
+            <mat-cell fxFlex="18%" *matCellDef="let exam">
                 <mat-form-field floatLabel='never'>
                     <input matInput class="answer-url" (input)="updateExam(exam)" [(ngModel)]="exam.answerUrl" required>
                 </mat-form-field>
             </mat-cell>
-            <mat-footer-cell *matFooterCellDef>
+            <mat-footer-cell fxFlex="18%" *matFooterCellDef>
                 <mat-form-field floatLabel='never'>
                     <input [(ngModel)]="newExam.answerUrl" matInput placeholder="{{examListText.answerUrl}}" required>
                 </mat-form-field>
@@ -99,13 +99,13 @@
         </ng-container>
 
         <ng-container matColumnDef="delete">
-            <mat-header-cell *matHeaderCellDef>{{examListText.delete}}</mat-header-cell>
-            <mat-cell *matCellDef="let exam">
+            <mat-header-cell fxFlex="5" *matHeaderCellDef>{{examListText.delete}}</mat-header-cell>
+            <mat-cell fxFlex="5" *matCellDef="let exam">
                 <button (click)="delete(exam)" mat-icon-button>
                     <mat-icon id="delete-icon">delete</mat-icon>
                 </button>
             </mat-cell>
-            <mat-footer-cell *matFooterCellDef>
+            <mat-footer-cell fxFlex="5" *matFooterCellDef>
                 <button mat-icon-button (click)="saveNewExam(); addRow()">
                     <mat-icon id="add-icon">add</mat-icon>
                 </button>
@@ -116,5 +116,4 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         <mat-footer-row *matFooterRowDef="displayedColumns;  sticky: true"></mat-footer-row>
     </mat-table>
-
 </div>
