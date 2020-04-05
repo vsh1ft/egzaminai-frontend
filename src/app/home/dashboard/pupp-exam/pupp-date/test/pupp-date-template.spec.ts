@@ -35,8 +35,8 @@ describe(`${PuppDateComponent.name} template`, () => {
             declarations: [PuppDateComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
         })
-        const musicProgram = new PuppDate('id1', PuppExamName.LITHUANIAN_LANGUAGE_WRITING_I,  'date')
-        const physicsProgram = new PuppDate('id2', PuppExamName.LITHUANIAN_LANGUAGE_WRITING_II,  'date')
+        const musicProgram = new PuppDate('id1', PuppExamName.LITHUANIAN_LANGUAGE_WRITING_I,'',  'date')
+        const physicsProgram = new PuppDate('id2', PuppExamName.LITHUANIAN_LANGUAGE_WRITING_II,  '','date')
         serviceSpy = TestBed.inject(CrudService) as SpyObj<CrudService>
         serviceSpy.retrieveAll.and.returnValue(of([musicProgram, physicsProgram]))
 

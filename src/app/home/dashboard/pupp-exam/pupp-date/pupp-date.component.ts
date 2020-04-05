@@ -13,9 +13,9 @@ import { CrudService } from '../../../../service/crud/crud.service'
 })
 export class PuppDateComponent implements OnInit {
     puppDatesText = puppDatesText
-    displayedColumns = ['name', 'dateTime', 'delete']
+    displayedColumns = ['name', 'dateTime', 'color', 'delete']
     dates: MatTableDataSource<PuppDate>
-    newDate = new PuppDate('', PuppExamName.FOREIGN_LANGUAGE_VERBAL, '')
+    newDate = new PuppDate('', PuppExamName.FOREIGN_LANGUAGE_VERBAL, '', '')
 
     examNames = Object.keys(PuppExamName)
     examNamesEnum = PuppExamName

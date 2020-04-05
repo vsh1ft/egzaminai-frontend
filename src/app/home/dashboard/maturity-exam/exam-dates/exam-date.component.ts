@@ -14,9 +14,9 @@ import { CrudService } from '../../../../service/crud/crud.service'
 })
 export class ExamDateComponent implements OnInit {
     examDatesText = examDatesText
-    displayedColumns = ['name', 'type', 'dateTime', 'delete']
+    displayedColumns = ['name', 'type', 'dateTime', 'delete', 'color']
     dates: MatTableDataSource<ExamDate>
-    newDate = new ExamDate('', MaturityExam.CHEMISTRY, ExamType.NATIONAL_LEVEL, '')
+    newDate = new ExamDate('', MaturityExam.CHEMISTRY, ExamType.NATIONAL_LEVEL,'',  '')
 
     typeNames = Object.keys(ExamType)
     examNames = Object.keys(MaturityExam)
@@ -43,6 +43,7 @@ export class ExamDateComponent implements OnInit {
     }
 
     updateDate(date: ExamDate) {
+        console.log(date)
         this.service.update(this.path, date)
     }
 

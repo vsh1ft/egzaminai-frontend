@@ -12,7 +12,7 @@ describe(`${PuppDateComponent.name}`, () => {
     let component: PuppDateComponent
     let serviceSpy: SpyObj<CrudService>
 
-    const date = new PuppDate('id', PuppExamName.MATH, 'date')
+    const date = new PuppDate('id', PuppExamName.MATH, '','date')
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             providers: [PuppDateComponent,

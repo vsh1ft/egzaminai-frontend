@@ -10,6 +10,9 @@ exam-date {
     height: 6em;
     background: antiquewhite;
   }
+  .mat-footer-row, .mat-header-row {
+    z-index: 0;
+  }
 
   #date-time-field, .long-input {
     width: 65%;

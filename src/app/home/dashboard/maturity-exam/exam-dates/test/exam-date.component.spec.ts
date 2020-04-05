@@ -13,7 +13,7 @@ describe(`${ExamDateComponent.name}`, () => {
     let component: ExamDateComponent
     let serviceSpy: SpyObj<CrudService>
 
-    const date = new ExamDate('id', MaturityExam.ENGLISH_LANGUAGE, ExamType.SCHOOL_LEVEL, 'date')
+    const date = new ExamDate('id', MaturityExam.ENGLISH_LANGUAGE, ExamType.SCHOOL_LEVEL, '', 'date')
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             providers: [ExamDateComponent,

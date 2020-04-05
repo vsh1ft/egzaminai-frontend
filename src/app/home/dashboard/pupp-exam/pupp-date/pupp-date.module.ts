@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms'
 import { MatSelectModule } from '@angular/material/select'
 import { ComponentRegistryService } from '../../../../service/registry/component-registry.service'
 import { FlexModule } from '@angular/flex-layout'
+import { ColorPickerModule } from 'ngx-color-picker'
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { FlexModule } from '@angular/flex-layout'
         MatButtonModule,
         MatSortModule,
         FormsModule,
+        ColorPickerModule,
         MatSelectModule,
         FlexModule
     ],

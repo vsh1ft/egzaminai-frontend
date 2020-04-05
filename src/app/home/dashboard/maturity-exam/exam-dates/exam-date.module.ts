@@ -11,6 +11,7 @@ import { MatSortModule } from '@angular/material/sort'
 import { FormsModule } from '@angular/forms'
 import { MatSelectModule } from '@angular/material/select'
 import { ComponentRegistryService } from '../../../../service/registry/component-registry.service'
+import { ColorPickerModule } from 'ngx-color-picker'
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { ComponentRegistryService } from '../../../../service/registry/component
         MatTableModule,
         MatIconModule,
         MatFormFieldModule,
-        MatInputModule,
+        MatInputModule,ColorPickerModule,
         MatButtonModule,
         MatSortModule,
         FormsModule,

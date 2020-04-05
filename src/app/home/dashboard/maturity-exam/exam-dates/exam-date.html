@@ -61,6 +61,15 @@
                 </mat-form-field>
             </mat-footer-cell>
         </ng-container>
+        <ng-container matColumnDef="color">
+            <mat-header-cell *matHeaderCellDef>{{examDatesText.color}}</mat-header-cell>
+            <mat-cell *matCellDef="let date">
+                <input [(colorPicker)]="date.color" (colorPickerChange)="updateDate(date)"  [value]="date.color" [cpPosition]="'bottom-left'" [style.background]="date.color"/>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef>
+                <input [(colorPicker)]="newDate.color" [value]="newDate.color" [cpPosition]="'top-left'" [style.background]="newDate.color"/>
+            </mat-footer-cell>
+        </ng-container>
 
         <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef>{{examDatesText.delete}}</mat-header-cell>
